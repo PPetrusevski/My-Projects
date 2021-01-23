@@ -4,3 +4,98 @@ body {
   font-family: "Ubuntu", sans-serif;
   cursor: default;
 }
+p {
+  line-height: 1.2;
+}
+.bg-yellow {
+  background-color: #fcd232;
+}
+.f-13 {
+  font-size: 13px;
+}
+.nav-shadow {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 30px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 30px;
+}
+.w-logo {
+  width: 40px;
+  height: 40px;
+}
+.navbar {
+  z-index: 11111;
+}
+.navbar ul li a {
+  color: #000000;
+  width: fit-content;
+  transition: ease-in-out 0.12s;
+  border-radius: 5px;
+}
+.navbar ul li a:not(.btn-exception):hover {
+  background: #ff0000;
+  color: #ffffff;
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+.overlay {
+  background-color: #302f38;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 11;
+}
+.btn-custom,
+.btn-custom-form {
+  color: #fff;
+  background-color: #ff0000;
+  font-size: 13px;
+  transition: ease-in-out 0.22s;
+}
+.btn-custom:hover,
+.btn-custom-form:hover {
+  background-color: #d80000;
+  color: #fff;
+}
+.btn-custom:hover {
+  transform: scale(1.1);
+}
+.btn-custom-form {
+  border-color: transparent;
+}
+.navbar-toggler-custom {
+  background-color: #272727;
+  border-radius: 5px;
+  display: block;
+  height: 5px;
+  margin-left: auto;
+  margin-top: 3px;
+  border: 0;
+}
+.fa-times {
+  color: #fffefe;
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+.navbar-toggler-custom:nth-child(1) {
+  width: 40px;
+}
+.navbar-toggler-custom:nth-child(2) {
+  width: 30px;
+}
+.navbar-toggler-custom:nth-child(3) {
+  width: 20px;
+}
+.state-open,
+.state-close {
+  display: none;
+}
+.navbar-toggler.collapsed .state-open {
+  display: block;
+}
+.navbar-toggler.collapsed .state-close {
+  display: none;
+}
