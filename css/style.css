@@ -115,3 +115,15 @@ p {
 .anim-pulse {
   animation: pulse 2s infinite;
 }
+.h1-fsize {
+  font-size: 60px;
+  font-weight: 700;
+}
+.banner-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../img/bgimage.jpg);
+  background-size: cover;
+}
+/* .banner-height {
+  height: calc(100vh - 67px - 88px);
+} */
