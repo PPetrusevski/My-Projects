@@ -20,8 +20,17 @@ body {
 p {
   line-height: 1.2;
 }
+.overflow {
+  overflow: hidden;
+}
 .bg-yellow {
   background-color: #fcd232;
+}
+.bg-gray {
+  background-color: #212529;
+}
+.bg-active {
+  background-color: #da3647;
 }
 .h1-fsize {
   font-size: 60px;
@@ -29,6 +38,9 @@ p {
 }
 .f-13 {
   font-size: 13px;
+}
+.f-17 {
+  font-size: 17px;
 }
 .nav-shadow {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 30px;
@@ -124,6 +136,21 @@ p {
     url(../img/bgimage.jpg);
   background-size: cover;
 }
-/* .banner-height {
-  height: calc(100vh - 67px - 88px);
-} */
+.banner-height {
+  height: calc(100vh - 88px - 98px);
+}
+.border-filters {
+  border: 1px solid #5a5a5a;
+}
+.cursor {
+  cursor: pointer;
+}
+.list {
+  transition: all 0.5s;
+}
+.list:hover,
+.list.bg-active {
+  box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
+}
