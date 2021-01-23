@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
-
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(214, 32, 39, 0.8);
+    box-shadow: 0 0 0 0 rgba(214, 32, 39, 0.8);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 8px rgba(214, 32, 39, 0);
+    box-shadow: 0 0 0 8px rgba(214, 32, 39, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(214, 32, 39, 0);
+    box-shadow: 0 0 0 0 rgba(214, 32, 39, 0);
+  }
+}
 body {
   font-family: "Ubuntu", sans-serif;
   cursor: default;
@@ -98,4 +111,7 @@ p {
 }
 .navbar-toggler.collapsed .state-close {
   display: none;
+}
+.anim-pulse {
+  animation: pulse 2s infinite;
 }
