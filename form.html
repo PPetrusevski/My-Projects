@@ -77,7 +77,92 @@
     <!-- -----------NAVBAR END------------- -->
 
     <!-- ------------FORM START------------- -->
-
+    <main class="col-lg-8 offset-lg-2">
+      <div class="row form-title-padding">
+        <div class="col">
+          <h1 class="h1-fsize text-center">Вработи студенти</h1>
+        </div>
+      </div>
+      <form class="row form-padding">
+        <div class="col-sm-6 form-group">
+          <label for="name" class="font-weight-bold">Име и презиме</label>
+          <input
+            type="text"
+            class="form-control p-4"
+            placeholder="Вашето име и презиме"
+            required
+            id="name"
+            oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме внесете Ваше име и презиме.')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="companyName" class="font-weight-bold"
+            >Име на компанија</label
+          >
+          <input
+            type="text"
+            class="form-control p-4"
+            placeholder="Име на вашата компанија"
+            required
+            id="companyName"
+            oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме внесете го името на Вашата компанија.')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="email" class="font-weight-bold">Контакт имејл</label>
+          <input
+            type="email"
+            class="form-control p-4"
+            placeholder="Контакт имејл на вашата компанија"
+            required
+            id="email"
+            oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме внесете валидна e-mail адреса.')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="phone" class="font-weight-bold">Контакт телефон</label>
+          <input
+            type="number"
+            class="form-control p-4"
+            placeholder="Контакт телефон на вашата компанија"
+            required
+            id="phone"
+            oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме внесете контакт телефон.')"
+            oninput="this.setCustomValidity('')"
+          />
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="students" class="font-weight-bold">Тип на студенти</label>
+          <select
+            class="form-control"
+            style="height: 50px"
+            required
+            id="students"
+            oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме изберете од типовите на наши студенти.')"
+            oninput="this.setCustomValidity('')"
+          >
+            <option value="">Изберете тип на студенти</option>
+            <option value="marketing">Студенти од маркетинг</option>
+            <option value="coding">Студенти од програмирање</option>
+            <option value="dataScience">Студенти од data science</option>
+            <option value="design">Студенти од дизајн</option>
+          </select>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="button" class="invisible">Placeholder</label>
+          <button
+            type="submit"
+            class="form-control btn-lg btn-block btn-custom-form"
+            style="height: 50px"
+          >
+            ИСПРАТИ
+          </button>
+        </div>
+      </form>
+    </main>
     <!-- ------------FORM END------------- -->
 
     <!-- ---------------FOOTER START------------- -->
@@ -100,5 +185,6 @@
     <script src="./js/assets/jquery-3.5.1.min.js"></script>
     <script src="./js/assets/popper.min.js"></script>
     <script src="./js/assets/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>

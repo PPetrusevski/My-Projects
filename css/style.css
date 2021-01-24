@@ -63,12 +63,6 @@ p {
   transition: ease-in-out 0.12s;
   border-radius: 5px;
 }
-.navbar ul li a:not(.btn-exception):hover {
-  background: #ff0000;
-  color: #ffffff;
-  border-radius: 5px;
-  transform: scale(1.1);
-}
 .overlay {
   background-color: #302f38;
   position: fixed;
@@ -95,6 +89,9 @@ p {
 }
 .btn-custom-form {
   border-color: transparent;
+}
+.btn-custom-form:hover {
+  transform: scale(1.05);
 }
 .navbar-toggler-custom {
   background-color: #272727;
@@ -174,4 +171,26 @@ p {
 }
 .heart-color {
   color: #ff0000;
+}
+.form-control::placeholder {
+  font-style: italic;
+  color: #bbbbbb;
+}
+select:invalid {
+  color: #bbbbbb;
+}
+.form-title-padding {
+  padding-top: 13rem;
+  padding-bottom: 10rem;
+}
+.form-padding {
+  padding-bottom: 15rem;
+}
+@media (min-width: 992px) {
+  .navbar ul li a:not(.btn-exception):hover {
+    background: #ff0000;
+    color: #ffffff;
+    border-radius: 5px;
+    transform: scale(1.1);
+  }
 }
