@@ -172,3 +172,6 @@ p {
 .card-body {
   padding: 0.8rem;
 }
+.heart-color {
+  color: #ff0000;
+}
