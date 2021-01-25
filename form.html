@@ -12,8 +12,11 @@
     <!-- -----------NAVBAR START------------- -->
     <header>
       <div class="target-overlay"></div>
-      <nav class="navbar navbar-expand-lg font-weight-bold f-13 nav-shadow p-4">
-        <a class="navbar-brand ml-lg-5" href="./index.html"
+      <nav
+        class="navbar navbar-expand-lg font-weight-bold f-13 nav-shadow p-lg-4"
+        id="main-nav"
+      >
+        <a class="navbar-brand ml-lg-5 mr-lg-5" href="./index.html"
           ><img src="./img/Logo.png" alt="logo" class="d-block w-logo"
         /></a>
         <button
@@ -21,56 +24,61 @@
           data-toggle="collapse"
           data-target="#collapse-target"
         >
-          <span class="navbar-toggler-custom state-open"></span>
-          <span class="navbar-toggler-custom state-open"></span>
-          <span class="navbar-toggler-custom state-open"></span>
+          <div class="menu-toggler-wrapper">
+            <span class="navbar-toggler-custom state-open"></span>
+            <span class="navbar-toggler-custom state-open"></span>
+            <span class="navbar-toggler-custom state-open"></span>
+          </div>
           <i class="fas fa-times fa-2x state-close"></i>
         </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="collapse-target"
-        >
-          <ul class="navbar-nav align-items-lg-center mt-4 mt-lg-0">
-            <li class="nav-item mb-2 mb-lg-0">
-              <a
-                href="https://marketpreneurs.brainster.co"
-                class="nav-link"
-                target="_blank"
-                >Академија за маркетинг</a
-              >
-            </li>
-            <li class="nav-item ml-lg-4 mb-2 mb-lg-0">
-              <a
-                href="https://codepreneurs.brainster.co"
-                class="nav-link"
-                target="_blank"
-                >Академија за програмирање</a
-              >
-            </li>
-            <li class="nav-item ml-lg-4 mb-2 mb-lg-0">
-              <a
-                href="https://datascience.brainster.co/"
-                class="nav-link"
-                target="_blank"
-                >Академија за data science</a
-              >
-            </li>
-            <li class="nav-item ml-lg-4 mb-2 mb-lg-0">
-              <a
-                href="https://design.brainster.co"
-                class="nav-link"
-                target="_blank"
-                >Академија за дизајн</a
-              >
-            </li>
-            <li class="nav-item ml-lg-5">
-              <a href="./form.html" class="nav-link btn-exception"
-                ><button class="btn btn-custom font-weight-bold anim-pulse">
-                  Вработи наш студент
-                </button></a
-              >
-            </li>
-          </ul>
+        <div class="collapse navbar-collapse" id="collapse-target">
+          <div class="wrap ml-auto">
+            <ul class="navbar-nav align-items-lg-center mt-4 mt-lg-0">
+              <li class="nav-item mb-2 mb-lg-0 ml-lg-5">
+                <a
+                  href="https://marketpreneurs.brainster.co"
+                  class="nav-link"
+                  target="_blank"
+                  >Академија за маркетинг</a
+                >
+              </li>
+              <li class="nav-item mb-2 mb-lg-0 ml-lg-3">
+                <a
+                  href="https://codepreneurs.brainster.co"
+                  class="nav-link"
+                  target="_blank"
+                  >Академија за програмирање</a
+                >
+              </li>
+              <li class="nav-item mb-2 mb-lg-0 ml-lg-3">
+                <a
+                  href="https://datascience.brainster.co/"
+                  class="nav-link"
+                  target="_blank"
+                  >Академија за data science</a
+                >
+              </li>
+              <li class="nav-item mb-2 mb-lg-0 ml-lg-3">
+                <a
+                  href="https://design.brainster.co"
+                  class="nav-link"
+                  target="_blank"
+                  >Академија за дизајн</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="wrap ml-auto">
+            <ul class="navbar-nav align-items-lg-center">
+              <li class="nav-item">
+                <a href="./form.html" class="nav-link btn-exception"
+                  ><button class="btn btn-custom font-weight-bold anim-pulse">
+                    Вработи наш студент
+                  </button></a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
@@ -144,7 +152,7 @@
             oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме изберете од типовите на наши студенти.')"
             oninput="this.setCustomValidity('')"
           >
-            <option value="">Изберете тип на студенти</option>
+            <option value="">Изберете тип на студент</option>
             <option value="marketing">Студенти од маркетинг</option>
             <option value="coding">Студенти од програмирање</option>
             <option value="dataScience">Студенти од data science</option>
@@ -169,7 +177,7 @@
     <footer class="container-fluid bg-gray">
       <div class="row p-3">
         <div class="col d-flex justify-content-center">
-          <span class="text-white"
+          <span class="text-white f-13 f-var"
             >Изработено со <span class="heart-color">&#10084</span> од студентите на Brainster</span
           >
         </div>

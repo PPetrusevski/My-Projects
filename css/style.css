@@ -33,7 +33,7 @@ p {
   background-color: #eb3b3b;
 }
 .h1-fsize {
-  font-size: 47px;
+  font-size: 40px;
   font-weight: 700;
 }
 .f-13 {
@@ -169,14 +169,14 @@ select:invalid {
   color: #bbbbbb;
 }
 .form-title-padding {
-  padding-top: 13rem;
-  padding-bottom: 10rem;
+  padding-top: 130px;
+  padding-bottom: 130px;
 }
 .form-padding {
-  padding-bottom: 15rem;
+  padding-bottom: 200px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 767px) {
   p.res-basis {
     font-size: 15px;
   }
@@ -186,6 +186,18 @@ select:invalid {
   h2.text-sm-center {
     font-size: 2rem;
   }
+  .form-title-padding {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+  .form-padding {
+    padding-bottom: 60px;
+  }
+}
+@media (min-width: 768px) {
+  .h1-fsize {
+    font-size: 65px;
+  }
 }
 @media (min-width: 992px) {
   .navbar ul li a:not(.btn-exception):hover {
@@ -193,9 +205,6 @@ select:invalid {
     color: #ffffff;
     border-radius: 5px;
     transform: scale(1.1);
-  }
-  .h1-fsize {
-    font-size: 60px;
   }
   .card:hover {
     transform: scale(1.05) translateY(-0.45rem);
