@@ -30,10 +30,10 @@ p {
   background-color: #212529;
 }
 .bg-active {
-  background-color: #da3647;
+  background-color: #eb3b3b;
 }
 .h1-fsize {
-  font-size: 60px;
+  font-size: 47px;
   font-weight: 700;
 }
 .f-13 {
@@ -99,8 +99,10 @@ p {
   display: block;
   height: 5px;
   margin-left: auto;
-  margin-top: 3px;
   border: 0;
+}
+.navbar-toggler-custom:not(:first-child) {
+  margin-top: 4px;
 }
 .fa-times {
   color: #fffefe;
@@ -135,6 +137,8 @@ p {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(../img/bgimage.jpg);
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .banner-height {
   height: calc(100vh - 88px - 98px);
@@ -186,11 +190,28 @@ select:invalid {
 .form-padding {
   padding-bottom: 15rem;
 }
+
+@media (min-width: 320px) and (max-width: 750px) {
+  p.res-basis {
+    font-size: 15px;
+  }
+  .f-var {
+    font-size: 11px;
+  }
+}
 @media (min-width: 992px) {
   .navbar ul li a:not(.btn-exception):hover {
     background: #ff0000;
     color: #ffffff;
     border-radius: 5px;
     transform: scale(1.1);
+  }
+  .h1-fsize {
+    font-size: 60px;
+  }
+}
+@media (min-width: 1350px) {
+  .res-basis {
+    flex: 0 0 85%;
   }
 }

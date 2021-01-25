@@ -17,7 +17,7 @@ $(document).ready(function () {
   });
   //RESPONSIVE MENU OVERLAY
 
-  $(".navbar-toggler-custom").click(function () {
+  $(".menu-toggler-wrapper").click(function () {
     $("body").addClass("overflow");
     $(".target-overlay").addClass("overlay");
     $(".nav-item a").addClass("text-white");
