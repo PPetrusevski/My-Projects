@@ -31,7 +31,6 @@ $(document).ready(function () {
     $(".navbar-brand").removeClass("invisible");
     $("nav").addClass("nav-shadow");
   });
-
   //FILTER BUTTONS VISUAL
 
   $(".list").click(function () {
@@ -52,6 +51,18 @@ $(document).ready(function () {
       $("#filter-3").children("p").removeClass("text-white");
     } else if ($("#filter-3").not("bg-active")) {
       $("#filter-3").children("p").addClass("text-white");
+    }
+  });
+  //FORM SELECT INPUT
+
+  $(".select-wrapper").click(function () {
+    $(".dropdown-container").toggleClass("select-active");
+  });
+  $(".dropdown-container li").click(function (e) {
+    var txt = $(e.target).text();
+    $(".dropdown").text(txt);
+    if ($(".dropdown").hasClass("select-active")) {
+      $(".dropdown-container").removeClass("select-active");
     }
   });
 });

@@ -96,7 +96,7 @@
           <label for="name" class="font-weight-bold">Име и презиме</label>
           <input
             type="text"
-            class="form-control p-4"
+            class="form-control"
             placeholder="Вашето име и презиме"
             required
             id="name"
@@ -110,7 +110,7 @@
           >
           <input
             type="text"
-            class="form-control p-4"
+            class="form-control"
             placeholder="Име на вашата компанија"
             required
             id="companyName"
@@ -122,7 +122,7 @@
           <label for="email" class="font-weight-bold">Контакт имејл</label>
           <input
             type="email"
-            class="form-control p-4"
+            class="form-control"
             placeholder="Контакт имејл на вашата компанија"
             required
             id="email"
@@ -134,7 +134,7 @@
           <label for="phone" class="font-weight-bold">Контакт телефон</label>
           <input
             type="number"
-            class="form-control p-4"
+            class="form-control"
             placeholder="Контакт телефон на вашата компанија"
             required
             id="phone"
@@ -144,27 +144,34 @@
         </div>
         <div class="col-sm-6 form-group">
           <label for="students" class="font-weight-bold">Тип на студенти</label>
-          <select
-            class="form-control"
-            style="height: 50px"
-            required
-            id="students"
-            oninvalid="this.setCustomValidity('Задолжително поле! Ве молиме изберете од типовите на наши студенти.')"
-            oninput="this.setCustomValidity('')"
-          >
-            <option value="">Изберете тип на студент</option>
-            <option value="marketing">Студенти од маркетинг</option>
-            <option value="coding">Студенти од програмирање</option>
-            <option value="dataScience">Студенти од data science</option>
-            <option value="design">Студенти од дизајн</option>
-          </select>
+          <div class="select-wrapper">
+            <div
+              class="dropdown cursor d-flex justify-content-between align-items-center font-weight-bold"
+            >
+              Изберете тип на студент
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="dropdown-container p-0 font-weight-bold">
+              <li class="dropdownLink cursor border-bottom">
+                Студенти од маркетинг
+              </li>
+              <li class="dropdownLink cursor border-bottom">
+                Студенти од програмирање
+              </li>
+              <li class="dropdownLink cursor border-bottom">
+                Студенти од data science
+              </li>
+              <li class="dropdownLink cursor border-bottom">
+                Студенти од дизајн
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="col-sm-6 form-group">
           <label for="button" class="invisible">Placeholder</label>
           <button
             type="submit"
             class="form-control btn-lg btn-block btn-custom-form"
-            style="height: 50px"
           >
             ИСПРАТИ
           </button>
