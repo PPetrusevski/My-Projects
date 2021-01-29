@@ -57,6 +57,7 @@ $(document).ready(function () {
 
   $(".select-wrapper").click(function () {
     $(".dropdown-container").toggleClass("select-active");
+    $(".dropdown").toggleClass("dropdown-active");
   });
   $(".dropdown-container li").click(function (e) {
     var txt = $(e.target).text();
