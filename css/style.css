@@ -57,6 +57,9 @@ p {
 .navbar {
   z-index: 11111;
 }
+.collapsing {
+  transition: 0.08s;
+}
 .navbar ul li a {
   color: #212529;
   width: fit-content;
@@ -82,6 +85,9 @@ p {
 .btn-custom-form {
   border-color: transparent;
   height: 59px;
+}
+.navbar-toggler {
+  padding: 0;
 }
 .navbar-toggler-custom {
   background-color: #212529;
@@ -135,11 +141,6 @@ p {
 }
 .list {
   transition: all 0.5s;
-}
-.list.bg-active {
-  box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
 }
 .card {
   border-radius: 15px;
@@ -213,7 +214,6 @@ input.form-control {
 .select-active {
   transform: scaleY(1);
 }
-
 @media (max-width: 767px) {
   .btn-custom-form {
     margin-top: 145px;
@@ -229,7 +229,7 @@ input.form-control {
     padding-bottom: 30px;
   }
   .form-bottom-padding {
-    padding-bottom: 60px;
+    padding-bottom: 70px;
   }
   .h1-padding {
     padding-top: 3em;
@@ -246,6 +246,11 @@ input.form-control {
   }
   .banner-specs {
     height: calc(100vh - 88px - 98px);
+  }
+  .list.bg-active {
+    box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 25px 61px -17px rgba(0, 0, 0, 0.75);
   }
 }
 @media (min-width: 992px) {
