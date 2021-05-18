@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Ubuntu", sans-serif;
+	background-color: black;
+}
+h1 {
+	text-align: center;
+	margin: 0;
+	color: grey;
+	font-size: 40px;
+}
+h3,
+p,
+ul {
+	margin: 0;
+	padding: 0;
+}
+.black {
+	background-color: black;
+	color: white;
+}
+.nonmetal {
+	background-color: #c74e29;
+}
+.alkali {
+	background-color: #0083a7;
+}
+.alkaline {
+	background-color: #47b4d1;
+}
+.transition {
+	background-color: #f3f3ed;
+}
+.post,
+.post-transition {
+	background-color: #d6b8a6;
+}
+
+.metalloid {
+	background-color: #cd7f62;
+}
+.halogens {
+	background-color: #e9e9be;
+}
+.noble {
+	background-color: #b6d6d7;
+}
+.lanthanide {
+	background-color: #dce0d2;
+}
+.actinide {
+	background-color: #8ca69b;
+}
+
+ul {
+	list-style-type: none;
+	font-size: 6px;
+	position: absolute;
+	right: 3%;
+	top: 2%;
+	transform: translate(-2%, -3%);
+}
+.elements-container {
+	margin: 0 50px;
+	display: grid;
+	/* grid-gap: 1px; */
+	grid-template-columns: repeat(18, 1fr);
+}
+.element {
+	/* border-top: 1px solid rgb(182, 182, 182); */
+	border-bottom: 1px solid rgb(82, 82, 82);
+	border-left: 1px solid rgb(0, 0, 0);
+	border-right: 1px solid rgb(0, 0, 0);
+	position: relative;
+	height: 55px;
+}
+.element1 {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+.element2 {
+	grid-column-start: 18;
+	grid-row-start: 1;
+}
+.element3 {
+	grid-column-start: 1;
+	grid-row-start: 2;
+}
+.element4 {
+	grid-column-start: 2;
+	grid-row-start: 2;
+}
+.element5 {
+	grid-column-start: 13;
+	grid-row-start: 2;
+}
+.symbol {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	white-space: nowrap;
+	font-size: 22px;
+	font-weight: 500;
+}
+.fullElementName {
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+	font-size: 8px;
+}
+.fullElementName,
+.atomicNumber {
+	position: absolute;
+	font-weight: 500;
+}
+.atomicNumber {
+	font-size: 12px;
+	top: 2%;
+	left: 7%;
+	transform: translate(-7%, -2%);
+}
+.legend {
+	border: 1px solid black;
+	grid-column-start: 3;
+	grid-column-end: 13;
+	grid-row-start: 2;
+	grid-row-end: 4;
+	padding: 0 20px;
+}
+.legendTitle {
+	text-align: center;
+	font-size: 25px;
+	color: grey;
+	font-weight: 400;
+	border-bottom: 1px solid gray;
+	padding-bottom: 8px;
+}
+.legendFields {
+	display: flex;
+	flex-wrap: wrap;
+	color: grey;
+	padding: 0 20px;
+}
+.legendField {
+	flex-basis: 20%;
+	font-size: 10px;
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+}
+.legendColor {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border-radius: 2px;
+}
+.legendText {
+	margin-left: 3px;
+}
+.lanthanides {
+	margin-top: 1em;
+	grid-column-start: 3;
+	grid-column-end: 18;
+	grid-row-start: 9;
+	display: grid;
+	grid-template-columns: repeat(15, 1fr);
+}
+.actinides {
+	grid-column-start: 3;
+	grid-column-end: 18;
+	grid-row-start: 10;
+	display: grid;
+	grid-template-columns: repeat(15, 1fr);
+}
