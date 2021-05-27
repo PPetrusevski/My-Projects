@@ -3073,7 +3073,7 @@ const ElementsMK = [
 		ionization_energies: [589.3, 1150, 2194, 4120],
 	},
 	{
-		name: "Thulium",
+		name: "Тулиум",
 		appearance: "сребрено-сива",
 		atomic_mass: 168.934222,
 		boil: 2223,
@@ -3117,7 +3117,7 @@ const ElementsMK = [
 		ionization_energies: [596, 7, 1160, 2285, 4120],
 	},
 	{
-		name: "Ytterbium",
+		name: "Итербиум",
 		appearance: null,
 		atomic_mass: 173.0451,
 		boil: 1469,
@@ -4223,7 +4223,7 @@ const ElementsMK = [
 		ionization_energies: [584.7],
 	},
 	{
-		name: "Америкациум",
+		name: "Америциум",
 		appearance: "сребрено бело",
 		atomic_mass: 243,
 		boil: 2880,
@@ -4268,7 +4268,7 @@ const ElementsMK = [
 		ionization_energies: [578],
 	},
 	{
-		name: "Curium",
+		name: "Куриум",
 		appearance: "сребрена металик, сјае во темница",
 		atomic_mass: 247,
 		boil: 3383,
@@ -4673,7 +4673,7 @@ const ElementsMK = [
 		ionization_energies: [580],
 	},
 	{
-		name: "Dubnium",
+		name: "Дубниум",
 		appearance: null,
 		atomic_mass: 268,
 		boil: null,
@@ -4718,7 +4718,7 @@ const ElementsMK = [
 		ionization_energies: [],
 	},
 	{
-		name: "Seaborgium",
+		name: "Сиборгиум",
 		appearance: null,
 		atomic_mass: 269,
 		boil: null,
@@ -4853,7 +4853,7 @@ const ElementsMK = [
 		ionization_energies: [],
 	},
 	{
-		name: "Meitnerium",
+		name: "Мајтнериум",
 		appearance: null,
 		atomic_mass: 278,
 		boil: null,
@@ -5304,7 +5304,7 @@ const ElementsMK = [
 	},
 	{
 		symbol: "57-71",
-		name: "Lathanides",
+		name: "Лантаниди",
 		atomicMass: "",
 		number: null,
 		shells: ["", "", ""],

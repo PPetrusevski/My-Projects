@@ -7,14 +7,14 @@ $(function () {
 		const yPosition = el.ypos;
 		function createElementCard() {
 			return `
-      <div class="element ${el.name} ${
-				el.category
+      <div class="element ${el.category} ${el.name} elementGroup-${
+				el.xpos
 			}" style="grid-column-start: ${xPosition}; grid-row-start: ${yPosition};">
         <h3 class="symbol">${el.symbol}</h3>
         <p class="fullElementName">${el.name}</p>
         <span class="atomicNumber">${el.number ? el.number : ""}</span>
         <ul class = "shellsGroup">
-          
+
         </ul>
       </div>
       `;
@@ -35,6 +35,12 @@ $(function () {
 			arrangeShells();
 		}
 	});
+	for (let i = 1; i <= 18; i++) {
+		const elementsGroup = $(`.elementGroup-${i}`);
+		const firstInGroup = $(elementsGroup[0]);
+		firstInGroup.prepend(`<div class="groupLabel"><p>${i}</p></div>`);
+	}
+
 	// $(".element").on("click", function () {
 	// 	console.log("clicked");
 	// });

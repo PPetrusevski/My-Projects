@@ -8,9 +8,10 @@
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<h1>Периодна табела на елементи</h1>
+		<h1 class="tr mainTitle">Периодна табела на елементи</h1>
 		<div class="elements-container">
 			<!-- <div class="element element1">
+				<div class="groupLabel"><p>1</p></div>
 				<h3 class="symbol">H</h3>
 				<p class="fullElementName">Водород</p>
 				<span class="atomicNumber">1</span>
@@ -21,54 +22,72 @@
 				</ul>
 			</div> -->
 
-			<div class="lanthanides"></div>
-			<div class="actinides"></div>
+			<div class="tr lanthanides"><span class="lanthanidesTitle">Лантаниди</span></div>
+			<div class="tr actinides"><span class="actinidesTitle">Актиниди</span></div>
 			<div class="legend">
-				<h3 class="legendTitle">Легенда</h3>
+				<h3 class="tr legendTitle">Легенда</h3>
 				<div class="legendFields">
 					<div class="legendField">
 						<div class="legendColor alkali"></div>
-						<span class="legendText">Алкални метали</span>
+						<span class="tr legendText">Алкални метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor alkaline"></div>
-						<span class="legendText">Алкални земја метали</span>
+						<span class="tr legendText">Алкални земја метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor transition"></div>
-						<span class="legendText">Транзициони метали</span>
+						<span class="tr legendText">Транзициони метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor lanthanide"></div>
-						<span class="legendText">Лантаниди</span>
+						<span class="tr legendText">Лантаниди</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor actinide"></div>
-						<span class="legendText">Актиниди</span>
+						<span class="tr legendText">Актиниди</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor post-transition"></div>
-						<span class="legendText">Други метали</span>
+						<span class="tr legendText">Други метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor metalloid"></div>
-						<span class="legendText">Металоиди</span>
+						<span class="tr legendText">Металоиди</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor nonmetal"></div>
-						<span class="legendText">Неметали</span>
+						<span class="tr legendText">Неметали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor halogens"></div>
-						<span class="legendText">Халогени</span>
+						<span class="tr legendText">Халогени</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor noble"></div>
-						<span class="legendText">Благородни гасови</span>
+						<span class="tr legendText">Благородни гасови</span>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="left-side-icons">
+			<div class="languagesContainer">
+				<img src="./images/enFlag.png" class="flag" alt="" />
+				<span class="language-btn">MK</span>
+			</div>
+			<div class="soundContainer">
+				<i class="fas fa-volume-off sound-btn"></i>
+			</div>
+		</div>
+		<div class="right-side-icons">
+			<a href="" class="instagram"><i class="fab fa-instagram"></i></a>
+			<a href="" class="facebook"><i class="fab fa-facebook-f"></i></a>
+			<a href="" class="learn-more"><i class="fas fa-ellipsis-h"></i></a>
+		</div>
+		<div class="search-container">
+			<i class="fas fa-search search-btn"></i>
+		</div>
+		<script src="https://kit.fontawesome.com/b284e76a5d.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 		<script src="periodic_table_en.js"></script>
 		<script src="periodic_table_mk.js"></script>
