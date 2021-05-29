@@ -22,13 +22,15 @@ ul {
 }
 .groupLabel {
 	position: absolute;
-	top: -85%;
+	top: -90%;
 	left: 50%;
 	transform: translate(-50%, 85%);
 	width: 25px;
 	height: 20px;
 	background-color: grey;
 	border-radius: 2px;
+	transition: top 0.3s;
+	cursor: pointer;
 }
 .groupLabel p {
 	text-align: center;
@@ -111,8 +113,27 @@ ul {
 	border-bottom: 1px solid rgb(82, 82, 82);
 	border-left: 1px solid rgb(0, 0, 0);
 	border-right: 1px solid rgb(0, 0, 0);
+	border-top: 1px solid rgb(0, 0, 0);
 	position: relative;
 	height: 8.6vh;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+.element:hover {
+	background-color: black;
+	border: 1px solid white;
+}
+.element:hover .symbol,
+.element:hover .fullElementName {
+	color: white;
+}
+#labelHovered {
+	background-color: #4d4d4d;
+	color: white;
+	border: 1px solid black;
+}
+.groupLabel:hover {
+	top: -100%;
 }
 .symbol {
 	position: absolute;
@@ -214,17 +235,58 @@ ul {
 .right-side-icons {
 	right: 1%;
 }
-.search-container {
+.search-btn-wrapper {
 	position: absolute;
 	top: -6%;
 	right: 1%;
 	display: flex;
 }
-.search-btn {
+.search-btn,
+.close-btn {
 	color: gray;
 	font-size: 35px;
 	margin: 4px;
 	cursor: pointer;
+}
+.search-container {
+	position: fixed;
+	background: #000;
+	top: 2%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 91%;
+	height: 95vh;
+	opacity: 0.85;
+	z-index: 111111;
+	overflow: auto;
+	transition: opacity 0.35s, visibility 0.35s, height 0.35s;
+	border-radius: 5px;
+	border: 1px solid gray;
+}
+.invisible {
+	display: none;
+}
+.search-input {
+	display: block;
+	background: transparent;
+	width: 80%;
+	margin: 0 auto;
+	border: none;
+	border-bottom: 2px solid gray;
+	opacity: 1;
+	z-index: 99999;
+	color: #fff;
+	font-size: 20px;
+	padding: 10px 20px;
+	line-height: 25px;
+}
+.search-input:focus {
+	outline: none;
+}
+.close-btn {
+	position: absolute;
+	top: 1%;
+	right: 1%;
 }
 .language-btn,
 .sound-btn,
@@ -265,7 +327,8 @@ ul {
 	color: white;
 	border-color: #4267b2;
 }
-.search-btn:hover {
+.search-btn:hover,
+.close-btn:hover {
 	color: rgb(163, 163, 163);
 }
 .language-btn,

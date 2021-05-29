@@ -38,10 +38,22 @@ $(function () {
 	for (let i = 1; i <= 18; i++) {
 		const elementsGroup = $(`.elementGroup-${i}`);
 		const firstInGroup = $(elementsGroup[0]);
+		// console.log(elementsGroup);
 		firstInGroup.prepend(`<div class="groupLabel"><p>${i}</p></div>`);
 	}
 
-	// $(".element").on("click", function () {
-	// 	console.log("clicked");
+	$(".groupLabel")
+		.on("mouseenter", function () {
+			let groupHovered = $(this).text();
+			$(`.elementGroup-${groupHovered}`).attr("id", "labelHovered");
+		})
+		.on("mouseleave", function () {
+			let groupHovered = $(this).text();
+			$(`.elementGroup-${groupHovered}`).removeAttr("id");
+		});
+
+	// const audio = $("#audio");
+	// $(".element").on("mouseenter", function () {
+	// 	audio[0].play();
 	// });
 });
