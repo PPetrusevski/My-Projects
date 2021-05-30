@@ -258,7 +258,7 @@ ul {
 	transform: translateX(-50%);
 	width: 91%;
 	height: 95vh;
-	opacity: 0.85;
+	opacity: 0.92;
 	z-index: 111111;
 	overflow: auto;
 	transition: opacity 0.35s, visibility 0.35s, height 0.35s;
@@ -266,7 +266,7 @@ ul {
 	border: 1px solid gray;
 }
 .invisible {
-	display: none !important;
+	display: none;
 }
 .search-input {
 	display: block;
@@ -353,7 +353,7 @@ ul {
 	align-self: flex-end;
 }
 .modal-element-details {
-	display: flex;
+	/* display: flex; */
 	align-items: center;
 	position: fixed;
 	top: 0;

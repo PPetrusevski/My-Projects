@@ -67,4 +67,11 @@ $(function () {
 		e.preventDefault();
 		$(".about-page").css("display", "flex").hide().fadeIn();
 	});
+	$("#openSearch").on("click", function (e) {
+		e.preventDefault();
+		$(".search-container").fadeIn(50);
+	});
+	$("#closeSearch").on("click", function () {
+		$(".search-container").fadeOut(500);
+	});
 });
