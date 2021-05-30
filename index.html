@@ -82,18 +82,409 @@
 		<div class="right-side-icons">
 			<a href="" class="instagram"><i class="fab fa-instagram"></i></a>
 			<a href="" class="facebook"><i class="fab fa-facebook-f"></i></a>
-			<a href="" class="learn-more"><i class="fas fa-ellipsis-h"></i></a>
+			<a href="" class="learn-more" id="openAbout"><i class="fas fa-ellipsis-h"></i></a>
 		</div>
 		<div class="search-btn-wrapper">
 			<i class="fas fa-search search-btn"></i>
 		</div>
 		<div class="search-container invisible">
-			<input type="text" class="search-input" placeholder="Внесете име на елементот">
-			<i class="fas fa-times close-btn"></i>
+			<input type="text" class="search-input" placeholder="Внесете име на елементот" />
+			<i class="fas fa-times close-btn" id="closeSearch"></i>
 		</div>
-		<audio id="audio" autoplay preload="auto">
-			<source src="./click.mp3"></source>
-		</audio>
+		<section class="modal-element-details invisible">
+			<div class="modal-left-side">
+				<div class="modal-element-card">
+					<h3 class="modal-symbol">H</h3>
+					<span class="modal-atomic-number">1</span>
+					<ul class="modal-shells-group">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+					<span class="modal-atomic-weight">2</span>
+				</div>
+				<div class="modal-element-name-wrapper">
+					<h2 class="modal-element-name">Водород</h2>
+				</div>
+				<div class="modal-element-summary-wrapper">
+					<p class="modal-element-summary">
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur fuga,
+						exercitationem hic ipsam, quia sit corrupti placeat cumque eos error dolor repellat?
+						Autem sequi incidunt doloremque similique nihil consequatur distinctio. Lorem ipsum
+						dolor sit amet consectetur adipisicing elit. Sint, voluptatum.
+					</p>
+					<i class="fas fa-ellipsis-h learn-more-modal"></i>
+					<a href="#" class="pdf-link">Element details-PDF <i class="far fa-file-pdf"></i></a>
+				</div>
+				<div class="modal-element-info">
+					<ul class="property">
+						<li>Atomska tezina</li>
+						<li>Gustina</li>
+						<li>Tocka na topenje</li>
+						<li>Tocka na vrienje</li>
+					</ul>
+					<ul class="values">
+						<li>111</li>
+						<li>0.000</li>
+						<li>Nepoznato</li>
+						<li>20.27</li>
+					</ul>
+				</div>
+				<div class="modal-element-images">
+					<div class="modal-element-image-static">
+						<img src="./images/108.hassium/Hassium-2.jpg" alt="" />
+					</div>
+					<div class="modal-element-image-slider">
+						<img src="./images/112.copernicium/Copernicium-2.jpg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="modal-right-side">
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">01.Преглед</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">02.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">03.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">04.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">05.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">06.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">07.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">08.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">09.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">10.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="modal-category-title">11.Топлински својства</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span>Симбол</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомски број</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Атомска тежина</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Густина</span>
+							<span>0.08988 g/cm3</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на топење</span>
+							<span>непознато °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span>Точка на вриење</span>
+							<span>20.271 °C</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<i class="fas fa-times close-btn" id="closeModal"></i>
+		</section>
+		<section class="about-page">
+			<div class="about-left-side">
+				<img src="./images/Brain.png" class="about-left-img1" alt="" />
+				<h2 class="about-heading">ИЗРАБОТЕНО ОД ПАВЕЛ ПЕТРУШЕВСКИ</h2>
+				<ul class="about-contact-details">
+					<li class="about-contact-list-item">
+						<span class="about-contact-type">Web:</span>
+						<a href="#" class="about-contact-list-val">codepreneurs.co</a>
+					</li>
+					<li class="about-contact-list-item">
+						<span class="about-contact-type">E-mail:</span>
+						<a href="#" class="about-contact-list-val">codepreneurs.co</a>
+					</li>
+				</ul>
+			</div>
+			<div class="about-right-side">
+				<img src="./images/img1.png" class="about-right-img1" alt="" />
+				<img src="./images/img2.png" class="about-right-img2" alt="" />
+				<img src="./images/img3.jpg" class="about-right-img3" alt="" />
+				<i class="fas fa-times close-btn" id="closeAbout"></i>
+			</div>
+		</section>
+		<audio id="audio" autoplay preload="auto"><source src="./click.mp3" /></audio>
 		<script src="https://kit.fontawesome.com/b284e76a5d.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 		<script src="periodic_table_en.js"></script>

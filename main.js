@@ -56,4 +56,15 @@ $(function () {
 	// $(".element").on("mouseenter", function () {
 	// 	audio[0].play();
 	// });
+	$("#closeModal").on("click", function () {
+		$(".modal-element-details").fadeOut();
+	});
+	$("#closeAbout").on("click", function () {
+		$(".about-page").fadeOut();
+	});
+
+	$("#openAbout").on("click", function (e) {
+		e.preventDefault();
+		$(".about-page").css("display", "flex").hide().fadeIn();
+	});
 });
