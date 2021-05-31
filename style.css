@@ -355,6 +355,9 @@ ul {
 .soundContainer {
 	align-self: flex-end;
 }
+.sound-on {
+	display: none;
+}
 .modal-element-details {
 	/* display: flex; */
 	align-items: center;

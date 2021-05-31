@@ -107,10 +107,23 @@ $(function () {
 	}
 
 	//SOUND ON HOVER==================================================
-	// const audio = $("#audio");
-	// $(".element").on("mouseenter", function () {
-	// 	audio[0].play();
-	// });
+	const audio = $("#audio");
+	let soundOn = false;
+	$(".sound-btn").on("click", function () {
+		if (soundOn) {
+			soundOn = false;
+			$(this).removeClass("fa-volume-up");
+			$(".element").off();
+		} else {
+			soundOn = true;
+		}
+		if (soundOn) {
+			$(this).addClass("fa-volume-up");
+			$(".element").on("mouseenter", function () {
+				audio[0].play();
+			});
+		}
+	});
 
 	//OPENING/CLOSING BUTTONS FUNCTIONALITY
 	$("#closeModal").on("click", function () {
