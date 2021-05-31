@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<h1 class="tr mainTitle">Периодна табела на елементи</h1>
+		<h1 class="tr mainTitle" key="mainTitle">Периодна табела на елементи</h1>
 		<div class="elements-container">
 			<!-- <div class="element element1">
 				<div class="groupLabel"><p>1</p></div>
@@ -22,50 +22,54 @@
 				</ul>
 			</div> -->
 
-			<div class="tr lanthanides"><span class="lanthanidesTitle">Лантаниди</span></div>
-			<div class="tr actinides"><span class="actinidesTitle">Актиниди</span></div>
+			<div class="lanthanides">
+				<span class="tr lanthanidesTitle" key="lanthanides">Лантаниди</span>
+			</div>
+			<div class="actinides">
+				<span class="tr actinidesTitle" key="actinides">Актиниди</span>
+			</div>
 			<div class="legend">
-				<h3 class="tr legendTitle">Легенда</h3>
+				<h3 class="tr legendTitle" key="legend">Легенда</h3>
 				<div class="legendFields">
 					<div class="legendField">
 						<div class="legendColor alkali"></div>
-						<span class="tr legendText">Алкални метали</span>
+						<span class="tr legendText" key="legendAlkaliMetals">Алкални метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor alkaline"></div>
-						<span class="tr legendText">Алкални земја метали</span>
+						<span class="tr legendText" key="legendAlkalineEarthMetals">Алкални З. метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor transition"></div>
-						<span class="tr legendText">Транзициони метали</span>
+						<span class="tr legendText" key="legendTransitionMetals">Транз. метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor lanthanide"></div>
-						<span class="tr legendText">Лантаниди</span>
+						<span class="tr legendText" key="legendLanthanides">Лантаниди</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor actinide"></div>
-						<span class="tr legendText">Актиниди</span>
+						<span class="tr legendText" key="legendActinides">Актиниди</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor post-transition"></div>
-						<span class="tr legendText">Други метали</span>
+						<span class="tr legendText" key="legendOtherMetals">Други метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor metalloid"></div>
-						<span class="tr legendText">Металоиди</span>
+						<span class="tr legendText" key="legendMetalloids">Металоиди</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor nonmetal"></div>
-						<span class="tr legendText">Неметали</span>
+						<span class="tr legendText" key="legendNonmetals">Неметали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor halogens"></div>
-						<span class="tr legendText">Халогени</span>
+						<span class="tr legendText" key="legendHalogens">Халогени</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor noble"></div>
-						<span class="tr legendText">Благородни гасови</span>
+						<span class="tr legendText" key="legendNobleGases">Благородни гасови</span>
 					</div>
 				</div>
 			</div>
@@ -94,7 +98,12 @@
 			<i class="fas fa-search search-btn" id="openSearch"></i>
 		</div>
 		<div class="search-container invisible">
-			<input type="text" class="search-input" placeholder="Внесете име на елементот" />
+			<input
+				type="text"
+				class="tr search-input"
+				placeholder="Внесете име на елементот..."
+				key="searchPlaceholder"
+			/>
 			<i class="fas fa-times close-btn" id="closeSearch"></i>
 		</div>
 		<section class="modal-element-details invisible">
@@ -493,6 +502,7 @@
 		<audio id="audio" autoplay preload="auto"><source src="./click.mp3" /></audio>
 		<script src="https://kit.fontawesome.com/b284e76a5d.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+		<script src="languages.js"></script>
 		<script src="periodic_table_en.js"></script>
 		<script src="periodic_table_mk.js"></script>
 		<script src="./main.js"></script>
