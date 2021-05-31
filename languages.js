@@ -1,5 +1,6 @@
 const languages = {
 	en: {
+		//MAIN PAGE
 		mainTitle: "Periodic Table of Elements",
 		lanthanides: "Lanthanides",
 		actinides: "Actinides",
@@ -17,6 +18,7 @@ const languages = {
 		searchPlaceholder: "Enter an element's name...",
 	},
 	mk: {
+		//MAIN PAGE
 		mainTitle: "Периодна табела на елементите",
 		lanthanides: "Лантаниди",
 		actinides: "Актиниди",

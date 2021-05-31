@@ -9,6 +9,7 @@ $(function () {
 		mk: ElementsMK,
 	};
 
+	//CHANGE LANGUAGE==================================================
 	$(".language-btn").on("click", function () {
 		$(".language-change").fadeToggle();
 	});
@@ -32,6 +33,7 @@ $(function () {
 				break;
 		}
 	});
+	//TRANSLATION FUNCTION============================================
 	function translate() {
 		renderTable();
 		renderLabels();
@@ -45,6 +47,7 @@ $(function () {
 			}
 		});
 	}
+	//TABLE CREATING FUNCTION==========================================
 	function renderTable() {
 		$(".element").remove();
 		languageSource[lang].forEach(el => {
@@ -64,11 +67,13 @@ $(function () {
 				</div>
 				`;
 			}
+			//ELEMENT SHELLS ADDING========================================
 			function arrangeShells() {
 				for (let i = 0; i < el.shells.length; i++) {
 					$(`.${el.name} .shellsGroup`).append(`<li>${el.shells[i]}</li>`);
 				}
 			}
+			//CHECKING IF LANTHANIDES/ACTINIDES============================
 			if (el.number >= 57 && el.number <= 71) {
 				lanthanides.append(createElementCard());
 				arrangeShells();
@@ -83,6 +88,7 @@ $(function () {
 	}
 	renderTable();
 	renderLabels();
+	//GROUP LABELS RENDERING==========================================
 	function renderLabels() {
 		for (let i = 1; i <= 18; i++) {
 			const elementsGroup = $(`.elementGroup-${i}`);
@@ -100,10 +106,13 @@ $(function () {
 			});
 	}
 
+	//SOUND ON HOVER==================================================
 	// const audio = $("#audio");
 	// $(".element").on("mouseenter", function () {
 	// 	audio[0].play();
 	// });
+
+	//OPENING/CLOSING BUTTONS FUNCTIONALITY
 	$("#closeModal").on("click", function () {
 		$(".modal-element-details").fadeOut();
 	});
