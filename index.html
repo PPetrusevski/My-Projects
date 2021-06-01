@@ -106,7 +106,7 @@
 			/>
 			<i class="fas fa-times close-btn" id="closeSearch"></i>
 		</div>
-		<section class="modal-element-details invisible">
+		<section class="modal-element-details">
 			<div class="modal-left-side">
 				<div class="modal-element-card">
 					<h3 class="modal-symbol">H</h3>
@@ -133,10 +133,10 @@
 				</div>
 				<div class="modal-element-info">
 					<ul class="property">
-						<li>Atomska tezina</li>
-						<li>Gustina</li>
-						<li>Tocka na topenje</li>
-						<li>Tocka na vrienje</li>
+						<li class="tr" key="modalElementInfoAtomWeight">Атомска тежина</li>
+						<li class="tr" key="modalElementInfoDensity">Густина</li>
+						<li class="tr" key="modalElementInfoMeltingPoint">Точка на топење</li>
+						<li class="tr" key="modalElementInfoBoilingPoint">Точка на вриење</li>
 					</ul>
 					<ul class="values">
 						<li>111</li>
@@ -156,320 +156,408 @@
 			</div>
 			<div class="modal-right-side">
 				<div class="modal-category-lists">
-					<h4 class="modal-category-title">01.Преглед</h4>
+					<h4 class="tr modal-category-title" key="modalCategoryOverviewTitle">01.Преглед</h4>
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
+							<span class="tr" key="modalCategoryOverviewSymbol">Симбол</span>
 							<span>H</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомски број</span>
+							<span class="tr" key="modalCategoryOverviewAtomNumber">Атомски број</span>
 							<span>1</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомска тежина</span>
+							<span class="tr" key="modalCategoryOverviewAtomWeight">Атомска тежина</span>
 							<span>1.008</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Густина</span>
+							<span class="tr" key="modalCategoryOverviewDensity">Густина</span>
 							<span>0.08988 g/cm3</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на топење</span>
+							<span class="tr" key="modalCategoryOverviewMeltingPoint">Точка на топење</span>
 							<span>непознато °C</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryOverviewBoilingPoint">Точка на вриење</span>
 							<span>20.271 °C</span>
 						</li>
 					</ul>
 				</div>
 				<div class="modal-category-lists">
-					<h4 class="modal-category-title">02.Топлински својства</h4>
+					<h4 class="tr modal-category-title" key="modalCategoryThermalTitle">
+						02.Топлински својства
+					</h4>
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
+							<span class="tr" key="modalCategoryThermalPhase">Фаза</span>
 							<span>H</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомски број</span>
+							<span class="tr" key="modalCategoryThermalMeltingPoint">Точка на топење</span>
 							<span>1</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомска тежина</span>
+							<span class="tr" key="modalCategoryThermalBoilingPoint">Точка на вриење</span>
 							<span>1.008</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Густина</span>
+							<span class="tr" key="modalCategoryThermalAbsMeltingPoint"
+								>Апсолутна точка на топење</span
+							>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalAbsBoilingPoint"
+								>Апсолутна точка на вриење</span
+							>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalCritPressure">Критичен притисок</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalCritTemp">Критична температура</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalFusionHeat">Топлина на фузија</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalVapourHeat">Топлина на испарување</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalCombHeat">Топлина на согорување</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalSpecHeat">Специфична топлина</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalAdiabIdx">Адиабатски индекс</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalNeelPoint">Нил точка</span>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalThermalConduct"
+								>Термичка спроводливост</span
+							>
+							<span>n/a</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryThermalThermalExpansion">Термичка експанзија</span>
+							<span>n/a</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="tr modal-category-title" key="modalCategoryPhysicalTitle">
+						03.Физички својства
+					</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalDensity">Густина</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalDensityLiq">Густина(течност)</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalMolarVolume">Моларен волумен</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalBrinell">Бринелова тврдина</span>
 							<span>0.08988 g/cm3</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на топење</span>
+							<span class="tr" key="modalCategoryPhysicalMohs">Мосова тврдина</span>
 							<span>непознато °C</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryPhysicalShear">Shear модулус</span>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalBulk">Bulk модулус</span>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalMolarHeat">Моларна топлина</span>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryPhysicalThermalExpansion"
+								>Термичка експанзија</span
+							>
 							<span>20.271 °C</span>
 						</li>
 					</ul>
 				</div>
 				<div class="modal-category-lists">
-					<h4 class="modal-category-title">03.Топлински својства</h4>
+					<h4 class="tr modal-category-title" key="modalCategoryReactivityTitle">04.Реактивност</h4>
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
+							<span class="tr" key="modalCategoryReactivityValence">Валентност</span>
 							<span>H</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомски број</span>
+							<span class="tr" key="modalCategoryReactivityElNegativity">Електронегативност</span>
 							<span>1</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомска тежина</span>
+							<span class="tr" key="modalCategoryReactivityElectronAffinity"
+								>Електронски афинитет</span
+							>
 							<span>1.008</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Густина</span>
+							<span class="tr" key="modalCategoryReactivityIonizationEnergy"
+								>Енергија на јонизација</span
+							>
+							<span>0.08988 g/cm3</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="tr modal-category-title" key="modalCategorySafetyTitle">05.Безбедност</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategorySafetyAutoignitionPoint"
+								>Точка на самозапалување</span
+							>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategorySafetyFlashPoint">Флеш точка</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategorySafetyCombustionHeat">Точка на согорување</span>
+							<span>1.008</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="tr modal-category-title" key="modalCategoryClassificationsTitle">
+						06.Класификации
+					</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryClassificationsAltNames">Алтернативни имиња</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryClassificationsAlotropNames"
+								>Имиња на алотропи</span
+							>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryClassificationsBlock">Блок</span>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryClassificationsGroup">Група</span>
 							<span>0.08988 g/cm3</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на топење</span>
+							<span class="tr" key="modalCategoryClassificationsPeriod">Периода</span>
 							<span>непознато °C</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryClassificationsColor">Боја</span>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryClassificationsDiscover">Пронајдено</span>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryClassificationsGasPhase">Гасна фаза</span>
 							<span>20.271 °C</span>
 						</li>
 					</ul>
 				</div>
 				<div class="modal-category-lists">
-					<h4 class="modal-category-title">04.Топлински својства</h4>
+					<h4 class="tr modal-category-title" key="modalCategoryElecpropsTitle">
+						07.Електрични својства
+					</h4>
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
+							<span class="tr" key="modalCategoryElecpropsElecType">Електронски тип</span>
 							<span>H</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомски број</span>
+							<span class="tr" key="modalCategoryElecpropsElecConduct"
+								>Електронскa спроводливост</span
+							>
 							<span>1</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомска тежина</span>
+							<span class="tr" key="modalCategoryElecpropsResist">Отпорност</span>
 							<span>1.008</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Густина</span>
+							<span class="tr" key="modalCategoryElecpropsSuperPoint"
+								>Точка суперспроводливост</span
+							>
+							<span>0.08988 g/cm3</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="tr modal-category-title" key="modalCategoryMagnPropsTitle">
+						08.Магнетни својства
+					</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryMagnPropsType">Магнетен тип</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryMagnPropsCuriePoint">Curie точка</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryMagnPropsMassSusceptibility"
+								>Тежинска осетливост</span
+							>
+							<span>1.008</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryMagnPropsVolumeSusceptibility"
+								>Волуменска осетливост</span
+							>
+							<span>0.08988 g/cm3</span>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-category-lists">
+					<h4 class="tr modal-category-title" key="modalCategoryAbudanceTitle">09.Застапеност</h4>
+					<ul class="modal-category-list">
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryAbudanceUniverse">Во универзумот</span>
+							<span>H</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryAbudanceSun">Во сонцето</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryAbudanceMeteorites">Во метеорити</span>
+							<span>1</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryAbudanceCrust">Во земјина кора</span>
 							<span>0.08988 g/cm3</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на топење</span>
+							<span class="tr" key="modalCategoryAbudanceOceans">Во океаните</span>
 							<span>непознато °C</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryAbudanceHumans">Во човекот</span>
 							<span>20.271 °C</span>
 						</li>
 					</ul>
 				</div>
 				<div class="modal-category-lists">
-					<h4 class="modal-category-title">05.Топлински својства</h4>
+					<h4 class="tr modal-category-title" key="modalCategoryAtomStructureTitle">
+						10.Димензии и структури на атом
+					</h4>
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
+							<span class="tr" key="modalCategoryAtomStructureRadius">Атомски радиус</span>
 							<span>H</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомски број</span>
+							<span class="tr" key="modalCategoryAtomStructureCovalent">Ковалентен радиус</span>
 							<span>1</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомска тежина</span>
+							<span class="tr" key="modalCategoryAtomStructureVanderWaals"
+								>Van der Waals радиус</span
+							>
 							<span>1.008</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Густина</span>
+							<span class="tr" key="modalCategoryAtomStructureCrystalStruc"
+								>Кристална структура</span
+							>
 							<span>0.08988 g/cm3</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на топење</span>
+							<span class="tr" key="modalCategoryAtomStructureLatticeAngles">Решеткасти агли</span>
 							<span>непознато °C</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryAtomStructureLatticeConst"
+								>Решеткасти константи</span
+							>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryAtomStructureSpaceGroupName"
+								>Име на просторна група</span
+							>
+							<span>20.271 °C</span>
+						</li>
+						<li class="modal-list-item">
+							<span class="tr" key="modalCategoryAtomStructureSpaceGroupNumber"
+								>Број на просторна група</span
+							>
 							<span>20.271 °C</span>
 						</li>
 					</ul>
 				</div>
 				<div class="modal-category-lists">
-					<h4 class="modal-category-title">06.Топлински својства</h4>
+					<h4 class="tr modal-category-title" key="modalCategoryNuclearTitle">
+						11.Нуклеарни својства
+					</h4>
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
+							<span class="tr" key="modalCategoryNuclearHalfLife">Полуживот</span>
 							<span>H</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомски број</span>
+							<span class="tr" key="modalCategoryNuclearLifetime">Животен век</span>
 							<span>1</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Атомска тежина</span>
+							<span class="tr" key="modalCategoryNuclearDecay">Режим на распаѓање</span>
 							<span>1.008</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Густина</span>
+							<span class="tr" key="modalCategoryNuclearQuantumNum">Квантни броеви</span>
 							<span>0.08988 g/cm3</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на топење</span>
+							<span class="tr" key="modalCategoryNuclearNeutronCross">Пресек на неутрон</span>
 							<span>непознато °C</span>
 						</li>
 						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryNuclearNeutMassAbs">Абсорпција на маса</span>
 							<span>20.271 °C</span>
 						</li>
-					</ul>
-				</div>
-				<div class="modal-category-lists">
-					<h4 class="modal-category-title">07.Топлински својства</h4>
-					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
-							<span>H</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомски број</span>
-							<span>1</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомска тежина</span>
-							<span>1.008</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Густина</span>
-							<span>0.08988 g/cm3</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на топење</span>
-							<span>непознато °C</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryNuclearKnownIsot">Познати изотопи</span>
 							<span>20.271 °C</span>
 						</li>
-					</ul>
-				</div>
-				<div class="modal-category-lists">
-					<h4 class="modal-category-title">08.Топлински својства</h4>
-					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
-							<span>H</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомски број</span>
-							<span>1</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомска тежина</span>
-							<span>1.008</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Густина</span>
-							<span>0.08988 g/cm3</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на топење</span>
-							<span>непознато °C</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryNuclearStableIsot">Стабилни изотопи</span>
 							<span>20.271 °C</span>
 						</li>
-					</ul>
-				</div>
-				<div class="modal-category-lists">
-					<h4 class="modal-category-title">09.Топлински својства</h4>
-					<ul class="modal-category-list">
 						<li class="modal-list-item">
-							<span>Симбол</span>
-							<span>H</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомски број</span>
-							<span>1</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомска тежина</span>
-							<span>1.008</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Густина</span>
-							<span>0.08988 g/cm3</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на топење</span>
-							<span>непознато °C</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на вриење</span>
-							<span>20.271 °C</span>
-						</li>
-					</ul>
-				</div>
-				<div class="modal-category-lists">
-					<h4 class="modal-category-title">10.Топлински својства</h4>
-					<ul class="modal-category-list">
-						<li class="modal-list-item">
-							<span>Симбол</span>
-							<span>H</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомски број</span>
-							<span>1</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомска тежина</span>
-							<span>1.008</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Густина</span>
-							<span>0.08988 g/cm3</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на топење</span>
-							<span>непознато °C</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на вриење</span>
-							<span>20.271 °C</span>
-						</li>
-					</ul>
-				</div>
-				<div class="modal-category-lists">
-					<h4 class="modal-category-title">11.Топлински својства</h4>
-					<ul class="modal-category-list">
-						<li class="modal-list-item">
-							<span>Симбол</span>
-							<span>H</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомски број</span>
-							<span>1</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Атомска тежина</span>
-							<span>1.008</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Густина</span>
-							<span>0.08988 g/cm3</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на топење</span>
-							<span>непознато °C</span>
-						</li>
-						<li class="modal-list-item">
-							<span>Точка на вриење</span>
+							<span class="tr" key="modalCategoryNuclearIsotAbundance">Достапност на изотопи</span>
 							<span>20.271 °C</span>
 						</li>
 					</ul>
