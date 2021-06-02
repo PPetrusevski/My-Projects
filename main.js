@@ -50,6 +50,9 @@ $(function () {
 	//TABLE CREATING FUNCTION==========================================
 	function renderTable() {
 		$(".element").remove();
+
+		//
+
 		languageSource[lang].forEach(el => {
 			const xPosition = el.xpos == "down" || el.xpos == "sdown" ? "auto" : el.xpos;
 			const yPosition = el.ypos;
@@ -85,6 +88,40 @@ $(function () {
 				arrangeShells();
 			}
 		});
+		//ELEMENTS CLICK EVENT
+		$(".element")
+			.not(".Lanthanides, .Actinides, .Лантаниди, .Актиниди")
+			.on("click", function () {
+				const elementIdx = $(this).find(".atomicNumber").text() - 1;
+				const elementObj = languageSource[lang][elementIdx];
+				$(".addData").each(function () {
+					const propName = $(this).attr("data-id");
+					if ($(this).hasClass("round")) {
+						$(this).text(Math.round(elementObj[propName] * 100) / 100);
+					} else if (propName === "ionization_energies") {
+						$(this).text(elementObj[propName].slice(0, 2) || "n/a");
+					} else if (propName === "staticImage") {
+						$(this).attr("src", elementObj[propName].src);
+					} else {
+						$(this).text(elementObj[propName] || "n/a");
+					}
+				});
+				$(".addDataLoop").empty();
+				elementObj.shells.forEach(shell => {
+					$(".addDataLoop").append(`
+					<li>${shell}</li>
+					`);
+				});
+				$(".modal-element-details").removeClass("invisible");
+			})
+			.on("click", ".groupLabel", function (e) {
+				e.stopPropagation();
+				const labelIdx = $(this).text() - 1;
+				console.log(iframeUrls[lang][labelIdx]);
+				console.log(typeof iframeUrls[lang][labelIdx]);
+				$(".iframe-page").css("display", "block").hide().fadeIn();
+				$(".iframe").attr("src", iframeUrls[lang][labelIdx]);
+			});
 	}
 	renderTable();
 	renderLabels();
@@ -113,7 +150,7 @@ $(function () {
 		if (soundOn) {
 			soundOn = false;
 			$(this).removeClass("fa-volume-up");
-			$(".element").off();
+			$(".element").off("mouseenter");
 		} else {
 			soundOn = true;
 		}
@@ -127,7 +164,7 @@ $(function () {
 
 	//OPENING/CLOSING BUTTONS FUNCTIONALITY
 	$("#closeModal").on("click", function () {
-		$(".modal-element-details").fadeOut();
+		$(".modal-element-details").addClass("invisible");
 	});
 	$("#closeAbout").on("click", function () {
 		$(".about-page").fadeOut();
@@ -143,5 +180,9 @@ $(function () {
 	});
 	$("#closeSearch").on("click", function () {
 		$(".search-container").fadeOut(500);
+	});
+	$("#closeiFrame").on("click", function () {
+		$(".iframe-page").fadeOut(500);
+		$(".iframe-page").attr("src", "");
 	});
 });

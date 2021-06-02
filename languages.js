@@ -129,7 +129,7 @@ const languages = {
 		actinides: "Актиниди",
 		legend: "Легенда",
 		legendAlkaliMetals: "Алкални метали",
-		legendAlkalineEarthMetals: "Алкални З. метали",
+		legendAlkalineEarthMetals: "Земноалк. метали",
 		legendTransitionMetals: "Транз. метали",
 		legendLanthanides: "Лантаниди",
 		legendActinides: "Актиниди",

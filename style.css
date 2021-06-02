@@ -66,7 +66,7 @@ ul {
 }
 .transition,
 .преоден {
-	background-color: #c3f0a9;
+	background-color: #bdf7d0;
 }
 .post,
 .post-transition,
@@ -85,15 +85,15 @@ ul {
 }
 .noble,
 .благороден {
-	background-color: #b6d6d7;
+	background-color: #d7b6c9;
 }
 .lanthanide,
 .лантанид {
-	background-color: #cbfbe7;
+	background-color: #aea8fc;
 }
 .actinide,
 .актинид {
-	background-color: #7eaf9b;
+	background-color: #609c84;
 }
 .shellsGroup {
 	text-align: end;
@@ -268,9 +268,9 @@ ul {
 .invisible {
 	display: none;
 }
-/* .modal-element-details.invisible {
+.modal-element-details.invisible {
 	display: none;
-} */
+}
 .search-input {
 	display: block;
 	background: transparent;
@@ -448,7 +448,7 @@ ul {
 	right: 3%;
 	text-align: end;
 	list-style-type: none;
-	font-size: 16px;
+	font-size: 12px;
 }
 .modal-atomic-weight {
 	position: absolute;
@@ -456,6 +456,9 @@ ul {
 	left: 3%;
 	/* transform: translate(-50%, -70%); */
 	font-size: 25px;
+}
+.modal-element-name {
+	font-size: 1.3em;
 }
 .modal-element-name-wrapper {
 	font-size: 20px;
@@ -470,7 +473,7 @@ ul {
 	border-radius: 10px;
 	font-size: 12px;
 	text-align: justify;
-	flex-basis: 45%;
+	flex-basis: 40%;
 	height: 150px;
 	padding: 10px;
 	margin-left: auto;
@@ -525,6 +528,7 @@ ul {
 	width: 50%;
 }
 .modal-element-image-slider {
+	position: relative;
 	margin-left: 20px;
 }
 .modal-element-image-static img,
@@ -533,7 +537,8 @@ ul {
 	width: 100%;
 	height: 100%;
 }
-.about-page {
+.about-page,
+.iframe-page {
 	display: none;
 	position: fixed;
 	top: 50%;
@@ -546,6 +551,15 @@ ul {
 	background-color: black;
 	z-index: 7;
 	color: white;
+}
+.iframe {
+	position: absolute;
+	border-radius: 10px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 90%;
+	height: 90%;
 }
 .about-left-side {
 	display: flex;
@@ -611,4 +625,32 @@ ul {
 	right: 3%;
 	transform: rotate(7deg);
 	z-index: 2;
+}
+.slider-arrows {
+	position: absolute;
+	font-size: 20px;
+	cursor: pointer;
+}
+.slider-dots {
+	position: absolute;
+	font-size: 12px;
+	bottom: 2%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.dot {
+	margin: 0 5px;
+}
+.dot.active {
+	color: #696969;
+}
+.slider-arrows-left {
+	left: 3%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.slider-arrows-right {
+	right: 3%;
+	top: 50%;
+	transform: translateY(-50%);
 }

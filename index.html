@@ -37,7 +37,7 @@
 					</div>
 					<div class="legendField">
 						<div class="legendColor alkaline"></div>
-						<span class="tr legendText" key="legendAlkalineEarthMetals">Алкални З. метали</span>
+						<span class="tr legendText" key="legendAlkalineEarthMetals">Земноалк. метали</span>
 					</div>
 					<div class="legendField">
 						<div class="legendColor transition"></div>
@@ -106,28 +106,19 @@
 			/>
 			<i class="fas fa-times close-btn" id="closeSearch"></i>
 		</div>
-		<section class="modal-element-details">
+		<section class="modal-element-details invisible">
 			<div class="modal-left-side">
 				<div class="modal-element-card">
-					<h3 class="modal-symbol">H</h3>
-					<span class="modal-atomic-number">1</span>
-					<ul class="modal-shells-group">
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-					</ul>
-					<span class="modal-atomic-weight">2</span>
+					<h3 class="modal-symbol addData" data-id="symbol"></h3>
+					<span class="modal-atomic-number addData" data-id="number"></span>
+					<ul class="modal-shells-group addDataLoop" data-id="shells"></ul>
+					<span class="modal-atomic-weight round addData" data-id="atomic_mass"></span>
 				</div>
 				<div class="modal-element-name-wrapper">
-					<h2 class="modal-element-name">Водород</h2>
+					<h2 class="modal-element-name addData" data-id="name"></h2>
 				</div>
 				<div class="modal-element-summary-wrapper">
-					<p class="modal-element-summary">
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur fuga,
-						exercitationem hic ipsam, quia sit corrupti placeat cumque eos error dolor repellat?
-						Autem sequi incidunt doloremque similique nihil consequatur distinctio. Lorem ipsum
-						dolor sit amet consectetur adipisicing elit. Sint, voluptatum.
-					</p>
+					<p class="modal-element-summary addData" data-id="summary"></p>
 					<i class="fas fa-ellipsis-h learn-more-modal"></i>
 					<a href="#" class="pdf-link">Element details-PDF <i class="far fa-file-pdf"></i></a>
 				</div>
@@ -139,18 +130,26 @@
 						<li class="tr" key="modalElementInfoBoilingPoint">Точка на вриење</li>
 					</ul>
 					<ul class="values">
-						<li>111</li>
-						<li>0.000</li>
-						<li>Nepoznato</li>
-						<li>20.27</li>
+						<li class="addData round" data-id="atomic_mass"></li>
+						<li class="addData" data-id="density"></li>
+						<li class="addData" data-id="melt"></li>
+						<li class="addData" data-id="boil"></li>
 					</ul>
 				</div>
 				<div class="modal-element-images">
 					<div class="modal-element-image-static">
-						<img src="./images/108.hassium/Hassium-2.jpg" alt="" />
+						<img class="addData" src="" alt="" data-id="staticImage" />
 					</div>
 					<div class="modal-element-image-slider">
 						<img src="./images/112.copernicium/Copernicium-2.jpg" alt="" />
+						<i class="fas fa-caret-left slider-arrows slider-arrows-left"></i>
+						<i class="fas fa-caret-right slider-arrows slider-arrows-right"></i>
+						<div class="slider-dots">
+							<i class="fas fa-circle dot active"></i>
+							<i class="fas fa-circle dot"></i>
+							<i class="fas fa-circle dot"></i>
+							<i class="fas fa-circle dot"></i>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -160,27 +159,27 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryOverviewSymbol">Симбол</span>
-							<span>H</span>
+							<span class="addData" data-id="symbol"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryOverviewAtomNumber">Атомски број</span>
-							<span>1</span>
+							<span class="addData" data-id="number"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryOverviewAtomWeight">Атомска тежина</span>
-							<span>1.008</span>
+							<span class="addData" data-id="atomic_mass"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryOverviewDensity">Густина</span>
-							<span>0.08988 g/cm3</span>
+							<span class="addData" data-id="density"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryOverviewMeltingPoint">Точка на топење</span>
-							<span>непознато °C</span>
+							<span class="addData" data-id="melt"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryOverviewBoilingPoint">Точка на вриење</span>
-							<span>20.271 °C</span>
+							<span class="addData" data-id="boil"></span>
 						</li>
 					</ul>
 				</div>
@@ -191,15 +190,15 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryThermalPhase">Фаза</span>
-							<span>H</span>
+							<span class="addData" data-id="phase"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryThermalMeltingPoint">Точка на топење</span>
-							<span>1</span>
+							<span class="addData" data-id="melt"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryThermalBoilingPoint">Точка на вриење</span>
-							<span>1.008</span>
+							<span class="addData" data-id="boil"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryThermalAbsMeltingPoint"
@@ -264,41 +263,41 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalDensity">Густина</span>
-							<span>H</span>
+							<span class="addData" data-id="density"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalDensityLiq">Густина(течност)</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalMolarVolume">Моларен волумен</span>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalBrinell">Бринелова тврдина</span>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalMohs">Мосова тврдина</span>
-							<span>непознато °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalShear">Shear модулус</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalBulk">Bulk модулус</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalMolarHeat">Моларна топлина</span>
-							<span>20.271 °C</span>
+							<span class="addData" data-id="molar_heat"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryPhysicalThermalExpansion"
 								>Термичка експанзија</span
 							>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -307,23 +306,23 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryReactivityValence">Валентност</span>
-							<span>H</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryReactivityElNegativity">Електронегативност</span>
-							<span>1</span>
+							<span class="addData" data-id="electronegativity_pauling"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryReactivityElectronAffinity"
 								>Електронски афинитет</span
 							>
-							<span>1.008</span>
+							<span class="addData" data-id="electron_affinity"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryReactivityIonizationEnergy"
 								>Енергија на јонизација</span
 							>
-							<span>0.08988 g/cm3</span>
+							<span class="addData" data-id="ionization_energies"></span>
 						</li>
 					</ul>
 				</div>
@@ -334,15 +333,15 @@
 							<span class="tr" key="modalCategorySafetyAutoignitionPoint"
 								>Точка на самозапалување</span
 							>
-							<span>H</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategorySafetyFlashPoint">Флеш точка</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategorySafetyCombustionHeat">Точка на согорување</span>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -353,37 +352,37 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsAltNames">Алтернативни имиња</span>
-							<span>H</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsAlotropNames"
 								>Имиња на алотропи</span
 							>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsBlock">Блок</span>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsGroup">Група</span>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsPeriod">Периода</span>
-							<span>непознато °C</span>
+							<span class="addData" data-id="period"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsColor">Боја</span>
-							<span>20.271 °C</span>
+							<span class="addData" data-id="color"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsDiscover">Пронајдено</span>
-							<span>20.271 °C</span>
+							<span class="addData" data-id="discovered_by"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryClassificationsGasPhase">Гасна фаза</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -394,23 +393,23 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryElecpropsElecType">Електронски тип</span>
-							<span>H</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryElecpropsElecConduct"
 								>Електронскa спроводливост</span
 							>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryElecpropsResist">Отпорност</span>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryElecpropsSuperPoint"
 								>Точка суперспроводливост</span
 							>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -421,23 +420,23 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryMagnPropsType">Магнетен тип</span>
-							<span>H</span>
+							<span class="addData" data-id="magnetic"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryMagnPropsCuriePoint">Curie точка</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryMagnPropsMassSusceptibility"
 								>Тежинска осетливост</span
 							>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryMagnPropsVolumeSusceptibility"
 								>Волуменска осетливост</span
 							>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -446,27 +445,27 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAbudanceUniverse">Во универзумот</span>
-							<span>H</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAbudanceSun">Во сонцето</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAbudanceMeteorites">Во метеорити</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAbudanceCrust">Во земјина кора</span>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAbudanceOceans">Во океаните</span>
-							<span>непознато °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAbudanceHumans">Во човекот</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -477,45 +476,45 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureRadius">Атомски радиус</span>
-							<span>H</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureCovalent">Ковалентен радиус</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureVanderWaals"
 								>Van der Waals радиус</span
 							>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureCrystalStruc"
 								>Кристална структура</span
 							>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureLatticeAngles">Решеткасти агли</span>
-							<span>непознато °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureLatticeConst"
 								>Решеткасти константи</span
 							>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureSpaceGroupName"
 								>Име на просторна група</span
 							>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryAtomStructureSpaceGroupNumber"
 								>Број на просторна група</span
 							>
-							<span>20.271 °C</span>
+							<span class="addData" data-id="spacegroupnumber"></span>
 						</li>
 					</ul>
 				</div>
@@ -526,39 +525,39 @@
 					<ul class="modal-category-list">
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearHalfLife">Полуживот</span>
-							<span>H</span>
+							<span class="addData" data-id="halflife"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearLifetime">Животен век</span>
-							<span>1</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearDecay">Режим на распаѓање</span>
-							<span>1.008</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearQuantumNum">Квантни броеви</span>
-							<span>0.08988 g/cm3</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearNeutronCross">Пресек на неутрон</span>
-							<span>непознато °C</span>
+							<span class="addData" data-id="cross"></span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearNeutMassAbs">Абсорпција на маса</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearKnownIsot">Познати изотопи</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearStableIsot">Стабилни изотопи</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 						<li class="modal-list-item">
 							<span class="tr" key="modalCategoryNuclearIsotAbundance">Достапност на изотопи</span>
-							<span>20.271 °C</span>
+							<span>n/a</span>
 						</li>
 					</ul>
 				</div>
@@ -587,10 +586,15 @@
 				<i class="fas fa-times close-btn" id="closeAbout"></i>
 			</div>
 		</section>
+		<section class="iframe-page">
+			<iframe src="" class="iframe" frameborder="0"></iframe>
+			<i class="fas fa-times close-btn" id="closeiFrame"></i>
+		</section>
 		<audio id="audio" autoplay preload="auto"><source src="./click.mp3" /></audio>
 		<script src="https://kit.fontawesome.com/b284e76a5d.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 		<script src="languages.js"></script>
+		<script src="iframe_urls.js"></script>
 		<script src="periodic_table_en.js"></script>
 		<script src="periodic_table_mk.js"></script>
 		<script src="./main.js"></script>
