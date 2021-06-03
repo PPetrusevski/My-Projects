@@ -265,6 +265,12 @@ ul {
 	border-radius: 5px;
 	border: 1px solid gray;
 }
+.search-results {
+	list-style-type: none;
+	width: 80%;
+	margin: 20px auto;
+	color: gray;
+}
 .invisible {
 	display: none;
 }

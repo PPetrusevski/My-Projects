@@ -1,4 +1,6 @@
 $(function () {
+	console.log($("[data-id='name']"));
+	console.log($("[data-id='summary']"));
 	let lang = "mk";
 	const container = $(".elements-container");
 	const lanthanides = $(".lanthanides");
@@ -8,6 +10,12 @@ $(function () {
 		en: Elements,
 		mk: ElementsMK,
 	};
+
+	//TRANSLATE DYNAMIC CONTENT
+	function translateDynamicModalContent() {
+		$("[data-id='name']").text(languageSource[lang][globalElementIdx].name);
+		$("[data-id='summary']").text(languageSource[lang][globalElementIdx].summary);
+	}
 
 	//CHANGE LANGUAGE==================================================
 	$(".language-btn").on("click", function () {
@@ -22,6 +30,7 @@ $(function () {
 				$(".language-btn").text("MK");
 				$(this).fadeOut();
 				translate();
+				translateDynamicModalContent();
 				break;
 
 			case "mk":
@@ -30,6 +39,7 @@ $(function () {
 				$(".language-btn").text("EN");
 				$(this).fadeOut();
 				translate();
+				translateDynamicModalContent();
 				break;
 		}
 	});
@@ -93,6 +103,7 @@ $(function () {
 			.not(".Lanthanides, .Actinides, .Лантаниди, .Актиниди")
 			.on("click", function () {
 				const elementIdx = $(this).find(".atomicNumber").text() - 1;
+				window.globalElementIdx = elementIdx;
 				const elementObj = languageSource[lang][elementIdx];
 				$(".addData").each(function () {
 					const propName = $(this).attr("data-id");
@@ -117,8 +128,6 @@ $(function () {
 			.on("click", ".groupLabel", function (e) {
 				e.stopPropagation();
 				const labelIdx = $(this).text() - 1;
-				console.log(iframeUrls[lang][labelIdx]);
-				console.log(typeof iframeUrls[lang][labelIdx]);
 				$(".iframe-page").css("display", "block").hide().fadeIn();
 				$(".iframe").attr("src", iframeUrls[lang][labelIdx]);
 			});
@@ -185,4 +194,20 @@ $(function () {
 		$(".iframe-page").fadeOut(500);
 		$(".iframe-page").attr("src", "");
 	});
+
+	//IMAGE SLIDER
+	// $(".modal-element-image-slider > img:gt(0)").hide();
+	// const imgsNum = $(".modal-element-image-slider > img").length;
+	// let counter = 0;
+	// setInterval(function () {
+	// 	const currentImg = $($(".modal-element-image-slider > img")[counter]);
+	// 	const nextImg = $($(".modal-element-image-slider > img")[counter + 1]);
+	// 	currentImg.hide();
+	// 	nextImg.show();
+	// 	counter++;
+	// 	if (counter === imgsNum + 1) {
+	// 		counter = 0;
+	// 	}
+	// 	console.log(counter);
+	// }, 2000);
 });
