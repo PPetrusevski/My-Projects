@@ -1,6 +1,4 @@
 $(function () {
-	console.log($("[data-id='name']"));
-	console.log($("[data-id='summary']"));
 	let lang = "mk";
 	const container = $(".elements-container");
 	const lanthanides = $(".lanthanides");
@@ -30,7 +28,9 @@ $(function () {
 				$(".language-btn").text("MK");
 				$(this).fadeOut();
 				translate();
-				translateDynamicModalContent();
+				if (!$(".modal-element-details").is(".invisible")) {
+					translateDynamicModalContent();
+				}
 				break;
 
 			case "mk":
@@ -39,7 +39,9 @@ $(function () {
 				$(".language-btn").text("EN");
 				$(this).fadeOut();
 				translate();
-				translateDynamicModalContent();
+				if (!$(".modal-element-details").is(".invisible")) {
+					translateDynamicModalContent();
+				}
 				break;
 		}
 	});
@@ -68,7 +70,7 @@ $(function () {
 			const yPosition = el.ypos;
 			function createElementCard() {
 				return `
-				<div class="element ${el.category} ${el.name} elementGroup-${
+				<div class="element ${el.category} ${el.name} ${el.symbol} elementGroup-${
 					el.xpos
 				}" style="grid-column-start: ${xPosition}; grid-row-start: ${yPosition};">
 					<h3 class="symbol">${el.symbol}</h3>
@@ -185,10 +187,14 @@ $(function () {
 	});
 	$("#openSearch").on("click", function (e) {
 		e.preventDefault();
+		$(".search-input").val("");
+		$(".search-results").empty();
 		$(".search-container").fadeIn(50);
 	});
 	$("#closeSearch").on("click", function () {
-		$(".search-container").fadeOut(500);
+		$(".search-input").val("");
+		$(".search-results").empty();
+		$(".search-container").fadeOut(200);
 	});
 	$("#closeiFrame").on("click", function () {
 		$(".iframe-page").fadeOut(500);
@@ -210,4 +216,37 @@ $(function () {
 	// 	}
 	// 	console.log(counter);
 	// }, 2000);
+
+	//SEARCH FUNCTIONALITY
+	$(".search-input").on("keyup", function (e) {
+		const searchQuery = e.target.value;
+
+		const searchResults = languageSource[lang].filter(el => {
+			return (
+				el.symbol.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				el.name.toLowerCase().includes(searchQuery.toLowerCase())
+			);
+		});
+		$(".search-results").empty();
+
+		searchResults.forEach(res => {
+			$(".search-results").append(
+				`<li class="search-list-item"  data-trigger="${res.symbol}">${res.symbol}</li>`
+			);
+		});
+		searchResults.forEach(res => {
+			$(".search-results").append(
+				`<li class="search-list-item" data-trigger="${res.symbol}">${res.name}</li>`
+			);
+		});
+		$(".search-list-item").on("click", function () {
+			const identifier = $(this).attr("data-trigger");
+			const searchedElement = $(`.element.${identifier}`);
+			searchedElement.trigger("click");
+			$("#closeSearch").trigger("click");
+		});
+		if (!$(this).val()) {
+			$(".search-results").empty();
+		}
+	});
 });
