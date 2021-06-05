@@ -104,9 +104,11 @@ $(function () {
 		$(".element")
 			.not(".Lanthanides, .Actinides, .Лантаниди, .Актиниди")
 			.on("click", function () {
-				const elementIdx = $(this).find(".atomicNumber").text() - 1;
-				window.globalElementIdx = elementIdx;
+				const elementIdx = $(this).find(".atomicNumber").text() - 1; //identifying element
+				window.globalElementIdx = elementIdx; //Declaring global var for certain props in details modal
 				const elementObj = languageSource[lang][elementIdx];
+
+				//Adding data
 				$(".addData").each(function () {
 					const propName = $(this).attr("data-id");
 					if ($(this).hasClass("round")) {
@@ -119,14 +121,31 @@ $(function () {
 						$(this).text(elementObj[propName] || "n/a");
 					}
 				});
+				const { shells, images } = elementObj;
 				$(".addDataLoop").empty();
-				elementObj.shells.forEach(shell => {
+				shells.forEach(shell => {
 					$(".addDataLoop").append(`
 					<li>${shell}</li>
 					`);
 				});
+				$(".slickk").empty();
+
+				//IMAGE SLIDER
+				images.forEach(img => {
+					$(".slickk").append(`
+					<div class="imgCont">
+							<img src="${img.src}" alt="" />
+						</div>
+					`);
+				});
+
+				$(".slickk").slick({
+					autoplay: true,
+					infinite: true,
+					dots: true,
+				});
 				$(".modal-element-details").removeClass("invisible");
-			})
+			}) //LABEL CLICK IFRAME
 			.on("click", ".groupLabel", function (e) {
 				e.stopPropagation();
 				const labelIdx = $(this).text() - 1;
@@ -164,8 +183,6 @@ $(function () {
 			$(".element").off("mouseenter");
 		} else {
 			soundOn = true;
-		}
-		if (soundOn) {
 			$(this).addClass("fa-volume-up");
 			$(".element").on("mouseenter", function () {
 				audio[0].play();
@@ -176,6 +193,7 @@ $(function () {
 	//OPENING/CLOSING BUTTONS FUNCTIONALITY
 	$("#closeModal").on("click", function () {
 		$(".modal-element-details").addClass("invisible");
+		$(".slickk").slick("unslick");
 	});
 	$("#closeAbout").on("click", function () {
 		$(".about-page").fadeOut();
@@ -200,22 +218,6 @@ $(function () {
 		$(".iframe-page").fadeOut(500);
 		$(".iframe-page").attr("src", "");
 	});
-
-	//IMAGE SLIDER
-	// $(".modal-element-image-slider > img:gt(0)").hide();
-	// const imgsNum = $(".modal-element-image-slider > img").length;
-	// let counter = 0;
-	// setInterval(function () {
-	// 	const currentImg = $($(".modal-element-image-slider > img")[counter]);
-	// 	const nextImg = $($(".modal-element-image-slider > img")[counter + 1]);
-	// 	currentImg.hide();
-	// 	nextImg.show();
-	// 	counter++;
-	// 	if (counter === imgsNum + 1) {
-	// 		counter = 0;
-	// 	}
-	// 	console.log(counter);
-	// }, 2000);
 
 	//SEARCH FUNCTIONALITY
 	$(".search-input").on("keyup", function (e) {
