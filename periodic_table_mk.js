@@ -4043,7 +4043,7 @@ const ElementsMK = [
 		ionization_energies: [587, 1110, 1930, 2780],
 	},
 	{
-		name: "Протакиниум",
+		name: "Протактиниум",
 		appearance: "светла, сребрена метален сјај",
 		atomic_mass: 231.035882,
 		boil: 4300,
