@@ -17,3 +17,5 @@ Each of the 18 periodic groups has a separate label which is also clickable and 
 There is also an option to enable a click-like sound when hovering over the elements, that is disabled by default. 
 
 There is a search feature integrated which allows the user to search for elements by name or symbol. 
+
+The app is responsive on mobile devices in landscape mode. 
