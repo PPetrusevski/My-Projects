@@ -1,8 +1,27 @@
 $(function () {
 	let lang = "mk";
-	const container = $(".elements-container");
-	const lanthanides = $(".lanthanides");
-	const actinides = $(".actinides");
+
+	const container = $(".elements-container"),
+		lanthanides = $(".lanthanides"),
+		actinides = $(".actinides"),
+		languageBtn = $(".language-btn"),
+		languageChange = $(".language-change"),
+		soundBtn = $(".sound-btn"),
+		flagImg = $(".flag"),
+		elementDetModal = $(".modal-element-details"),
+		slickSlider = $(".slickk"),
+		iframePage = $(".iframe-page"),
+		iframe = $(".iframe"),
+		searchInput = $(".search-input"),
+		searchResults = $(".search-results"),
+		searchContainer = $(".search-container"),
+		closeModal = $("#closeModal"),
+		aboutPage = $(".about-page"),
+		closeAbout = $("#closeAbout"),
+		openAbout = $("#openAbout"),
+		openSearch = $("#openSearch"),
+		closeSearch = $("#closeSearch"),
+		closeIframe = $("#closeiFrame");
 
 	const languageSource = {
 		en: Elements,
@@ -14,37 +33,43 @@ $(function () {
 		$("[data-id='name']").text(languageSource[lang][globalElementIdx].name);
 		$("[data-id='summary']").text(languageSource[lang][globalElementIdx].summary);
 	}
+	//EMPTY SEARCH
+	function emptySearchContainer() {
+		searchInput.val("");
+		searchResults.empty();
+	}
 
 	//CHANGE LANGUAGE==================================================
-	$(".language-btn").on("click", function () {
-		$(".language-change").fadeToggle();
+	languageBtn.on("click", function () {
+		languageChange.fadeToggle();
 	});
-	$(".language-change").on("click", function (e) {
+	languageChange.on("click", function (e) {
 		e.preventDefault();
 		switch (lang) {
 			case "en":
 				lang = "mk";
-				$(".flag").attr("src", "./images/enFlag.png");
-				$(".language-btn").text("MK");
+				flagImg.attr("src", "./images/enFlag.png");
+				languageBtn.text("MK");
 				$(this).fadeOut();
 				translate();
-				if (!$(".modal-element-details").is(".invisible")) {
+				if (!elementDetModal.is(".invisible")) {
 					translateDynamicModalContent();
 				}
 				break;
 
 			case "mk":
 				lang = "en";
-				$(".flag").attr("src", "./images/mkFlag.png");
-				$(".language-btn").text("EN");
+				flagImg.attr("src", "./images/mkFlag.png");
+				languageBtn.text("EN");
 				$(this).fadeOut();
 				translate();
-				if (!$(".modal-element-details").is(".invisible")) {
+				if (!elementDetModal.is(".invisible")) {
 					translateDynamicModalContent();
 				}
 				break;
 		}
 	});
+
 	//TRANSLATION FUNCTION============================================
 	function translate() {
 		renderTable();
@@ -59,40 +84,37 @@ $(function () {
 			}
 		});
 	}
+
 	//TABLE CREATING FUNCTION==========================================
 	function renderTable() {
 		$(".element").remove();
 
-		//
-
 		languageSource[lang].forEach(el => {
-			const xPosition = el.xpos == "down" || el.xpos == "sdown" ? "auto" : el.xpos;
-			const yPosition = el.ypos;
+			const { xpos, ypos, category, name, symbol, number, shells } = el;
+			const xPosition = xpos == "down" || xpos == "sdown" ? "auto" : xpos;
 			function createElementCard() {
 				return `
-				<div class="element ${el.category} ${el.name} ${el.symbol} elementGroup-${
-					el.xpos
-				}" style="grid-column-start: ${xPosition}; grid-row-start: ${yPosition};">
-					<h3 class="symbol">${el.symbol}</h3>
-					<p class="fullElementName">${el.name}</p>
-					<span class="atomicNumber">${el.number ? el.number : ""}</span>
+				<div class="element ${category} ${name} ${symbol} elementGroup-${xPosition}" style="grid-column-start: ${xPosition}; grid-row-start: ${ypos};">
+					<h3 class="symbol">${symbol}</h3>
+					<p class="fullElementName">${name}</p>
+					<span class="atomicNumber">${number ? number : ""}</span>
 					<ul class = "shellsGroup">
-	
 					</ul>
 				</div>
 				`;
 			}
+
 			//ELEMENT SHELLS ADDING========================================
 			function arrangeShells() {
-				for (let i = 0; i < el.shells.length; i++) {
-					$(`.${el.name} .shellsGroup`).append(`<li>${el.shells[i]}</li>`);
+				for (let i = 0; i < shells.length; i++) {
+					$(`.${name} .shellsGroup`).append(`<li>${shells[i]}</li>`);
 				}
 			}
 			//CHECKING IF LANTHANIDES/ACTINIDES============================
-			if (el.number >= 57 && el.number <= 71) {
+			if (number >= 57 && number <= 71) {
 				lanthanides.append(createElementCard());
 				arrangeShells();
-			} else if (el.number >= 89 && el.number <= 103) {
+			} else if (number >= 89 && number <= 103) {
 				actinides.append(createElementCard());
 				arrangeShells();
 			} else {
@@ -100,6 +122,7 @@ $(function () {
 				arrangeShells();
 			}
 		});
+
 		//ELEMENTS CLICK EVENT
 		$(".element")
 			.not(".Lanthanides, .Actinides, .Лантаниди, .Актиниди")
@@ -128,33 +151,34 @@ $(function () {
 					<li>${shell}</li>
 					`);
 				});
-				$(".slickk").empty();
+				slickSlider.empty();
 
 				//IMAGE SLIDER
 				images.forEach(img => {
-					$(".slickk").append(`
+					slickSlider.append(`
 					<div class="imgCont">
 							<img src="${img.src}" alt="" />
 						</div>
 					`);
 				});
 
-				$(".slickk").slick({
+				slickSlider.slick({
 					autoplay: true,
 					infinite: true,
 					dots: true,
 				});
-				$(".modal-element-details").removeClass("invisible");
+				elementDetModal.removeClass("invisible");
 			}) //LABEL CLICK IFRAME
 			.on("click", ".groupLabel", function (e) {
 				e.stopPropagation();
 				const labelIdx = $(this).text() - 1;
-				$(".iframe-page").css("display", "block").hide().fadeIn();
-				$(".iframe").attr("src", iframeUrls[lang][labelIdx]);
+				iframePage.css("display", "block").hide().fadeIn();
+				iframe.attr("src", iframeUrls[lang][labelIdx]);
 			});
 	}
 	renderTable();
 	renderLabels();
+
 	//GROUP LABELS RENDERING==========================================
 	function renderLabels() {
 		for (let i = 1; i <= 18; i++) {
@@ -176,7 +200,7 @@ $(function () {
 	//SOUND ON HOVER==================================================
 	const audio = $("#audio");
 	let soundOn = false;
-	$(".sound-btn").on("click", function () {
+	soundBtn.on("click", function () {
 		if (soundOn) {
 			soundOn = false;
 			$(this).removeClass("fa-volume-up");
@@ -191,64 +215,65 @@ $(function () {
 	});
 
 	//OPENING/CLOSING BUTTONS FUNCTIONALITY
-	$("#closeModal").on("click", function () {
-		$(".modal-element-details").addClass("invisible");
-		$(".slickk").slick("unslick");
+	closeModal.on("click", function () {
+		elementDetModal.addClass("invisible");
+		slickSlider.slick("unslick");
 	});
-	$("#closeAbout").on("click", function () {
-		$(".about-page").fadeOut();
+	closeAbout.on("click", function () {
+		aboutPage.fadeOut();
 	});
 
-	$("#openAbout").on("click", function (e) {
+	openAbout.on("click", function (e) {
 		e.preventDefault();
-		$(".about-page").css("display", "flex").hide().fadeIn();
+		aboutPage.css("display", "flex").hide().fadeIn();
 	});
-	$("#openSearch").on("click", function (e) {
+	openSearch.on("click", function (e) {
 		e.preventDefault();
-		$(".search-input").val("");
-		$(".search-results").empty();
-		$(".search-container").fadeIn(50);
+		emptySearchContainer();
+		searchContainer.fadeIn(50);
 	});
-	$("#closeSearch").on("click", function () {
-		$(".search-input").val("");
-		$(".search-results").empty();
-		$(".search-container").fadeOut(200);
+	closeSearch.on("click", function () {
+		emptySearchContainer();
+		searchContainer.fadeOut(200);
 	});
-	$("#closeiFrame").on("click", function () {
-		$(".iframe-page").fadeOut(500);
-		$(".iframe-page").attr("src", "");
+	closeIframe.on("click", function () {
+		iframePage.fadeOut(500).attr("src", "");
+		iframe.attr("src", "");
 	});
 
 	//SEARCH FUNCTIONALITY
-	$(".search-input").on("keyup", function (e) {
+	searchInput.on("keyup", function (e) {
 		const searchQuery = e.target.value;
 
-		const searchResults = languageSource[lang].filter(el => {
+		const filteredSearchResults = languageSource[lang].filter(el => {
+			const { symbol, name } = el;
 			return (
-				el.symbol.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				el.name.toLowerCase().includes(searchQuery.toLowerCase())
+				symbol.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				name.toLowerCase().includes(searchQuery.toLowerCase())
 			);
 		});
-		$(".search-results").empty();
+		searchResults.empty();
 
-		searchResults.forEach(res => {
-			$(".search-results").append(
+		filteredSearchResults.forEach(res => {
+			searchResults.append(
 				`<li class="search-list-item"  data-trigger="${res.symbol}">${res.symbol}</li>`
 			);
 		});
-		searchResults.forEach(res => {
-			$(".search-results").append(
+		filteredSearchResults.forEach(res => {
+			searchResults.append(
 				`<li class="search-list-item" data-trigger="${res.symbol}">${res.name}</li>`
 			);
 		});
+
+		//opening element details page on result click
 		$(".search-list-item").on("click", function () {
 			const identifier = $(this).attr("data-trigger");
 			const searchedElement = $(`.element.${identifier}`);
 			searchedElement.trigger("click");
-			$("#closeSearch").trigger("click");
+			closeSearch.trigger("click");
 		});
 		if (!$(this).val()) {
-			$(".search-results").empty();
+			searchResults.empty();
 		}
 	});
 });

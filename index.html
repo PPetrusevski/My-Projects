@@ -4,7 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<meta name="description" content="Periodic Table of Elements Project 2" />
+		<meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap, jQuery" />
+		<meta name="author" content="Pavel Petrusevski" />
+		<title>Периодна табела на елементите</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
 		<link rel="stylesheet" href="./style.css" />
 		<link
 			rel="stylesheet"
@@ -15,30 +21,18 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
 		/>
 	</head>
-	<body>
-		<h1 class="tr mainTitle" key="mainTitle">Периодна табела на елементи</h1>
+	<body class="bgBlack">
+		<h1 class="tr mainTitle colorGray" key="mainTitle">Периоден Систем на Елементите</h1>
 		<div class="elements-container">
-			<!-- <div class="element element1">
-				<div class="groupLabel"><p>1</p></div>
-				<h3 class="symbol">H</h3>
-				<p class="fullElementName">Водород</p>
-				<span class="atomicNumber">1</span>
-				<ul>
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>
-				</ul>
-			</div> -->
-
 			<div class="lanthanides">
-				<span class="tr lanthanidesTitle" key="lanthanides">Лантаниди</span>
+				<span class="tr lanthanidesTitle colorGray" key="lanthanides">Лантаниди</span>
 			</div>
 			<div class="actinides">
-				<span class="tr actinidesTitle" key="actinides">Актиниди</span>
+				<span class="tr actinidesTitle colorGray" key="actinides">Актиниди</span>
 			</div>
 			<div class="legend">
-				<h3 class="tr legendTitle" key="legend">Легенда</h3>
-				<div class="legendFields">
+				<h3 class="tr legendTitle colorGray" key="legend">Легенда</h3>
+				<div class="legendFields colorGray">
 					<div class="legendField">
 						<div class="legendColor alkali"></div>
 						<span class="tr legendText" key="legendAlkaliMetals">Алкални метали</span>
@@ -85,40 +79,40 @@
 		<div class="left-side-icons">
 			<div class="languagesContainer">
 				<a href="#" class="language-change"
-					><img src="./images/enFlag.png" alt="" class="flag"
+					><img src="./images/enFlag.png" alt="language image" class="flag"
 				/></a>
-				<span class="language-btn">MK</span>
+				<span class="language-btn colorGray">MK</span>
 			</div>
 			<div class="soundContainer">
-				<i class="fas fa-volume-mute sound-btn sound-off"></i>
+				<i class="fas fa-volume-mute colorGray sound-btn sound-off"></i>
 			</div>
 		</div>
 		<div class="right-side-icons">
-			<a href="https://www.instagram.com/brainsterco/" target="_blank" class="instagram"
+			<a href="https://www.instagram.com/brainsterco/" target="_blank" class="instagram colorGray"
 				><i class="fab fa-instagram"></i
 			></a>
-			<a href="https://www.facebook.com/brainster.co/" target="_blank" class="facebook"
+			<a href="https://www.facebook.com/brainster.co/" target="_blank" class="facebook colorGray"
 				><i class="fab fa-facebook-f"></i
 			></a>
-			<a href="" class="learn-more" id="openAbout"><i class="fas fa-ellipsis-h"></i></a>
+			<a href="" class="learn-more colorGray" id="openAbout"><i class="fas fa-ellipsis-h"></i></a>
 		</div>
 		<div class="search-btn-wrapper">
-			<i class="fas fa-search search-btn" id="openSearch"></i>
+			<i class="fas fa-search search-btn colorGray" id="openSearch"></i>
 		</div>
-		<div class="search-container invisible">
+		<div class="search-container bgBlack invisible">
 			<input
 				type="text"
 				class="tr search-input"
-				placeholder="Внесете име на елементот..."
+				placeholder="Внесете име или знак на елементот..."
 				key="searchPlaceholder"
 			/>
-			<ul class="search-results"></ul>
-			<i class="fas fa-times close-btn" id="closeSearch"></i>
+			<ul class="search-results colorGray"></ul>
+			<i class="fas fa-times close-btn colorGray" id="closeSearch"></i>
 		</div>
-		<section class="modal-element-details invisible">
+		<section class="modal-element-details bgBlack invisible">
 			<div class="modal-left-side">
 				<div class="modal-element-card">
-					<h3 class="modal-symbol addData" data-id="symbol"></h3>
+					<h3 class="modal-symbol positionCenter addData" data-id="symbol"></h3>
 					<span class="modal-atomic-number addData" data-id="number"></span>
 					<ul class="modal-shells-group addDataLoop" data-id="shells"></ul>
 					<span class="modal-atomic-weight round addData" data-id="atomic_mass"></span>
@@ -563,9 +557,9 @@
 			</div>
 			<i class="fas fa-times close-btn" id="closeModal"></i>
 		</section>
-		<section class="about-page">
+		<section class="about-page positionCenter bgBlack">
 			<div class="about-left-side">
-				<img src="./images/Brain.png" class="about-left-img1" alt="" />
+				<img src="./images/Brain.png" class="about-left-img1" alt="Brainster image" />
 				<h2 class="about-heading">ИЗРАБОТЕНО ОД ПАВЕЛ ПЕТРУШЕВСКИ</h2>
 				<ul class="about-contact-details">
 					<li class="about-contact-list-item">
@@ -574,20 +568,23 @@
 					</li>
 					<li class="about-contact-list-item">
 						<span class="about-contact-type">E-mail:</span>
-						<a href="#" class="about-contact-list-val">contact@brainster.co</a>
+						<a href="#" class="about-contact-list-val">pavel.petrusevski@gmail.com</a>
 					</li>
 				</ul>
 			</div>
 			<div class="about-right-side">
-				<img src="./images/img1.png" class="about-right-img1" alt="" />
-				<img src="./images/img2.png" class="about-right-img2" alt="" />
-				<img src="./images/img3.jpg" class="about-right-img3" alt="" />
+				<img src="./images/img1.png" class="about-right-img1" alt="Image 1" />
+				<img src="./images/img2.png" class="about-right-img2" alt="Image 2" />
+				<img src="./images/img3.jpg" class="about-right-img3" alt="Image 3" />
 				<i class="fas fa-times close-btn" id="closeAbout"></i>
 			</div>
 		</section>
-		<section class="iframe-page">
-			<iframe src="" class="iframe" frameborder="0"></iframe>
+		<section class="iframe-page positionCenter bgBlack">
+			<iframe src="" class="iframe positionCenter" frameborder="0"></iframe>
 			<i class="fas fa-times close-btn" id="closeiFrame"></i>
+		</section>
+		<section class="portrait-image">
+			<img src="./images/mobileDevice.jpg" alt="Image rotate screen" />
 		</section>
 		<audio id="audio" autoplay preload="auto"><source src="./click.mp3" /></audio>
 		<script src="https://kit.fontawesome.com/b284e76a5d.js" crossorigin="anonymous"></script>

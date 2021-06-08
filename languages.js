@@ -15,7 +15,7 @@ const languages = {
 		legendNonmetals: "Nonmetals",
 		legendHalogens: "Halogens",
 		legendNobleGases: "Noble gases",
-		searchPlaceholder: "Enter an element's name...",
+		searchPlaceholder: "Enter element's name or symbol...",
 		//ELEMENT DETAILS PAGE
 		//1.left-side-ul-props
 		modalElementInfoAtomWeight: "Atomic Weight",
@@ -124,7 +124,7 @@ const languages = {
 	},
 	mk: {
 		//MAIN PAGE
-		mainTitle: "Периодна табела на елементите",
+		mainTitle: "Периоден Систем на Елементите",
 		lanthanides: "Лантаниди",
 		actinides: "Актиниди",
 		legend: "Легенда",
@@ -138,7 +138,7 @@ const languages = {
 		legendNonmetals: "Неметали",
 		legendHalogens: "Халогени",
 		legendNobleGases: "Благородни гасови",
-		searchPlaceholder: "Внесете име на елементот...",
+		searchPlaceholder: "Внесете име или знак на елементот...",
 		//ELEMENT DETAILS PAGE
 		//left-side-ul-props
 		modalElementInfoAtomWeight: "Атомска тежина",
