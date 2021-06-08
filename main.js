@@ -265,7 +265,7 @@ $(function () {
 			);
 		});
 
-		//opening element details on click
+		//opening element details page on result click
 		$(".search-list-item").on("click", function () {
 			const identifier = $(this).attr("data-trigger");
 			const searchedElement = $(`.element.${identifier}`);
