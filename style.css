@@ -687,6 +687,9 @@ ul:not(ul.values) {
 	.mainTitle {
 		margin-top: 7.8rem;
 	}
+	.legendField {
+		font-size: 0.8rem;
+	}
 	.groupLabel {
 		top: -75%;
 		transform: translate(-50%, 75%);
@@ -701,6 +704,9 @@ ul:not(ul.values) {
 	}
 	.mainTitle {
 		margin-top: 7.8rem;
+	}
+	.legendField {
+		font-size: 0.8rem;
 	}
 	.groupLabel {
 		top: -75%;
