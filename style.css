@@ -271,6 +271,17 @@ ul {
 	margin: 20px auto;
 	color: gray;
 }
+.search-list-item {
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 5px;
+	transition: all 0.15s;
+}
+.search-list-item:hover {
+	color: rgb(204, 204, 204);
+	background-color: rgb(48, 47, 47);
+}
 .invisible {
 	display: none;
 }
