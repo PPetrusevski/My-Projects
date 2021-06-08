@@ -66,7 +66,7 @@ ul {
 }
 .transition,
 .преоден {
-	background-color: #bdf7d0;
+	background-color: #aee4f3;
 }
 .post,
 .post-transition,
@@ -85,7 +85,7 @@ ul {
 }
 .noble,
 .благороден {
-	background-color: #d7b6c9;
+	background-color: #af93a4;
 }
 .lanthanide,
 .лантанид {
@@ -388,7 +388,7 @@ ul {
 	z-index: 5;
 	overflow: auto;
 	color: white;
-	padding-left: 10%;
+	padding-left: 9%;
 	padding-right: 7%;
 }
 .modal-left-side {
@@ -438,8 +438,8 @@ ul {
 }
 .modal-element-card {
 	position: relative;
-	width: 150px;
-	height: 150px;
+	width: 130px;
+	height: 130px;
 	border: 2px solid #5a5a5a;
 	border-radius: 5px;
 	padding: 10px;
@@ -456,7 +456,6 @@ ul {
 	position: absolute;
 	top: 0;
 	left: 3%;
-	/* transform: translate(-50%, -70%); */
 	font-size: 32px;
 }
 .modal-shells-group {
@@ -471,7 +470,6 @@ ul {
 	position: absolute;
 	bottom: 0;
 	left: 3%;
-	/* transform: translate(-50%, -70%); */
 	font-size: 25px;
 }
 .modal-element-name {
@@ -491,8 +489,8 @@ ul {
 	font-size: 12px;
 	text-align: justify;
 	flex-basis: 40%;
-	height: 150px;
-	padding: 10px;
+	/* height: 150px; */
+	padding: 20px;
 	margin-left: auto;
 }
 .modal-element-summary {
@@ -533,26 +531,50 @@ ul {
 	padding-left: 30px;
 }
 .modal-element-images {
-	width: 100%;
+	width: 50vw;
 	display: flex;
 	height: 35vh;
 }
 .modal-element-image-static,
-.modal-element-image-slider {
+.slickk {
 	border: 2px solid #5a5a5a;
 	border-radius: 10px;
-	height: 100%;
 	width: 50%;
 }
-.modal-element-image-slider {
-	position: relative;
+.slickk {
+	overflow: hidden;
 	margin-left: 20px;
 }
 .modal-element-image-static img,
-.modal-element-image-slider img {
+.slickk img {
 	border-radius: 10px;
 	width: 100%;
 	height: 100%;
+}
+.slick-next,
+.slick-prev {
+	z-index: 1;
+}
+.slick-prev {
+	left: 1% !important;
+}
+.slick-next {
+	right: 1% !important;
+}
+.slick-dots {
+	bottom: 0 !important;
+}
+.slick-dots li.slick-active button:before {
+	color: white !important;
+	opacity: 1;
+}
+.slick-dots li button:before {
+	color: white !important;
+	opacity: 1;
+	font-size: 10px !important;
+}
+.slick-dotted.slick-slider {
+	margin-bottom: 0 !important;
 }
 .about-page,
 .iframe-page {
@@ -642,32 +664,4 @@ ul {
 	right: 3%;
 	transform: rotate(7deg);
 	z-index: 2;
-}
-.slider-arrows {
-	position: absolute;
-	font-size: 20px;
-	cursor: pointer;
-}
-.slider-dots {
-	position: absolute;
-	font-size: 12px;
-	bottom: 2%;
-	left: 50%;
-	transform: translateX(-50%);
-}
-.dot {
-	margin: 0 5px;
-}
-.dot.active {
-	color: #696969;
-}
-.slider-arrows-left {
-	left: 3%;
-	top: 50%;
-	transform: translateY(-50%);
-}
-.slider-arrows-right {
-	right: 3%;
-	top: 50%;
-	transform: translateY(-50%);
 }
