@@ -16,7 +16,7 @@ ul {
 	margin: 0;
 	padding: 0;
 }
-ul:not(ul.values) {
+ul:not(.values) {
 	list-style-type: none;
 }
 .colorGray {
