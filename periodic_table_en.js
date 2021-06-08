@@ -72,7 +72,7 @@ const Elements = [
 		source: "https://en.wikipedia.org/wiki/Helium",
 		spectral_img: "https://en.wikipedia.org/wiki/File:Helium_spectrum.jpg",
 		summary:
-			"Helium is a chemical element with symbol He and atomic number 2. It is a colorless, odorless, tasteless, non-toxic, inert, monatomic gas that heads the noble gas group in the periodic table. Its boiling and melting points are the lowest among all the elements.",
+			"Helium is a chemical element with symbol He and atomic number 2. It is a colorless, odorless, tasteless, non-toxic, inert, monatomic gas that heads the noble gas group in the periodic table. Its boiling and melting are the lowest among all the elements.",
 		symbol: "He",
 		xpos: 18,
 		ypos: 1,
@@ -6012,7 +6012,7 @@ const Elements = [
 	},
 	{
 		symbol: `57-71`,
-		name: "Lathanides",
+		name: "Lanthanides",
 		atomicMass: "",
 		number: null,
 		shells: ["", "", ""],
