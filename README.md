@@ -1,6 +1,6 @@
 # <div align="center">PERIODIC TABLE OF ELEMENTS</div>
-[![Screen1](<https://i.postimg.cc/nhM42tt4/screenshot1.jpg>)](https://i.postimg.cc/jSJ1bkKB/Screen1.png)
-[![Screen2](<https://i.postimg.cc/g25vBBYf/screenshot2.jpg>)](https://i.postimg.cc/mrf52Ngk/Screen2.png)
+(https://i.postimg.cc/jSJ1bkKB/Screen1.png)
+(https://i.postimg.cc/mrf52Ngk/Screen2.png)
 
 ## This website is also deployed on Netlify and available [HERE.](https://periodictableofelements.netlify.app/)
 
