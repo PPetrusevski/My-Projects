@@ -2271,7 +2271,7 @@ const Elements = [
 		],
 		staticImage: {
 			id: 44,
-			src: "images/leftSquareImages/ruthenium-5.jpg",
+			src: "images/leftSquareImages/ruthenium-4.jpg",
 			alt: "Ruthenium element",
 		},
 		electron_configuration: "1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d7 5s1",
@@ -3411,10 +3411,10 @@ const Elements = [
 		shells: [2, 8, 18, 29, 8, 2],
 		images: [
 			{
-				src: "images/67.holmium/Holmium-3.jpg",
+				src: "images/67.holmium/Holmium3.jpg",
 			},
 			{
-				src: "images/67.holmium/Holmium-2.jpg",
+				src: "images/67.holmium/Holmium2.jpg",
 			},
 			{
 				src: "images/67.holmium/Holmium-1.jpg",
@@ -3861,7 +3861,7 @@ const Elements = [
 		shells: [2, 8, 18, 32, 14, 2],
 		images: [
 			{
-				src: "images/76.osmium/Osmium-3.jpg",
+				src: "images/76.osmium/Osmium-3.png",
 			},
 			{
 				src: "images/76.osmium/Osmium-2.jpg",
@@ -3972,7 +3972,7 @@ const Elements = [
 		],
 		staticImage: {
 			id: 78,
-			src: "images/leftSquareImages/platinum-4.jpg",
+			src: "images/leftSquareImages/platinum-5.jpg",
 			alt: "Platinum element",
 		},
 		electron_configuration: "1s2 2s2 2p6 3s2 3p6 3d10 4s2 4p6 4d10 4f14 5s2 5p6 5d9 6s1",
@@ -4314,7 +4314,7 @@ const Elements = [
 				src: "images/85.astatine/astatine-3.jpg",
 			},
 			{
-				src: "images/85.astatine/astatine-2.jpg",
+				src: "images/85.astatine/astatine-2.png",
 			},
 			{
 				src: "images/85.astatine/astatine-1.jpg",

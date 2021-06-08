@@ -3009,10 +3009,10 @@ const ElementsMK = [
 		shells: [2, 8, 18, 29, 8, 2],
 		images: [
 			{
-				src: "images/67.holmium/Holmium-3.jpg",
+				src: "images/67.holmium/Holmium3.jpg",
 			},
 			{
-				src: "images/67.holmium/Holmium-2.jpg",
+				src: "images/67.holmium/Holmium2.jpg",
 			},
 			{
 				src: "images/67.holmium/Holmium-1.jpg",
@@ -3405,7 +3405,7 @@ const ElementsMK = [
 		shells: [2, 8, 18, 32, 14, 2],
 		images: [
 			{
-				src: "images/76.osmium/Osmium-3.jpg",
+				src: "images/76.osmium/Osmium-3.png",
 			},
 			{
 				src: "images/76.osmium/Osmium-2.jpg",
@@ -3804,7 +3804,7 @@ const ElementsMK = [
 				src: "images/85.astatine/astatine-3.jpg",
 			},
 			{
-				src: "images/85.astatine/astatine-2.jpg",
+				src: "images/85.astatine/astatine-2.png",
 			},
 			{
 				src: "images/85.astatine/astatine-1.jpg",
