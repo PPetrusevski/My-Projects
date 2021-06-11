@@ -46,7 +46,7 @@ ul:not(.values) {
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: url(./spinner.gif) center no-repeat black;
+	background: url(./images/spinner.gif) center no-repeat black;
 }
 .colorGray {
 	color: #808080;
