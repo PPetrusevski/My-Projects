@@ -28,6 +28,16 @@ $(function () {
 		mk: ElementsMK,
 	};
 
+	//LOADING ANIMATION
+	setTimeout(() => {
+		$("body").addClass("animate");
+		$(".se-pre-con").fadeOut(500);
+	}, 2000);
+
+	$("body").on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function () {
+		$(this).removeClass("animate");
+	});
+
 	//TRANSLATE DYNAMIC CONTENT
 	function translateDynamicModalContent() {
 		$("[data-id='name']").text(languageSource[lang][globalElementIdx].name);
@@ -39,38 +49,37 @@ $(function () {
 		searchResults.empty();
 	}
 
-	//CHANGE LANGUAGE==================================================
+	//CHANGE LANGUAGE
 	languageBtn.on("click", function () {
 		languageChange.fadeToggle();
 	});
 	languageChange.on("click", function (e) {
 		e.preventDefault();
+
+		//Language switch helper
+		const handleLangSwitch = (language, btnText, imgSrc) => {
+			lang = language;
+			flagImg.attr("src", `./images/${imgSrc}.png`);
+			languageBtn.text(btnText);
+			console.log($(this));
+			$(this).fadeOut();
+			translate();
+			if (!elementDetModal.is(".invisible")) {
+				translateDynamicModalContent();
+			}
+		};
+
 		switch (lang) {
 			case "en":
-				lang = "mk";
-				flagImg.attr("src", "./images/enFlag.png");
-				languageBtn.text("MK");
-				$(this).fadeOut();
-				translate();
-				if (!elementDetModal.is(".invisible")) {
-					translateDynamicModalContent();
-				}
+				handleLangSwitch("mk", "MK", "enFlag");
 				break;
-
 			case "mk":
-				lang = "en";
-				flagImg.attr("src", "./images/mkFlag.png");
-				languageBtn.text("EN");
-				$(this).fadeOut();
-				translate();
-				if (!elementDetModal.is(".invisible")) {
-					translateDynamicModalContent();
-				}
+				handleLangSwitch("en", "EN", "mkFlag");
 				break;
 		}
 	});
 
-	//TRANSLATION FUNCTION============================================
+	//TRANSLATION FUNCTION
 	function translate() {
 		renderTable();
 		renderLabels();
@@ -85,7 +94,7 @@ $(function () {
 		});
 	}
 
-	//TABLE CREATING FUNCTION==========================================
+	//TABLE CREATING FUNCTION
 	function renderTable() {
 		$(".element").remove();
 
@@ -104,13 +113,13 @@ $(function () {
 				`;
 			}
 
-			//ELEMENT SHELLS ADDING========================================
+			//ELEMENT SHELLS ADDING
 			function arrangeShells() {
 				for (let i = 0; i < shells.length; i++) {
 					$(`.${name} .shellsGroup`).append(`<li>${shells[i]}</li>`);
 				}
 			}
-			//CHECKING IF LANTHANIDES/ACTINIDES============================
+			//CHECKING IF LANTHANIDES/ACTINIDES
 			if (number >= 57 && number <= 71) {
 				lanthanides.append(createElementCard());
 				arrangeShells();
@@ -179,7 +188,7 @@ $(function () {
 	renderTable();
 	renderLabels();
 
-	//GROUP LABELS RENDERING==========================================
+	//GROUP LABELS RENDERING
 	function renderLabels() {
 		for (let i = 1; i <= 18; i++) {
 			const elementsGroup = $(`.elementGroup-${i}`);
@@ -197,7 +206,7 @@ $(function () {
 			});
 	}
 
-	//SOUND ON HOVER==================================================
+	//SOUND ON HOVER
 	const audio = $("#audio");
 	let soundOn = false;
 	soundBtn.on("click", function () {

@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@keyframes fullScale {
+	from {
+		transform: scale(0.1);
+	}
+	to {
+		transform: scale(1);
+	}
+}
 html {
 	font-size: 10px;
 }
@@ -6,6 +14,9 @@ body {
 	box-sizing: border-box;
 	font-family: "Montserrat", sans-serif;
 	position: relative;
+}
+body.animate {
+	animation: fullScale 2s;
 }
 body,
 h1,
@@ -18,6 +29,24 @@ ul {
 }
 ul:not(.values) {
 	list-style-type: none;
+}
+.no-js #loader {
+	display: none;
+}
+.js #loader {
+	display: block;
+	position: absolute;
+	left: 100px;
+	top: 0;
+}
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(./spinner.gif) center no-repeat black;
 }
 .colorGray {
 	color: #808080;
@@ -522,6 +551,7 @@ ul:not(.values) {
 	font-size: 1.2rem;
 	display: flex;
 	align-self: flex-start;
+	width: 100%;
 }
 .modal-element-info .values {
 	padding-left: 30px;
@@ -658,7 +688,7 @@ ul:not(.values) {
 	height: 100vh;
 }
 /* MEDIA QUERIES  */
-@media (min-width: 320px) and (max-width: 900px) and (orientation: portrait) {
+@media (min-width: 320px) and (max-width: 990px) and (orientation: portrait) {
 	.elements-container,
 	.search-btn-wrapper,
 	.mainTitle,
@@ -675,6 +705,24 @@ ul:not(.values) {
 		flex-direction: column;
 		justify-content: center;
 		height: 100vh;
+	}
+}
+@media (min-width: 1920px) {
+	html {
+		font-size: 15px;
+	}
+	.element {
+		height: 7.8vh;
+	}
+	.mainTitle {
+		margin-top: 6.8rem;
+	}
+	.legendTitle {
+		margin-top: 0;
+	}
+	.groupLabel {
+		top: -95%;
+		transform: translate(-50%, 95%);
 	}
 }
 @media (min-width: 320px) and (max-width: 568px) and (orientation: landscape) {
@@ -730,7 +778,7 @@ ul:not(.values) {
 	}
 }
 
-@media (min-width: 320px) and (max-width: 900px) and (orientation: landscape) {
+@media (min-width: 320px) and (max-width: 990px) and (orientation: landscape) {
 	.mainTitle {
 		font-size: 4.5rem;
 	}
