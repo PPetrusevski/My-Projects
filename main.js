@@ -2,6 +2,7 @@ $(function () {
 	let lang = "mk";
 
 	const container = $(".elements-container"),
+		body = $("body"),
 		lanthanides = $(".lanthanides"),
 		actinides = $(".actinides"),
 		languageBtn = $(".language-btn"),
@@ -30,11 +31,11 @@ $(function () {
 
 	//LOADING ANIMATION
 	setTimeout(() => {
-		$("body").addClass("animate");
-		$(".se-pre-con").fadeOut(500);
+		body.addClass("animate");
+		$(".se-pre-con").hide();
 	}, 2000);
 
-	$("body").on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function () {
+	body.on("webkitAnimationEnd oanimationend msAnimationEnd animationend", function () {
 		$(this).removeClass("animate");
 	});
 
