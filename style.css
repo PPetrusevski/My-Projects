@@ -791,6 +791,9 @@ ul:not(.values) {
 	.fullElementName {
 		top: 66%;
 	}
+	.shellsGroup {
+		right: 1%;
+	}
 	.language-btn,
 	.sound-btn,
 	.flag,
@@ -859,6 +862,9 @@ ul:not(.values) {
 @media (min-width: 1900px) {
 	html {
 		font-size: 14px;
+	}
+	.about-heading {
+		font-size: 3.5rem;
 	}
 	.element {
 		height: 7.8vh;
