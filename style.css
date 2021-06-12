@@ -7,6 +7,14 @@
 		transform: scale(1);
 	}
 }
+@keyframes noScale {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0);
+	}
+}
 html {
 	font-size: 10px;
 }
@@ -46,13 +54,13 @@ ul:not(.values) {
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: url(./images/spinner.gif) center no-repeat black;
+	background: url(./images/spinner.gif) center no-repeat #000;
 }
 .colorGray {
 	color: #808080;
 }
 .bgBlack {
-	background: #000000;
+	background: #000;
 }
 .positionCenter {
 	top: 50%;
@@ -94,8 +102,8 @@ ul:not(.values) {
 }
 .black,
 .црно {
-	background-color: #000000;
-	color: white;
+	background-color: #000;
+	color: #fff;
 }
 .nonmetal,
 .неметални {
@@ -154,27 +162,27 @@ ul:not(.values) {
 	grid-template-columns: repeat(18, 1fr);
 }
 .element {
-	border-bottom: 1px solid #525252;
-	border-left: 1px solid #000000;
-	border-right: 1px solid #000000;
-	border-top: 1px solid #000000;
+	border-bottom: 1px solid transparent;
+	border-left: 1px solid #000;
+	border-right: 1px solid transparent;
+	border-top: 1px solid #000;
 	position: relative;
 	height: 8.6vh;
 	transition: all 0.3s;
 	cursor: pointer;
 }
 .element:hover {
-	background-color: #000000;
-	border: 1px solid #ffffff;
+	background-color: #000;
+	border: 1px solid #fff;
 }
 .element:hover .symbol,
 .element:hover .fullElementName,
 #labelHovered {
-	color: #ffffff;
+	color: #fff;
 }
 #labelHovered {
 	background-color: #4d4d4d;
-	border: 1px solid #000000;
+	border: 1px solid #000;
 }
 .groupLabel:hover {
 	top: -100%;
@@ -300,7 +308,6 @@ ul:not(.values) {
 	opacity: 0.92;
 	z-index: 111111;
 	overflow: auto;
-	transition: opacity 0.35s, visibility 0.35s, height 0.35s;
 	border-radius: 5px;
 	border: 1px solid #808080;
 }
@@ -368,7 +375,7 @@ ul:not(.values) {
 .flag:hover,
 .learn-more:hover {
 	background-color: #808080;
-	color: #000000;
+	color: #000;
 }
 .instagram:hover {
 	background: radial-gradient(
@@ -379,12 +386,12 @@ ul:not(.values) {
 		#d6249f 60%,
 		#285aeb 90%
 	);
-	color: white;
+	color: #fff;
 	border-color: #9258af;
 }
 .facebook:hover {
 	background-color: #4267b2;
-	color: white;
+	color: #fff;
 	border-color: #4267b2;
 }
 .search-btn:hover,
@@ -421,9 +428,15 @@ ul:not(.values) {
 	bottom: 0;
 	z-index: 5;
 	overflow: auto;
-	color: #ffffff;
+	color: #fff;
 	padding-left: 9%;
 	padding-right: 7%;
+}
+.modal-element-details.animate {
+	animation: fullScale 0.5s;
+}
+.modal-element-details.unanimate {
+	animation: noScale 0.3s;
 }
 .modal-left-side {
 	display: flex;
@@ -438,7 +451,6 @@ ul:not(.values) {
 	height: 85vh;
 	flex-basis: 30%;
 	overflow-y: scroll;
-	/* padding: 30px 0; */
 	margin-left: 40px;
 }
 .modal-right-side::-webkit-scrollbar {
@@ -459,7 +471,7 @@ ul:not(.values) {
 	line-height: 20px;
 }
 .modal-category-title {
-	border-bottom: 1px solid #ffffff;
+	border-bottom: 1px solid #fff;
 	margin: 0;
 	padding: 5px;
 	font-size: 1.6rem;
@@ -538,7 +550,7 @@ ul:not(.values) {
 .pdf-link {
 	align-self: flex-end;
 	text-decoration: none;
-	color: #ffffff;
+	color: #fff;
 	font-size: 1.6rem;
 	font-weight: 600;
 	transition: all 0.3s;
@@ -592,7 +604,7 @@ ul:not(.values) {
 }
 .slick-dots li.slick-active button:before,
 .slick-dots li button:before {
-	color: white !important;
+	color: #fff !important;
 	opacity: 1;
 }
 .slick-dots li button:before {
@@ -610,7 +622,7 @@ ul:not(.values) {
 	border: 3px solid #5a5a5a;
 	border-radius: 10px;
 	z-index: 11111111;
-	color: #ffffff;
+	color: #fff;
 }
 .iframe {
 	position: absolute;
@@ -642,7 +654,7 @@ ul:not(.values) {
 }
 .about-contact-details a {
 	text-decoration: none;
-	color: white;
+	color: #fff;
 }
 .about-contact-list-item {
 	display: flex;
@@ -655,7 +667,7 @@ ul:not(.values) {
 	position: absolute;
 }
 .about-right-side img {
-	border: 8px solid #ffffff;
+	border: 8px solid #fff;
 	border-radius: 10px;
 }
 .about-left-img1 {
@@ -688,7 +700,7 @@ ul:not(.values) {
 	height: 100vh;
 }
 /* MEDIA QUERIES  */
-@media (min-width: 320px) and (max-width: 990px) and (orientation: portrait) {
+@media (max-width: 991px) and (orientation: portrait) {
 	.elements-container,
 	.search-btn-wrapper,
 	.mainTitle,
@@ -707,25 +719,7 @@ ul:not(.values) {
 		height: 100vh;
 	}
 }
-@media (min-width: 1920px) {
-	html {
-		font-size: 15px;
-	}
-	.element {
-		height: 7.8vh;
-	}
-	.mainTitle {
-		margin-top: 6.8rem;
-	}
-	.legendTitle {
-		margin-top: 0;
-	}
-	.groupLabel {
-		top: -95%;
-		transform: translate(-50%, 95%);
-	}
-}
-@media (min-width: 320px) and (max-width: 568px) and (orientation: landscape) {
+@media (max-width: 568px) and (orientation: landscape) {
 	html {
 		font-size: 4px;
 	}
@@ -761,7 +755,7 @@ ul:not(.values) {
 		transform: translate(-50%, 75%);
 	}
 }
-@media (min-width: 769px) and (max-width: 990px) and (orientation: landscape) {
+@media (min-width: 769px) and (max-width: 991px) and (orientation: landscape) {
 	html {
 		font-size: 6px;
 	}
@@ -778,7 +772,7 @@ ul:not(.values) {
 	}
 }
 
-@media (min-width: 320px) and (max-width: 990px) and (orientation: landscape) {
+@media (max-width: 991px) and (orientation: landscape) {
 	.mainTitle {
 		font-size: 4.5rem;
 	}
@@ -793,10 +787,6 @@ ul:not(.values) {
 	.groupLabel,
 	.legendColor {
 		border-radius: 1px;
-	}
-	.element {
-		border-right: none;
-		border-bottom: none;
 	}
 	.fullElementName {
 		top: 66%;
@@ -843,5 +833,44 @@ ul:not(.values) {
 	}
 	.about-left-side {
 		margin: 0 20px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) and (orientation: landscape) {
+	html {
+		font-size: 7px;
+	}
+	.element {
+		height: 7.8vh;
+	}
+	.mainTitle {
+		margin-top: 6.8rem;
+	}
+	.groupLabel {
+		top: -95%;
+		transform: translate(-50%, 95%);
+	}
+	.elements-container {
+		padding: 0 5.8rem;
+	}
+	.modal-element-details {
+		padding-right: 10%;
+	}
+}
+@media (min-width: 1900px) {
+	html {
+		font-size: 14px;
+	}
+	.element {
+		height: 7.8vh;
+	}
+	.mainTitle {
+		margin-top: 6.8rem;
+	}
+	.legendTitle {
+		margin-top: 0;
+	}
+	.groupLabel {
+		top: -95%;
+		transform: translate(-50%, 95%);
 	}
 }

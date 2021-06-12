@@ -176,7 +176,7 @@ $(function () {
 					infinite: true,
 					dots: true,
 				});
-				elementDetModal.removeClass("invisible");
+				elementDetModal.removeClass("invisible").addClass("animate");
 			}) //LABEL CLICK IFRAME
 			.on("click", ".groupLabel", function (e) {
 				e.stopPropagation();
@@ -225,7 +225,10 @@ $(function () {
 
 	//OPENING/CLOSING BUTTONS FUNCTIONALITY
 	closeModal.on("click", function () {
-		elementDetModal.addClass("invisible");
+		elementDetModal.addClass("unanimate").removeClass("animate");
+		setTimeout(() => {
+			elementDetModal.addClass("invisible").removeClass("unanimate");
+		}, 300);
 		slickSlider.slick("unslick");
 	});
 	closeAbout.on("click", function () {
@@ -239,11 +242,11 @@ $(function () {
 	openSearch.on("click", function (e) {
 		e.preventDefault();
 		emptySearchContainer();
-		searchContainer.fadeIn(50);
+		searchContainer.slideDown(300);
 	});
 	closeSearch.on("click", function () {
 		emptySearchContainer();
-		searchContainer.fadeOut(200);
+		searchContainer.slideUp(300);
 	});
 	closeIframe.on("click", function () {
 		iframePage.fadeOut(500).attr("src", "");
