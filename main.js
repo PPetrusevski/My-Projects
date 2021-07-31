@@ -62,7 +62,6 @@ $(function () {
 			lang = language;
 			flagImg.attr("src", `./images/${imgSrc}.png`);
 			languageBtn.text(btnText);
-			console.log($(this));
 			$(this).fadeOut();
 			translate();
 			if (!elementDetModal.is(".invisible")) {
