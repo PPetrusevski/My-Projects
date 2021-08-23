@@ -1,6 +1,6 @@
 import Input from "./Input";
 import Button from "./Button";
 
-const Ui = { Input, Button };
+const Controls = { Input, Button };
 
-export default Ui;
+export default Controls;

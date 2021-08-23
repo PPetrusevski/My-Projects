@@ -3,12 +3,14 @@ import { TextField, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		margin: theme.spacing(1),
+		marginTop: theme.spacing(1),
+		marginBottom: theme.spacing(1),
+		width: "100%",
 	},
 }));
 
 const Input = props => {
-	const { name, label, value, color, onChange } = props;
+	const { name, label, value, color, onChange, ...other } = props;
 	const classes = useStyles();
 	return (
 		<TextField
@@ -20,6 +22,7 @@ const Input = props => {
 			label={label}
 			value={value}
 			className={classes.root}
+			{...other}
 		/>
 	);
 };
