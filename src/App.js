@@ -6,8 +6,9 @@ import { Router } from "@reach/router";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import WelcomeWizard from "./Pages/WelcomeWizard/WelcomeWizard";
-// import Categories from "./Pages/Categories";
+import Categories from "./Pages/Categories";
 import Overview from "./Pages/Overview";
+import Statistics from "./Pages/Statistics";
 
 const theme = createTheme({
 	palette: {
@@ -30,6 +31,8 @@ function App() {
 					<SignUp path="/signup" />
 					<WelcomeWizard path="/welcome" />
 					<Overview path="/overview" />
+					<Categories path="/categories" />
+					<Statistics path="/statistics" />
 				</Router>
 			</ThemeProvider>
 		</div>

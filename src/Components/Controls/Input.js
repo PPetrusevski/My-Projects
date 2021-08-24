@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Input = props => {
-	const { name, label, value, color, onChange, ...other } = props;
+	const { name, label, value, color, onChange, variant, ...other } = props;
 	const classes = useStyles();
 	return (
 		<TextField
@@ -18,7 +18,7 @@ const Input = props => {
 			type={props.type || "text"}
 			onChange={onChange}
 			color={color || "primary"}
-			variant="outlined"
+			variant={variant || "outlined"}
 			label={label}
 			value={value}
 			className={classes.root}

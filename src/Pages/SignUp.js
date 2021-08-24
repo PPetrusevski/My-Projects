@@ -1,9 +1,9 @@
+import React, { useState } from "react";
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import React from "react";
 import LogoHeader from "../Components/LogoHeader";
 import Controls from "../Components/Controls/Controls";
 import { Link } from "@reach/router";
@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignIn() {
+	const [visible, setVisible] = useState(false);
 	const classes = useStyles();
 
 	return (
@@ -45,12 +46,12 @@ export default function SignIn() {
 				<Controls.Input
 					size="small"
 					label="Password"
-					type="password"
+					type={visible ? "text" : "password"}
 					InputProps={{
 						endAdornment: (
 							<InputAdornment position="end">
-								<IconButton>
-									<Visibility />
+								<IconButton onClick={() => setVisible(!visible)}>
+									{visible ? <Visibility /> : <VisibilityOff />}
 								</IconButton>
 							</InputAdornment>
 						),
