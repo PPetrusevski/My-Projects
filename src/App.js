@@ -6,7 +6,7 @@ import { Router } from "@reach/router";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import WelcomeWizard from "./Pages/WelcomeWizard/WelcomeWizard";
-import Categories from "./Pages/Categories";
+// import Categories from "./Pages/Categories";
 import Overview from "./Pages/Overview";
 
 const theme = createTheme({
