@@ -24,69 +24,71 @@ export default function SignIn() {
 	const classes = useStyles();
 
 	return (
-		<Grid container justifyContent="center">
-			<LogoHeader />
-			<Grid item xs={3} />
-			<Grid item xs={6}>
-				<Typography
-					className={classes.heading}
-					variant="h5"
-					component="h2"
-					align="center"
-					type="submit"
-				>
-					SIGN IN
-				</Typography>
-			</Grid>
-			<Grid item xs={3} />
-			<Grid item xs={10}>
-				<Controls.Input size="small" label="Username" />
-			</Grid>
-			<Grid item xs={10}>
-				<Controls.Input
-					size="small"
-					label="Password"
-					type={visible ? "text" : "password"}
-					InputProps={{
-						endAdornment: (
-							<InputAdornment position="end">
-								<IconButton onClick={() => setVisible(!visible)}>
-									{visible ? <Visibility /> : <VisibilityOff />}
-								</IconButton>
-							</InputAdornment>
-						),
-					}}
-				/>
-			</Grid>
-			<Grid item xs={4} />
-			<Grid item xs={4}>
-				<Controls.Button className={classes.button} text="Sign In" />
-			</Grid>
-			<Grid item xs={4} />
-			<Grid item xs={3} />
-
-			<Grid item xs={6}>
-				<Typography
-					variant="caption"
-					display="block"
-					gutterBottom
-					color="textSecondary"
-					align="center"
-				>
-					Don't have account yet?
-				</Typography>
-			</Grid>
-			<Grid item xs={3} />
-			<Grid item xs={3} />
-
-			<Grid item xs={5}>
-				<Link to="/signup">
-					<Typography variant="caption" display="block" gutterBottom color="primary" align="center">
-						Sign up now! It's free!
+		<Grid container alignItems="center" style={{ height: "100vh" }}>
+			<Grid container justifyContent="center">
+				<LogoHeader />
+				<Grid item xs={3} />
+				<Grid item xs={6}>
+					<Typography className={classes.heading} variant="h5" component="h2" align="center">
+						SIGN IN
 					</Typography>
-				</Link>
+				</Grid>
+				<Grid item xs={3} />
+				<Grid item xs={10}>
+					<Controls.Input size="small" label="Username" />
+				</Grid>
+				<Grid item xs={10}>
+					<Controls.Input
+						size="small"
+						label="Password"
+						type={visible ? "text" : "password"}
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<IconButton onClick={() => setVisible(!visible)}>
+										{visible ? <Visibility /> : <VisibilityOff />}
+									</IconButton>
+								</InputAdornment>
+							),
+						}}
+					/>
+				</Grid>
+				<Grid item xs={4} />
+				<Grid item xs={4}>
+					<Controls.Button className={classes.button} text="Sign In" />
+				</Grid>
+				<Grid item xs={4} />
+				<Grid item xs={3} />
+
+				<Grid item xs={6}>
+					<Typography
+						variant="caption"
+						display="block"
+						gutterBottom
+						color="textSecondary"
+						align="center"
+					>
+						Don't have account yet?
+					</Typography>
+				</Grid>
+				<Grid item xs={3} />
+				<Grid item xs={3} />
+
+				<Grid item xs={5}>
+					<Link to="/signup">
+						<Typography
+							variant="caption"
+							display="block"
+							gutterBottom
+							color="primary"
+							align="center"
+						>
+							Sign up now! It's free!
+						</Typography>
+					</Link>
+				</Grid>
+				<Grid item xs={3} />
 			</Grid>
-			<Grid item xs={3} />
 		</Grid>
 	);
 }

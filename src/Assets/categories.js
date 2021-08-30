@@ -1,0 +1,60 @@
+const Categories = [
+	{
+		id: 1,
+		type: "Income",
+		name: "Sallary",
+		budget: 30000,
+		iconName: "euro",
+		isEnabled: true,
+	},
+	{
+		id: 2,
+		type: "Income",
+		name: "Rent",
+		budget: 12000,
+		iconName: "home",
+		isEnabled: false,
+	},
+	{
+		id: 3,
+		type: "Expense",
+		name: "Food",
+		budget: 9000,
+		iconName: "fastfood",
+		isEnabled: true,
+	},
+	{
+		id: 4,
+		type: "Expense",
+		name: "Gym",
+		budget: 9000,
+		iconName: "fitness_center",
+		isEnabled: true,
+	},
+	{
+		id: 5,
+		type: "Expense",
+		name: "Bills",
+		budget: 9000,
+		iconName: "description",
+		isEnabled: true,
+	},
+	{
+		id: 6,
+		type: "Expense",
+		name: "Leisure",
+		budget: 9000,
+		iconName: "beach_access",
+		isEnabled: true,
+	},
+	{
+		id: 7,
+		type: "Expense",
+		name: "Renovating",
+		budget: 9000,
+		iconName: "build",
+		isEnabled: true,
+	},
+];
+
+export default Categories;
