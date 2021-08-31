@@ -7,9 +7,9 @@ import { Router } from "@reach/router";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import WelcomeWizard from "./Pages/WelcomeWizard/WelcomeWizard";
-import Categories from "./Pages/Categories";
-import Overview from "./Pages/Overview";
-import Statistics from "./Pages/Statistics";
+import Categories from "./Pages/MainPages/Categories";
+import MainPages from "./Pages/MainPages/MainPages";
+import Statistics from "./Pages/MainPages/Statistics";
 
 const theme = createTheme({
 	palette: {
@@ -18,6 +18,15 @@ const theme = createTheme({
 		},
 		secondary: {
 			main: "#03DAC5",
+		},
+	},
+	overrides: {
+		MuiBottomNavigationAction: {
+			root: {
+				"&$selected": {
+					color: "#03DAC5",
+				},
+			},
 		},
 	},
 });
@@ -32,7 +41,7 @@ function App() {
 						<SignIn path="/" />
 						<SignUp path="/signup" />
 						<WelcomeWizard path="/welcome" />
-						<Overview path="/overview" />
+						<MainPages path="/main" />
 						<Categories path="/categories" />
 						<Statistics path="/statistics" />
 					</Router>

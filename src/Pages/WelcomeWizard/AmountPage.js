@@ -46,7 +46,7 @@ export default function AmountPage() {
 					);
 				})}
 			</List>
-			<Link to="/overview">
+			<Link to="/main">
 				<Controls.Button text="Complete" />
 			</Link>
 		</Grid>
