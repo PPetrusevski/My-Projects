@@ -18,13 +18,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	logo: {
 		width: "100%",
+		maxWidth: "70px",
 	},
 }));
 
 export default function Header({ onPage }) {
 	const classes = useStyles();
 
-	const heading = () => {
+	const headingTitle = () => {
 		if (onPage === 0) {
 			return "Overview";
 		} else if (onPage === 1) {
@@ -41,12 +42,16 @@ export default function Header({ onPage }) {
 			</Grid>
 			<Grid item xs={5}>
 				<Typography className={classes.heading} variant="h6">
-					{heading()}
+					{headingTitle()}
 				</Typography>
 			</Grid>
-			<Grid item xs={3} />
-			<Grid item xs={2}>
-				<Avatar alt="avatar" src="https://randomuser.me/api/portraits/thumb/women/71.jpg" />
+			{/* <Grid item xs={3} /> */}
+			<Grid item xs={2} style={{ marginLeft: "auto" }}>
+				<Avatar
+					alt="avatar"
+					src="https://randomuser.me/api/portraits/thumb/women/74.jpg"
+					style={{ marginLeft: "auto" }}
+				/>
 			</Grid>
 		</Grid>
 	);

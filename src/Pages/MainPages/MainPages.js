@@ -9,8 +9,9 @@ import Statistics from "./Statistics";
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		height: "100vh",
 		position: "relative",
+		paddingTop: "80px",
+		paddingBottom: "80px",
 	},
 }));
 

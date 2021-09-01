@@ -1,81 +1,20 @@
-import {
-	Grid,
-	Icon,
-	LinearProgress,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	makeStyles,
-} from "@material-ui/core";
-import React, { useContext } from "react";
-import Controls from "../../Components/Controls/Controls";
-import { Context } from "../../Context/Context";
-
-const useStyles = makeStyles({
-	root: {
-		"& .MuiLinearProgress-colorPrimary": {
-			backgroundColor: "#ffbdbd",
-		},
-		"& .MuiLinearProgress-barColorPrimary": {
-			backgroundColor: "#c24242",
-		},
-		"& .MuiLinearProgress-colorSecondary": {
-			backgroundColor: "#b5f5b6",
-		},
-		"& .MuiLinearProgress-barColorSecondary": {
-			backgroundColor: "#3ea842",
-		},
-	},
-});
+import { Grid } from "@material-ui/core";
+import React from "react";
+import IncomesCard from "../../Components/IncomesCard";
+import ExpensesCard from "../../Components/ExpensesCard";
+import EntriesCard from "../../Components/EntriesCard";
 
 export default function Overview() {
-	const { categories } = useContext(Context);
-	const classes = useStyles();
 	return (
-		<Grid container justifyContent="center" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+		<Grid container justifyContent="center">
 			<Grid item xs={10}>
-				<Controls.Card title="Income">
-					<List dense>
-						{categories.map(cat => {
-							return (
-								<>
-									<ListItem key={cat.id} disableGutters>
-										<ListItemIcon style={{ minWidth: "40px" }}>
-											<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
-										</ListItemIcon>
-										<ListItemText primary={cat.name} />
-										<ListItemText primary="3000/4500" style={{ textAlign: "right" }} />
-									</ListItem>
-									<div className={classes.root}>
-										<LinearProgress variant="determinate" color="secondary" value={50} />
-									</div>
-								</>
-							);
-						})}
-					</List>
-				</Controls.Card>
+				<IncomesCard />
 			</Grid>
 			<Grid item xs={10}>
-				<Controls.Card title="Expenses">
-					<List dense>
-						{categories.map(cat => {
-							return (
-								<>
-									<ListItem key={cat.id} disableGutters>
-										<ListItemIcon>
-											<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
-										</ListItemIcon>
-										<ListItemText primary={cat.name} />
-									</ListItem>
-									<div className={classes.root}>
-										<LinearProgress variant="determinate" color="primary" value={50} />
-									</div>
-								</>
-							);
-						})}
-					</List>
-				</Controls.Card>
+				<ExpensesCard />
+			</Grid>
+			<Grid item xs={10}>
+				<EntriesCard />
 			</Grid>
 		</Grid>
 	);
