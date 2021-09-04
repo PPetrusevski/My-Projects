@@ -7,35 +7,44 @@ export default function EntriesCard() {
 	const { categories } = useContext(Context);
 	return (
 		<Controls.Card title="Entries">
-			<List dense>
-				{categories.map(cat => {
-					return (
-						<>
-							<ListItem key={cat.id} disableGutters divider>
-								<ListItemIcon style={{ minWidth: "40px" }}>
-									<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
-								</ListItemIcon>
-								<ListItemText
-									primary={
-										<Typography variant="body2" style={{ lineHeight: "1" }}>
-											{cat.name}
-										</Typography>
-									}
-									secondary={
-										<Typography
-											variant="caption"
-											color="textSecondary"
-											style={{ fontSize: "10px" }}
-										>
-											31.08.2021
-										</Typography>
-									}
-								/>
-								<ListItemText primary="+3000" style={{ textAlign: "right" }} />
-							</ListItem>
-						</>
-					);
-				})}
+			<List dense style={{ paddingBottom: 0 }}>
+				{categories ? (
+					categories.map(cat => {
+						return (
+							cat.entries &&
+							cat.entries.map((entry, idx) => {
+								return (
+									<div key={cat.id + entry.amount + idx}>
+										<ListItem disableGutters divider>
+											<ListItemIcon style={{ minWidth: "40px" }}>
+												<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
+											</ListItemIcon>
+											<ListItemText
+												primary={
+													<Typography variant="body2" style={{ lineHeight: "1" }}>
+														{cat.name}
+													</Typography>
+												}
+												secondary={
+													<Typography
+														variant="caption"
+														color="textSecondary"
+														style={{ fontSize: "10px" }}
+													>
+														{entry.date}
+													</Typography>
+												}
+											/>
+											<ListItemText primary={entry.amount} style={{ textAlign: "right" }} />
+										</ListItem>
+									</div>
+								);
+							})
+						);
+					})
+				) : (
+					<p>Nothing to show here</p>
+				)}
 			</List>
 		</Controls.Card>
 	);

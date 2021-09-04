@@ -12,22 +12,22 @@ import Controls from "./Controls/Controls";
 
 export default function IncomesCard() {
 	const { categories } = useContext(Context);
+	const income = categories.filter(cat => cat.type === "Income");
 	return (
 		<Controls.Card title="Income">
 			<List dense>
-				{categories.map(cat => {
+				{income.map((inc, idx) => {
 					return (
-						<>
-							<ListItem key={cat.id} disableGutters>
+						<div key={inc.id + idx + inc.name}>
+							<ListItem disableGutters>
 								<ListItemIcon style={{ minWidth: "40px" }}>
-									<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
+									<Icon style={{ color: "black" }}>{inc.iconName}</Icon>
 								</ListItemIcon>
-								<ListItemText primary={cat.name} />
+								<ListItemText primary={inc.name} />
 								<ListItemText primary="3000/4500" style={{ textAlign: "right" }} />
 							</ListItem>
-
 							<LinearProgress variant="determinate" color="primary" value={50} />
-						</>
+						</div>
 					);
 				})}
 			</List>

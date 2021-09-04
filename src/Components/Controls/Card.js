@@ -1,13 +1,29 @@
 import React from "react";
-import { Card as MuiCard, CardContent, Typography } from "@material-ui/core";
+import { Card as MuiCard, CardContent, makeStyles, Typography } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+	root: {
+		marginTop: "10px",
+		marginBottom: "10px",
+	},
+
+	heading: {
+		backgroundColor: "#F4F4F4",
+		padding: "10px",
+	},
+	content: {
+		padding: "0px 10px 10px 10px",
+	},
+}));
 
 export default function Card(props) {
+	const classes = useStyles();
 	return (
-		<MuiCard raised style={{ marginTop: "10px", marginBottom: "10px" }}>
-			<CardContent style={{ backgroundColor: "#F4F4F4" }}>
+		<MuiCard raised className={classes.root}>
+			<CardContent className={classes.heading} style={{}}>
 				<Typography color="textSecondary">{props.title}</Typography>
 			</CardContent>
-			<CardContent>{props.children}</CardContent>
+			<CardContent className={classes.content}>{props.children}</CardContent>
 		</MuiCard>
 	);
 }

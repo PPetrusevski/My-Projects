@@ -5,7 +5,10 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
+	const [budgetTotal, setBudgetTotal] = useState(0);
 
-	const ContextObj = { categories, setCategories };
+	console.log(budgetTotal);
+
+	const ContextObj = { categories, setCategories, budgetTotal, setBudgetTotal };
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };

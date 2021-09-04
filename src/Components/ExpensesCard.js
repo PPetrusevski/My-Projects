@@ -31,23 +31,24 @@ const useStyles = makeStyles({
 export default function ExpensesCard() {
 	const { categories } = useContext(Context);
 	const classes = useStyles();
+	const expenses = categories.filter(cat => cat.type === "Expense");
 	return (
 		<Controls.Card title="Expenses">
 			<List dense>
-				{categories.map(cat => {
+				{expenses.map((exp, idx) => {
 					return (
-						<>
-							<ListItem key={cat.id} disableGutters>
+						<div key={exp.id + idx + exp.name}>
+							<ListItem disableGutters>
 								<ListItemIcon style={{ minWidth: "40px" }}>
-									<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
+									<Icon style={{ color: "black" }}>{exp.iconName}</Icon>
 								</ListItemIcon>
-								<ListItemText primary={cat.name} />
+								<ListItemText primary={exp.name} />
 								<ListItemText primary="3000/4500" style={{ textAlign: "right" }} />
 							</ListItem>
 							<div className={classes.root}>
 								<LinearProgress variant="determinate" color="secondary" value={50} />
 							</div>
-						</>
+						</div>
 					);
 				})}
 			</List>

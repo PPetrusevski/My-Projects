@@ -5,7 +5,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import HomeIcon from "@material-ui/icons/Home";
 import CategoryIcon from "@material-ui/icons/Category";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
-import { Fab } from "@material-ui/core";
+import { Fab, Grid } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles(theme => ({
@@ -17,13 +17,20 @@ const useStyles = makeStyles(theme => ({
 		left: 0,
 		zIndex: "1111111",
 	},
+	nav: {
+		backgroundColor: theme.palette.primary.main,
+	},
 
 	icons: {
 		color: "white",
 	},
+	fabCont: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+	},
 	fabBtn: {
-		bottom: 25,
-		right: 15,
+		bottom: "50%",
 	},
 }));
 
@@ -31,37 +38,40 @@ export default function BottomNav({ onPage, setOnPage }) {
 	const classes = useStyles();
 
 	return (
-		<>
-			<BottomNavigation
-				value={onPage}
-				onChange={(_, newValue) => {
-					setOnPage(newValue);
-				}}
-				showLabels
-				className={classes.root}
-			>
-				<BottomNavigationAction
-					className={`${classes.icons}`}
-					label="Overview"
-					icon={<HomeIcon />}
-				/>
+		<Grid container className={classes.root}>
+			<Grid item xs={9}>
+				<BottomNavigation
+					value={onPage}
+					onChange={(_, newValue) => {
+						setOnPage(newValue);
+					}}
+					className={classes.nav}
+					showLabels
+				>
+					<BottomNavigationAction
+						className={`${classes.icons}`}
+						label="Overview"
+						icon={<HomeIcon />}
+					/>
 
-				<BottomNavigationAction
-					className={`${classes.icons}`}
-					label="Categories"
-					icon={<CategoryIcon />}
-				/>
+					<BottomNavigationAction
+						className={`${classes.icons}`}
+						label="Categories"
+						icon={<CategoryIcon />}
+					/>
 
-				<BottomNavigationAction
-					className={`${classes.icons}`}
-					label="Statistics"
-					icon={<EqualizerIcon />}
-				/>
-
-				<Fab className={classes.fabBtn} color="secondary" aria-label="add" size="medium">
+					<BottomNavigationAction
+						className={`${classes.icons}`}
+						label="Statistics"
+						icon={<EqualizerIcon />}
+					/>
+				</BottomNavigation>
+			</Grid>
+			<Grid item xs={3} className={classes.fabCont}>
+				<Fab className={classes.fabBtn} color="secondary" aria-label="add">
 					<AddIcon />
 				</Fab>
-			</BottomNavigation>
-		</>
+			</Grid>
+		</Grid>
 	);
 }

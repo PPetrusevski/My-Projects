@@ -1,6 +1,7 @@
 import { Grid, makeStyles, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Controls from "../../Components/Controls/Controls";
+import { Context } from "../../Context/Context";
 
 const useStyles = makeStyles(theme => ({
 	heading: {
@@ -18,8 +19,23 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function IncomePage({ handleStep }) {
+export default function IncomePage({ handleStep, setBudgetTotal }) {
+	const [budget, setBudget] = useState("");
+	const [inputValid, setInputValid] = useState(true);
+
 	const classes = useStyles();
+
+	const handleSetBudgetTotal = () => {
+		if (budget > 0) {
+			setBudgetTotal(+budget);
+			handleStep(2);
+		} else {
+			setInputValid(false);
+		}
+	};
+
+	useEffect(() => {}, [budget]);
+
 	return (
 		<>
 			<Grid item xs={10}>
@@ -32,16 +48,22 @@ export default function IncomePage({ handleStep }) {
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>
-					<Controls.Input label="Amount" variant="filled" type="number" size="small" />
+					<Controls.Input
+						label="Amount"
+						variant="filled"
+						type="number"
+						error={!inputValid}
+						helperText={!inputValid && "The amount is required and must be greater than zero."}
+						size="small"
+						value={budget}
+						onChange={e => {
+							setBudget(e.target.value);
+						}}
+					/>
 				</Grid>
 			</Grid>
 			<Grid item xs={10} className={classes.buttonCont}>
-				<Controls.Button
-					text="Add"
-					onClick={() => {
-						handleStep(2);
-					}}
-				/>
+				<Controls.Button text="Add" onClick={handleSetBudgetTotal} />
 			</Grid>
 		</>
 	);
