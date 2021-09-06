@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function BottomNav({ onPage, setOnPage }) {
+export default function BottomNav({ onPage, setOnPage, fabModalOpen, setFabModalOpen }) {
 	const classes = useStyles();
 
 	return (
@@ -68,7 +68,12 @@ export default function BottomNav({ onPage, setOnPage }) {
 				</BottomNavigation>
 			</Grid>
 			<Grid item xs={3} className={classes.fabCont}>
-				<Fab className={classes.fabBtn} color="secondary" aria-label="add">
+				<Fab
+					className={classes.fabBtn}
+					color="secondary"
+					aria-label="add"
+					onClick={() => setFabModalOpen(!fabModalOpen)}
+				>
 					<AddIcon />
 				</Fab>
 			</Grid>

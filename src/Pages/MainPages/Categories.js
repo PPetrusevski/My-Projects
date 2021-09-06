@@ -9,7 +9,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Controls from "../../Components/Controls/Controls";
 import { Context } from "../../Context/Context";
 
@@ -20,16 +20,40 @@ const useStyles = makeStyles({
 	income: {
 		color: "#3ea842",
 	},
+	smallText: {
+		fontSize: "7px",
+		color: "grey",
+		fontWeight: "600",
+	},
+	list: {
+		paddingBottom: 0,
+	},
+	listItem: {
+		height: "50px",
+	},
 });
-export default function Categories() {
+export default function Categories({ overlay }) {
+	const [catModalOpen, setCatModalOpen] = useState(false);
 	const classes = useStyles();
 	const { categories } = useContext(Context);
 
 	return (
-		<Grid container justifyContent="center">
+		<Grid container justifyContent="center" className={overlay || ""}>
 			<Grid item xs={10}>
 				<Controls.Card title="Categories">
-					<List dense>
+					<List dense className={classes.list}>
+						<ListItem
+							button
+							disableGutters
+							divider
+							className={classes.listItem}
+							onClick={() => console.log("clicked")}
+						>
+							<ListItemIcon style={{ minWidth: "40px" }}>
+								<Icon style={{ color: "black" }}>{"add"}</Icon>
+							</ListItemIcon>
+							<ListItemText primary="Add New Category" />
+						</ListItem>
 						{categories.map((cat, idx) => {
 							const isExpense = cat.type === "Expense" ? true : false;
 							return (
@@ -37,7 +61,9 @@ export default function Categories() {
 									<ListItem
 										disableGutters
 										divider
-										className={`${isExpense ? classes.expense : classes.income}`}
+										className={`${isExpense ? classes.expense : classes.income} ${
+											classes.listItem
+										}`}
 									>
 										<ListItemIcon style={{ minWidth: "40px" }}>
 											<Icon className={`${isExpense ? classes.expense : classes.income}`}>
@@ -47,10 +73,20 @@ export default function Categories() {
 										<ListItemText primary={cat.name} />
 										<ListItemText
 											disableTypography
-											primary={<Typography variant="body2">{cat.budget}</Typography>}
+											primary={
+												cat.budget > 0 ? (
+													<Typography variant="body2" style={{ lineHeight: "1" }}>
+														{cat.budget}
+													</Typography>
+												) : (
+													<Typography variant="caption" className={classes.smallText}>
+														{"NO BUDGET LIMIT"}
+													</Typography>
+												)
+											}
 											secondary={
 												cat.budget > 0 && (
-													<Typography style={{ fontSize: "8px", color: "black" }} variant="caption">
+													<Typography className={classes.smallText} variant="caption">
 														{isExpense ? "BUDGET" : "PLANNED"}
 													</Typography>
 												)

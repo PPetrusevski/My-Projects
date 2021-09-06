@@ -1,5 +1,5 @@
 import { Grid, InputAdornment, InputBase, TextField } from "@material-ui/core";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import React, { useContext } from "react";
 import { Context } from "../../Context/Context";
 import Controls from "../../Components/Controls/Controls";
@@ -13,11 +13,18 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Icon from "@material-ui/core/Icon";
 
 export default function AmountPage() {
-	const { categories } = useContext(Context);
+	const { categories, setIsSignedIn } = useContext(Context);
 
 	const handleToggle = (e, cat) => {};
+
+	const handleComplete = () => {
+		setIsSignedIn(true);
+		navigate("/main");
+		console.log(categories);
+	};
+
 	return (
-		<Grid item style={{ width: "80%" }}>
+		<Grid item xs={10}>
 			<List dense>
 				{categories.map(cat => {
 					return (
@@ -38,7 +45,10 @@ export default function AmountPage() {
 											marginLeft: "auto",
 											textAlign: "end",
 										}}
-										value={cat.budget}
+										onChange={e => {
+											cat.budget = 0 || +e.target.value;
+											console.log(categories);
+										}}
 									/>
 								}
 							/>
@@ -46,9 +56,7 @@ export default function AmountPage() {
 					);
 				})}
 			</List>
-			<Link to="/main">
-				<Controls.Button text="Complete" />
-			</Link>
+			<Controls.Button text="Complete" onClick={handleComplete} />
 		</Grid>
 	);
 }

@@ -4,8 +4,7 @@ import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Router } from "@reach/router";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import SignInUp from "./Pages/SignInUp";
 import WelcomeWizard from "./Pages/WelcomeWizard/WelcomeWizard";
 import Categories from "./Pages/MainPages/Categories";
 import MainPages from "./Pages/MainPages/MainPages";
@@ -38,8 +37,8 @@ function App() {
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
 					<Router>
-						<SignIn path="/" />
-						<SignUp path="/signup" />
+						<SignInUp whichPage="signIn" path="/" />
+						<SignInUp whichPage="signUp" path="/signup" />
 						<WelcomeWizard path="/welcome" />
 						<MainPages path="/main" />
 						<Categories path="/categories" />

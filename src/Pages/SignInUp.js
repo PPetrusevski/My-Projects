@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
@@ -7,6 +7,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import LogoHeader from "../Components/LogoHeader";
 import Controls from "../Components/Controls/Controls";
 import { Link, navigate } from "@reach/router";
+import { Context } from "../Context/Context";
 
 const useStyles = makeStyles(theme => ({
 	heading: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function SignUp() {
+export default function SignInUp(props) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordIsValid, setPasswordIsValid] = useState(true);
@@ -27,6 +28,10 @@ export default function SignUp() {
 	const [passwordErrMsg, setPasswordErrMsg] = useState("");
 	const [usernameErrMsg, setUsernameErrMsg] = useState("");
 	const [visible, setVisible] = useState(false);
+
+	const { setIsSignedIn } = useContext(Context);
+
+	const onPage = props.whichPage;
 
 	const classes = useStyles();
 
@@ -70,17 +75,22 @@ export default function SignUp() {
 		return false;
 	};
 
-	const handleSignUpSubmit = e => {
+	const handleSignInUpSubmit = e => {
 		e.preventDefault();
 		validateUsername(username) ? setUsernameIsValid(true) : setUsernameIsValid(false);
 		validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
 		if (validateUsername(username) && validatePassword(password)) {
-			navigate("/welcome");
+			if (onPage === "signIn") {
+				setIsSignedIn(true);
+				navigate("/main");
+			} else if (onPage === "signUp") {
+				navigate("/welcome");
+			}
 		}
 	};
 
 	return (
-		<form onSubmit={handleSignUpSubmit}>
+		<form onSubmit={handleSignInUpSubmit}>
 			<Grid container alignItems="center" style={{ height: "100vh" }}>
 				<Grid container justifyContent="center">
 					<LogoHeader />
@@ -93,7 +103,7 @@ export default function SignUp() {
 							align="center"
 							type="submit"
 						>
-							SIGN UP
+							{onPage === "signIn" ? "SIGN IN" : "SIGN UP"}
 						</Typography>
 					</Grid>
 					<Grid item xs={3} />
@@ -129,7 +139,11 @@ export default function SignUp() {
 					</Grid>
 					<Grid item xs={4} />
 					<Grid item xs={4}>
-						<Controls.Button className={classes.button} text="Sign Up" type="submit" />
+						<Controls.Button
+							className={classes.button}
+							text={onPage === "signIn" ? "SIGN IN" : "SIGN UP"}
+							type="submit"
+						/>
 					</Grid>
 					<Grid item xs={4} />
 					<Grid item xs={3} />
@@ -142,14 +156,14 @@ export default function SignUp() {
 							color="textSecondary"
 							align="center"
 						>
-							Already have account?
+							{onPage === "signIn" ? "Don't have account yet?" : "Already have account?"}
 						</Typography>
 					</Grid>
 					<Grid item xs={3} />
 					<Grid item xs={3} />
 
 					<Grid item xs={5}>
-						<Link to="/">
+						<Link to={onPage === "signIn" ? "/signup" : "/"}>
 							<Typography
 								variant="caption"
 								display="block"
@@ -157,7 +171,7 @@ export default function SignUp() {
 								color="primary"
 								align="center"
 							>
-								Sign in please!
+								{onPage === "signIn" ? "Sign up now! It's free!" : "Sign in please!"}
 							</Typography>
 						</Link>
 					</Grid>
