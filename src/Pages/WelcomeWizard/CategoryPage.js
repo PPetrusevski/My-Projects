@@ -22,6 +22,11 @@ const useStyles = makeStyles(theme => ({
 		marginBottom: theme.spacing(3),
 		fontSize: "12px",
 	},
+	buttonCont: {
+		alignSelf: "flex-end",
+		marginBottom: "20px",
+		marginTop: "20px",
+	},
 }));
 
 export default function CategoryPage({ handleStep }) {
@@ -39,7 +44,7 @@ export default function CategoryPage({ handleStep }) {
 		}
 	};
 
-	console.log(chosenCategories);
+	// console.log(chosenCategories);
 
 	return (
 		<>
@@ -52,36 +57,36 @@ export default function CategoryPage({ handleStep }) {
 						Choose what you spend money on
 					</Typography>
 				</Grid>
+
+				<Grid item xs={12}>
+					<Grid item>
+						<List dense>
+							{categories.map(cat => {
+								return (
+									<ListItem key={cat.id} divider={true} disableGutters>
+										<ListItemIcon>
+											<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
+										</ListItemIcon>
+										<ListItemText primary={cat.name} />
+										<ListItemSecondaryAction>
+											<Checkbox edge="end" onChange={e => handleToggle(e, cat)} color="primary" />
+										</ListItemSecondaryAction>
+									</ListItem>
+								);
+							})}
+						</List>
+					</Grid>
+				</Grid>
 			</Grid>
-			<Grid item style={{ width: "80%" }}>
-				<Grid item>
-					<List dense>
-						{categories.map(cat => {
-							return (
-								<ListItem key={cat.id} divider={true} disableGutters>
-									<ListItemIcon>
-										<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
-									</ListItemIcon>
-									<ListItemText primary={cat.name} />
-									<ListItemSecondaryAction>
-										<Checkbox edge="end" onChange={e => handleToggle(e, cat)} color="primary" />
-									</ListItemSecondaryAction>
-								</ListItem>
-							);
-						})}
-					</List>
-				</Grid>
-				<Grid item>
-					<Controls.Button
-						style={{ width: "100%" }}
-						text="Done"
-						disabled={chosenCategories.length ? false : true}
-						onClick={() => {
-							setCategories(chosenCategories);
-							handleStep(3);
-						}}
-					/>
-				</Grid>
+			<Grid item xs={10} className={classes.buttonCont}>
+				<Controls.Button
+					text="Done"
+					disabled={chosenCategories.length ? false : true}
+					onClick={() => {
+						setCategories(chosenCategories);
+						handleStep(3);
+					}}
+				/>
 			</Grid>
 		</>
 	);

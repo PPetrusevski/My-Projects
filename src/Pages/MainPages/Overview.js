@@ -12,16 +12,34 @@ export default function Overview({ overlay }) {
 	const hasExpenses = categories.some(cat => cat.type === "Expense");
 	const hasEntries = categories.some(cat => cat.entries.length > 0);
 
+	const entriesTotal = entry => {
+		let total = 0;
+		entry &&
+			entry.forEach(ent => {
+				total += ent.amount;
+			});
+		return total;
+	};
+
+	const calculatePercentage = (num1, num2) => {
+		if (!num1 || num1 === 0) {
+			return 0;
+		} else if (num1 > num2) {
+			return 100;
+		}
+		return Math.round((num1 / num2) * 100);
+	};
+
 	return (
 		<Grid container justifyContent="center" className={overlay || ""}>
 			{hasIncomes && (
 				<Grid item xs={10}>
-					<IncomesCard />
+					<IncomesCard entriesTotal={entriesTotal} calculatePercentage={calculatePercentage} />
 				</Grid>
 			)}
 			{hasExpenses && (
 				<Grid item xs={10}>
-					<ExpensesCard />
+					<ExpensesCard entriesTotal={entriesTotal} calculatePercentage={calculatePercentage} />
 				</Grid>
 			)}
 			{hasEntries && (

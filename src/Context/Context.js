@@ -7,8 +7,9 @@ export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
 	const [budgetTotal, setBudgetTotal] = useState(0);
 	const [isSignedIn, setIsSignedIn] = useState(true);
+	const [userAvatar, setUserAvatar] = useState("");
 
-	console.log(budgetTotal);
+	// console.log(budgetTotal);
 
 	const ContextObj = {
 		categories,
@@ -17,6 +18,8 @@ export const Provider = ({ children }) => {
 		setBudgetTotal,
 		isSignedIn,
 		setIsSignedIn,
+		userAvatar,
+		setUserAvatar,
 	};
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };

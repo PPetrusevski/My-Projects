@@ -1,5 +1,6 @@
 import { Avatar, Grid, Typography, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../Context/Context";
 import logo from "../Assets/logo.png";
 
 const useStyles = makeStyles(theme => ({
@@ -23,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Header({ onPage }) {
+	const { userAvatar } = useContext(Context);
 	const classes = useStyles();
 
 	const headingTitle = () => {
@@ -47,11 +49,7 @@ export default function Header({ onPage }) {
 			</Grid>
 			{/* <Grid item xs={3} /> */}
 			<Grid item xs={2} style={{ marginLeft: "auto" }}>
-				<Avatar
-					alt="avatar"
-					src="https://randomuser.me/api/portraits/thumb/women/74.jpg"
-					style={{ marginLeft: "auto" }}
-				/>
+				<Avatar alt="avatar" src={userAvatar} style={{ marginLeft: "auto" }} />
 			</Grid>
 		</Grid>
 	);

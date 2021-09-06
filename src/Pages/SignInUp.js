@@ -29,7 +29,7 @@ export default function SignInUp(props) {
 	const [usernameErrMsg, setUsernameErrMsg] = useState("");
 	const [visible, setVisible] = useState(false);
 
-	const { setIsSignedIn } = useContext(Context);
+	const { setIsSignedIn, setUserAvatar } = useContext(Context);
 
 	const onPage = props.whichPage;
 
@@ -81,10 +81,21 @@ export default function SignInUp(props) {
 		validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
 		if (validateUsername(username) && validatePassword(password)) {
 			if (onPage === "signIn") {
-				setIsSignedIn(true);
-				navigate("/main");
+				fetch("https://randomuser.me/api/")
+					.then(res => res.json())
+					.then(data => {
+						setUserAvatar(data.results[0].picture.thumbnail);
+						setIsSignedIn(true);
+						navigate("/main");
+					});
 			} else if (onPage === "signUp") {
-				navigate("/welcome");
+				fetch("https://randomuser.me/api/")
+					.then(res => res.json())
+					.then(data => {
+						setUserAvatar(data.results[0].picture.thumbnail);
+						setIsSignedIn(true);
+						navigate("/welcome");
+					});
 			}
 		}
 	};

@@ -1,10 +1,28 @@
-import { Icon, List, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core";
+import {
+	Icon,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	makeStyles,
+	Typography,
+} from "@material-ui/core";
 import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 import Controls from "./Controls/Controls";
 
+const useStyles = makeStyles(theme => ({
+	red: {
+		color: "#c24242",
+	},
+	green: {
+		color: "#3ea842",
+	},
+}));
+
 export default function EntriesCard() {
 	const { categories } = useContext(Context);
+	const classes = useStyles();
 	return (
 		<Controls.Card title="Entries">
 			<List dense style={{ paddingBottom: 0 }}>
@@ -13,6 +31,8 @@ export default function EntriesCard() {
 						return (
 							cat.entries &&
 							cat.entries.map((entry, idx) => {
+								const isIncome = cat.type === "Income";
+
 								return (
 									<div key={cat.id + entry.amount + idx}>
 										<ListItem disableGutters divider>
@@ -35,7 +55,11 @@ export default function EntriesCard() {
 													</Typography>
 												}
 											/>
-											<ListItemText primary={entry.amount} style={{ textAlign: "right" }} />
+											<ListItemText
+												primary={`${isIncome ? "+" : "-"}${entry.amount}`}
+												style={{ textAlign: "right" }}
+												className={isIncome ? classes.green : classes.red}
+											/>
 										</ListItem>
 									</div>
 								);
