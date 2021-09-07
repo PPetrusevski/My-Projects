@@ -4,7 +4,7 @@ import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Router } from "@reach/router";
-import SignInUp from "./Pages/SignInUp";
+import SignInUp from "./Pages/SignInUp/SignInUp";
 import WelcomeWizard from "./Pages/WelcomeWizard/WelcomeWizard";
 import Categories from "./Pages/MainPages/Categories";
 import MainPages from "./Pages/MainPages/MainPages";

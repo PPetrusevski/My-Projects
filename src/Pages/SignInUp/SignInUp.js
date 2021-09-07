@@ -4,10 +4,10 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import LogoHeader from "../Components/LogoHeader";
-import Controls from "../Components/Controls/Controls";
+import LogoHeader from "../../Components/LogoHeader";
+import Controls from "../../Components/Controls/Controls";
 import { Link, navigate } from "@reach/router";
-import { Context } from "../Context/Context";
+import { Context } from "../../Context/Context";
 
 const useStyles = makeStyles(theme => ({
 	heading: {
