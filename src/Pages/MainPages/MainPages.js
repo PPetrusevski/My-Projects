@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 		paddingBottom: "80px",
 	},
 	overlay: {
-		opacity: 0.35,
+		opacity: 0.25,
 	},
 }));
 

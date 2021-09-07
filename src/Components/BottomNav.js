@@ -7,6 +7,7 @@ import CategoryIcon from "@material-ui/icons/Category";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import { Fab, Grid } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
+import Controls from "./Controls/Controls";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -28,9 +29,22 @@ const useStyles = makeStyles(theme => ({
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
+		position: "relative",
 	},
 	fabBtn: {
 		bottom: "50%",
+	},
+	addExpBtn: {
+		position: "absolute",
+		bottom: "170px",
+		right: "25%",
+		width: "130px !important",
+	},
+	addIncBtn: {
+		position: "absolute",
+		bottom: "120px",
+		right: "25%",
+		width: "130px !important",
 	},
 }));
 
@@ -76,6 +90,12 @@ export default function BottomNav({ onPage, setOnPage, fabModalOpen, setFabModal
 				>
 					<AddIcon />
 				</Fab>
+				{fabModalOpen && (
+					<Controls.Button text="Add Expense" size="small" className={classes.addExpBtn} />
+				)}
+				{fabModalOpen && (
+					<Controls.Button text="Add Income" size="small" className={classes.addIncBtn} />
+				)}
 			</Grid>
 		</Grid>
 	);
