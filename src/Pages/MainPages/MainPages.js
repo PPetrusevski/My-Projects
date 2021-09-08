@@ -21,8 +21,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainPages() {
 	const [onPage, setOnPage] = useState(0);
-	const [fabModalOpen, setFabModalOpen] = useState(false);
-	const { isSignedIn } = useContext(Context);
+
+	const { isSignedIn, fabModalOpen, setFabModalOpen } = useContext(Context);
 
 	const classes = useStyles();
 

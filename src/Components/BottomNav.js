@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -8,6 +8,7 @@ import EqualizerIcon from "@material-ui/icons/Equalizer";
 import { Fab, Grid } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import Controls from "./Controls/Controls";
+import { Context } from "../Context/Context";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -48,7 +49,8 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function BottomNav({ onPage, setOnPage, fabModalOpen, setFabModalOpen }) {
+export default function BottomNav({ onPage, setOnPage }) {
+	const { fabModalOpen, setFabModalOpen } = useContext(Context);
 	const classes = useStyles();
 
 	return (
