@@ -54,7 +54,6 @@ export default function SignInUp(props) {
 	};
 
 	const validatePassword = pass => {
-		// const reg = /^(?=.*[!@#$%^&*])(?=.*[a-z]).{8,32}$/;
 		const lengthReg = /^.{8,32}$/;
 		const charReg = /[!@#$%^&*]/;
 
