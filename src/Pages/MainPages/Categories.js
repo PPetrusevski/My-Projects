@@ -1,4 +1,5 @@
 import {
+	Dialog,
 	Grid,
 	Icon,
 	List,
@@ -33,9 +34,19 @@ const useStyles = makeStyles({
 	},
 });
 export default function Categories({ overlay }) {
-	const [catModalOpen, setCatModalOpen] = useState(false);
 	const classes = useStyles();
-	const { categories } = useContext(Context);
+
+	const { categories, catModalOpen, setCatModalOpen, fabModalOpen, setFabModalOpen } =
+		useContext(Context);
+
+	const handleCatModalClose = () => {
+		setCatModalOpen(false);
+	};
+
+	const handleCatModalOpen = () => {
+		fabModalOpen && setFabModalOpen(false);
+		setCatModalOpen(true);
+	};
 
 	return (
 		<Grid container justifyContent="center" className={overlay || ""}>
@@ -47,7 +58,7 @@ export default function Categories({ overlay }) {
 							disableGutters
 							divider
 							className={classes.listItem}
-							onClick={() => console.log("clicked")}
+							onClick={handleCatModalOpen}
 						>
 							<ListItemIcon style={{ minWidth: "40px" }}>
 								<Icon style={{ color: "black" }}>{"add"}</Icon>
@@ -99,6 +110,18 @@ export default function Categories({ overlay }) {
 						})}
 					</List>
 				</Controls.Card>
+			</Grid>
+			<Grid item xs={10}>
+				<form>
+					<Dialog
+						open={catModalOpen}
+						onClose={handleCatModalClose}
+						aria-labelledby="alert-dialog-title"
+						aria-describedby="alert-dialog-description"
+					>
+						<Controls.EntryModal open={catModalOpen} handleClose={handleCatModalClose} />
+					</Dialog>
+				</form>
 			</Grid>
 		</Grid>
 	);

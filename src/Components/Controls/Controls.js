@@ -1,8 +1,8 @@
 import Input from "./Input";
 import Button from "./Button";
 import Card from "./Card";
-import Modal from "./Modal";
+import EntryModal from "./EntryModal";
 
-const Controls = { Input, Button, Card, Modal };
+const Controls = { Input, Button, Card, EntryModal };
 
 export default Controls;

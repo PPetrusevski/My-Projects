@@ -50,8 +50,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function BottomNav({ onPage, setOnPage }) {
-	const { fabModalOpen, setFabModalOpen } = useContext(Context);
+	const { fabModalOpen, setFabModalOpen, catModalOpen, setCatModalOpen } = useContext(Context);
 	const classes = useStyles();
+
+	const handleFabBtn = () => {
+		catModalOpen && setCatModalOpen(false);
+		setFabModalOpen(!fabModalOpen);
+	};
 
 	return (
 		<Grid container className={classes.root}>
@@ -84,12 +89,7 @@ export default function BottomNav({ onPage, setOnPage }) {
 				</BottomNavigation>
 			</Grid>
 			<Grid item xs={3} className={classes.fabCont}>
-				<Fab
-					className={classes.fabBtn}
-					color="secondary"
-					aria-label="add"
-					onClick={() => setFabModalOpen(!fabModalOpen)}
-				>
+				<Fab className={classes.fabBtn} color="secondary" aria-label="add" onClick={handleFabBtn}>
 					<AddIcon />
 				</Fab>
 				{fabModalOpen && (

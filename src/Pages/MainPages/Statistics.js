@@ -11,5 +11,5 @@ import React, { useState } from "react";
 import Controls from "../../Components/Controls/Controls";
 
 export default function Statistics() {
-	return <Controls.Modal />;
+	return <p>Statistics</p>;
 }

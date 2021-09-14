@@ -9,7 +9,7 @@ export const Provider = ({ children }) => {
 	const [isSignedIn, setIsSignedIn] = useState(true);
 	const [userAvatar, setUserAvatar] = useState("");
 	const [fabModalOpen, setFabModalOpen] = useState(false);
-	// console.log(budgetTotal);
+	const [catModalOpen, setCatModalOpen] = useState(false);
 
 	const ContextObj = {
 		categories,
@@ -22,6 +22,8 @@ export const Provider = ({ children }) => {
 		setUserAvatar,
 		fabModalOpen,
 		setFabModalOpen,
+		catModalOpen,
+		setCatModalOpen,
 	};
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };
