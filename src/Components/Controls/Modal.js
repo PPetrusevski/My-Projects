@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -13,7 +13,12 @@ import { Context } from "../../Context/Context";
 
 export default function Modal() {
 	const [open, setOpen] = useState(true);
+	const [catType, setCatType] = useState("Income");
+	const [catName, setCatName] = useState("Sallary");
+
 	const { categories } = useContext(Context);
+
+	const whatCat = categories.filter(cat => cat.type === catType);
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -22,6 +27,9 @@ export default function Modal() {
 	const handleClose = () => {
 		setOpen(false);
 	};
+
+	console.log("CatType:", catType, "CatName:", catName);
+
 	return (
 		<Grid container>
 			<Grid item xs={10}>
@@ -39,21 +47,23 @@ export default function Modal() {
 								<Select
 									labelId="demo-simple-select-label"
 									id="demo-simple-select"
-									// onChange={}
+									onChange={e => setCatType(e.target.value)}
+									value={catType}
 									variant="outlined"
 								>
-									<MenuItem value={1}>Income</MenuItem>
-									<MenuItem value={2}>Expense</MenuItem>
+									<MenuItem value="Income">Income</MenuItem>
+									<MenuItem value="Expense">Expense</MenuItem>
 								</Select>
 							</FormControl>
 							<FormControl fullWidth size="small" style={{ marginTop: "8px", marginBottom: "8px" }}>
 								<Select
 									labelId="demo-simple-select-label"
 									id="demo-simple-select"
-									// onChange={}
+									value={catName || whatCat[0].name}
+									onChange={e => setCatName(e.target.value)}
 									variant="outlined"
 								>
-									{categories.map(cat => {
+									{whatCat.map(cat => {
 										return <MenuItem value={cat.name}>{cat.name}</MenuItem>;
 									})}
 								</Select>
