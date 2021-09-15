@@ -49,12 +49,13 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function BottomNav({ onPage, setOnPage }) {
-	const { fabModalOpen, setFabModalOpen, catModalOpen, setCatModalOpen } = useContext(Context);
+export default function BottomNav({ onPage, setOnPage, handleEntryModalOpen }) {
+	// const []
+	const { fabModalOpen, setFabModalOpen, entryModalOpen, setEntryModalOpen } = useContext(Context);
 	const classes = useStyles();
 
 	const handleFabBtn = () => {
-		catModalOpen && setCatModalOpen(false);
+		entryModalOpen && setEntryModalOpen(false);
 		setFabModalOpen(!fabModalOpen);
 	};
 
@@ -93,10 +94,22 @@ export default function BottomNav({ onPage, setOnPage }) {
 					<AddIcon />
 				</Fab>
 				{fabModalOpen && (
-					<Controls.Button text="Add Expense" size="small" className={classes.addExpBtn} />
+					<Controls.Button
+						text="Add Expense"
+						size="small"
+						className={classes.addExpBtn}
+						data-usage="Expense"
+						onClick={handleEntryModalOpen}
+					/>
 				)}
 				{fabModalOpen && (
-					<Controls.Button text="Add Income" size="small" className={classes.addIncBtn} />
+					<Controls.Button
+						text="Add Income"
+						size="small"
+						className={classes.addIncBtn}
+						data-usage="Income"
+						onClick={handleEntryModalOpen}
+					/>
 				)}
 			</Grid>
 		</Grid>

@@ -11,9 +11,9 @@ import Controls from "./Controls";
 import { FormControl, Grid, MenuItem, Select } from "@material-ui/core";
 import { Context } from "../../Context/Context";
 
-export default function EntryModal({ handleClose }) {
-	const [catType, setCatType] = useState("Income");
-	const [catName, setCatName] = useState("Sallary");
+export default function EntryModal({ handleClose, fabButtonClicked }) {
+	const [catType, setCatType] = useState(fabButtonClicked);
+	const [catName, setCatName] = useState("");
 
 	const { categories } = useContext(Context);
 
@@ -82,7 +82,13 @@ export default function EntryModal({ handleClose }) {
 					color="primary"
 				/>
 
-				<Controls.Button size="small" text="add" onClick={handleClose} color="primary" />
+				<Controls.Button
+					size="small"
+					text="add"
+					type="submit"
+					onClick={handleClose}
+					color="primary"
+				/>
 			</DialogActions>
 		</>
 	);

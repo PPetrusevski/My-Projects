@@ -74,10 +74,17 @@ export default function SignInUp(props) {
 		return false;
 	};
 
+	const usernameValidationHelper = () => {
+		validateUsername(username) ? setUsernameIsValid(true) : setUsernameIsValid(false);
+	};
+	const passwordValidationHelper = () => {
+		validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
+	};
+
 	const handleSignInUpSubmit = e => {
 		e.preventDefault();
-		validateUsername(username) ? setUsernameIsValid(true) : setUsernameIsValid(false);
-		validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
+		usernameValidationHelper();
+		passwordValidationHelper();
 		if (validateUsername(username) && validatePassword(password)) {
 			if (onPage === "signIn") {
 				fetch("https://randomuser.me/api/")
@@ -125,6 +132,7 @@ export default function SignInUp(props) {
 							error={!usernameIsValid}
 							helperText={!usernameIsValid && usernameErrMsg}
 							onChange={e => setUsername(e.target.value)}
+							onBlur={usernameValidationHelper}
 						/>
 					</Grid>
 					<Grid item xs={10}>
@@ -134,6 +142,7 @@ export default function SignInUp(props) {
 							type={visible ? "text" : "password"}
 							value={password}
 							onChange={e => setPassword(e.target.value)}
+							onBlur={passwordValidationHelper}
 							error={!passwordIsValid}
 							helperText={!passwordIsValid && passwordErrMsg}
 							InputProps={{
