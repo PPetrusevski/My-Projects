@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Overview from "./Overview";
 import Categories from "./Categories";
 import Statistics from "./Statistics";
-import Controls from "../../Components/Controls/Controls";
+import EntryModal from "./EntryModal";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -24,8 +24,16 @@ export default function MainPages() {
 	const [onPage, setOnPage] = useState(0);
 	const [fabButtonClicked, setFabButtonClicked] = useState("");
 
-	const { isSignedIn, fabModalOpen, setFabModalOpen, entryModalOpen, setEntryModalOpen } =
-		useContext(Context);
+	const {
+		categories,
+		setCategories,
+		newEntry,
+		isSignedIn,
+		fabModalOpen,
+		setFabModalOpen,
+		entryModalOpen,
+		setEntryModalOpen,
+	} = useContext(Context);
 
 	useEffect(() => {
 		entryModalOpen && handleEntryModalClose();
@@ -44,6 +52,18 @@ export default function MainPages() {
 		setEntryModalOpen(false);
 	};
 
+	const handleNewEntrySubmit = e => {
+		e.preventDefault();
+		setCategories(() => {
+			categories.forEach(cat => {
+				if (cat.name === newEntry.name) {
+					cat.entries.push(newEntry);
+				}
+			});
+			return categories;
+		});
+	};
+
 	return isSignedIn ? (
 		<Grid className={classes.root}>
 			<Header onPage={onPage} />
@@ -51,20 +71,20 @@ export default function MainPages() {
 			{onPage === 1 && <Categories overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
 			{onPage === 2 && <Statistics overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
 			<Grid item xs={10}>
-				<form>
-					<Dialog
-						open={entryModalOpen}
-						onClose={handleEntryModalClose}
-						aria-labelledby="alert-dialog-title"
-						aria-describedby="alert-dialog-description"
-					>
-						<Controls.EntryModal
+				<Dialog
+					open={entryModalOpen}
+					onClose={handleEntryModalClose}
+					aria-labelledby="alert-dialog-title"
+					aria-describedby="alert-dialog-description"
+				>
+					<form onSubmit={handleNewEntrySubmit}>
+						<EntryModal
 							open={entryModalOpen}
 							handleClose={handleEntryModalClose}
 							fabButtonClicked={fabButtonClicked}
 						/>
-					</Dialog>
-				</form>
+					</form>
+				</Dialog>
 			</Grid>
 			<BottomNav
 				onPage={onPage}

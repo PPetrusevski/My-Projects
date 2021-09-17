@@ -7,17 +7,33 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
-import Controls from "./Controls";
+import Controls from "../../Components/Controls/Controls";
 import { FormControl, Grid, MenuItem, Select } from "@material-ui/core";
 import { Context } from "../../Context/Context";
 
 export default function EntryModal({ handleClose, fabButtonClicked }) {
 	const [catType, setCatType] = useState(fabButtonClicked);
 	const [catName, setCatName] = useState("");
+	const [amount, setAmount] = useState("");
+	const [date, setDate] = useState(new Date().toLocaleDateString());
+	const [desc, setDesc] = useState("");
 
-	const { categories } = useContext(Context);
+	const { categories, setNewEntry, newEntry } = useContext(Context);
 
 	const whatCat = categories.filter(cat => cat.type === catType);
+
+	const handleSetNewEntry = () => {
+		setNewEntry({
+			type: catType,
+			name: catName || whatCat[0].name,
+			amount,
+			date,
+			desc,
+		});
+		handleClose();
+	};
+
+	// console.log(newEntry);
 
 	return (
 		<>
@@ -49,7 +65,16 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 					</Select>
 				</FormControl>
 				<FormControl fullWidth>
-					<Controls.Input label="Amount" variant="outlined" type="number" size="small" />
+					<Controls.Input
+						label="Amount"
+						value={amount}
+						onChange={e => {
+							setAmount(+e.target.value);
+						}}
+						variant="outlined"
+						type="number"
+						size="small"
+					/>
 				</FormControl>
 				<FormControl fullWidth>
 					<MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -61,8 +86,8 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 							margin="normal"
 							id="date-picker-inline"
 							label="Date picker inline"
-							value={new Date()}
-							// onChange={asd}
+							value={date}
+							onChange={date => setDate(date)}
 							// KeyboardButtonProps={{
 							// 	"aria-label": "change date",
 							// }}
@@ -70,7 +95,14 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 					</MuiPickersUtilsProvider>
 				</FormControl>
 				<FormControl fullWidth>
-					<Controls.Input size="small" label="Description (optional)" />
+					<Controls.Input
+						size="small"
+						value={desc}
+						onChange={e => {
+							setDesc(e.target.value);
+						}}
+						label="Description (optional)"
+					/>
 				</FormControl>
 			</DialogContent>
 			<DialogActions>
@@ -86,7 +118,7 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 					size="small"
 					text="add"
 					type="submit"
-					onClick={handleClose}
+					onClick={handleSetNewEntry}
 					color="primary"
 				/>
 			</DialogActions>

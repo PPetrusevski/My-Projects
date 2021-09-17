@@ -10,6 +10,19 @@ export const Provider = ({ children }) => {
 	const [userAvatar, setUserAvatar] = useState("");
 	const [fabModalOpen, setFabModalOpen] = useState(false);
 	const [entryModalOpen, setEntryModalOpen] = useState(false);
+	const [newEntry, setNewEntry] = useState({});
+
+	const handleNewEntrySubmit = e => {
+		e.preventDefault();
+		setCategories(() => {
+			categories.forEach(cat => {
+				if (cat.name === newEntry.name) {
+					cat.entries.push(newEntry);
+				}
+			});
+			return categories;
+		});
+	};
 
 	const ContextObj = {
 		categories,
@@ -24,6 +37,9 @@ export const Provider = ({ children }) => {
 		setFabModalOpen,
 		entryModalOpen,
 		setEntryModalOpen,
+		newEntry,
+		setNewEntry,
 	};
+	console.log("fromContext:", categories);
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };
