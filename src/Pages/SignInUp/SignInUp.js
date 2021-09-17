@@ -75,10 +75,14 @@ export default function SignInUp(props) {
 	};
 
 	const usernameValidationHelper = () => {
-		validateUsername(username) ? setUsernameIsValid(true) : setUsernameIsValid(false);
+		if (username.length > 0) {
+			validateUsername(username) ? setUsernameIsValid(true) : setUsernameIsValid(false);
+		}
 	};
 	const passwordValidationHelper = () => {
-		validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
+		if (password.length > 0) {
+			validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
+		}
 	};
 
 	const handleSignInUpSubmit = e => {
