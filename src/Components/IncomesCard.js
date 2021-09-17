@@ -11,12 +11,15 @@ import { Context } from "../Context/Context";
 import Controls from "./Controls/Controls";
 
 export default function IncomesCard({ entriesTotal, calculatePercentage }) {
-	const { categories } = useContext(Context);
+	const { categories, entries } = useContext(Context);
 	const income = categories.filter(cat => cat.type === "Income");
+	const incomeEntries = entries.filter(ent => ent.type === "Income");
+
 	return (
 		<Controls.Card title="Income">
 			<List dense>
 				{income.map((inc, idx) => {
+					const matchingEntries = entries.filter(ent => ent.categoryId === inc.id);
 					return (
 						<div key={inc.id + idx + inc.name}>
 							<ListItem disableGutters>
@@ -25,14 +28,14 @@ export default function IncomesCard({ entriesTotal, calculatePercentage }) {
 								</ListItemIcon>
 								<ListItemText primary={inc.name} />
 								<ListItemText
-									primary={`${entriesTotal(inc.entries)}${inc.budget ? `/${inc.budget}` : ""}`}
+									primary={`${entriesTotal(matchingEntries)}${inc.budget ? `/${inc.budget}` : ""}`}
 									style={{ textAlign: "right" }}
 								/>
 							</ListItem>
 							<LinearProgress
 								variant="determinate"
 								color="primary"
-								value={calculatePercentage(entriesTotal(inc.entries), inc.budget)}
+								value={calculatePercentage(entriesTotal(matchingEntries), inc.budget)}
 							/>
 						</div>
 					);

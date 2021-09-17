@@ -15,7 +15,7 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 	const [catType, setCatType] = useState(fabButtonClicked);
 	const [catName, setCatName] = useState("");
 	const [amount, setAmount] = useState("");
-	const [date, setDate] = useState(new Date().toLocaleDateString());
+	const [date, setDate] = useState(new Date());
 	const [desc, setDesc] = useState("");
 
 	const { categories, setNewEntry, newEntry } = useContext(Context);

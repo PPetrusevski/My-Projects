@@ -35,14 +35,16 @@ const useStyles = makeStyles({
 });
 
 export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
-	const { categories } = useContext(Context);
+	const { categories, entries } = useContext(Context);
 	const classes = useStyles();
 	const expenses = categories.filter(cat => cat.type === "Expense");
 	return (
 		<Controls.Card title="Expenses">
 			<List dense>
 				{expenses.map((exp, idx) => {
-					const budgetExceeded = entriesTotal(exp.entries) > exp.budget;
+					const matchingEntries = entries.filter(ent => ent.categoryId === exp.id);
+
+					const budgetExceeded = entriesTotal(matchingEntries) > exp.budget;
 
 					return (
 						<div key={exp.id + idx + exp.name}>
@@ -54,7 +56,7 @@ export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
 								</ListItemIcon>
 								<ListItemText primary={exp.name} />
 								<ListItemText
-									primary={`${entriesTotal(exp.entries)}${exp.budget ? `/${exp.budget}` : ""}`}
+									primary={`${entriesTotal(matchingEntries)}${exp.budget ? `/${exp.budget}` : ""}`}
 									style={{ textAlign: "right" }}
 								/>
 							</ListItem>
@@ -62,7 +64,7 @@ export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
 								<LinearProgress
 									variant="determinate"
 									color={budgetExceeded ? "primary" : "secondary"}
-									value={calculatePercentage(entriesTotal(exp.entries), exp.budget)}
+									value={calculatePercentage(entriesTotal(matchingEntries), exp.budget)}
 								/>
 							</div>
 						</div>

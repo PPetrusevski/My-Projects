@@ -21,49 +21,45 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function EntriesCard() {
-	const { categories } = useContext(Context);
+	const { entries, categories } = useContext(Context);
 	const classes = useStyles();
 	return (
 		<Controls.Card title="Entries">
 			<List dense style={{ paddingBottom: 0 }}>
-				{categories ? (
-					categories.map(cat => {
+				{entries ? (
+					entries.map((ent, idx) => {
+						const isIncome = ent.type === "Income";
+						const whichCat = categories.find(cat => cat.id === ent.categoryId);
+						console.log(ent);
 						return (
-							cat.entries &&
-							cat.entries.map((entry, idx) => {
-								const isIncome = cat.type === "Income";
-
-								return (
-									<div key={cat.id + entry.amount + idx}>
-										<ListItem disableGutters divider>
-											<ListItemIcon style={{ minWidth: "40px" }}>
-												<Icon style={{ color: "black" }}>{cat.iconName}</Icon>
-											</ListItemIcon>
-											<ListItemText
-												primary={
-													<Typography variant="body2" style={{ lineHeight: "1" }}>
-														{cat.name}
-													</Typography>
-												}
-												secondary={
-													<Typography
-														variant="caption"
-														color="textSecondary"
-														style={{ fontSize: "10px" }}
-													>
-														{entry.date}
-													</Typography>
-												}
-											/>
-											<ListItemText
-												primary={`${isIncome ? "+" : "-"}${entry.amount}`}
-												style={{ textAlign: "right" }}
-												className={isIncome ? classes.green : classes.red}
-											/>
-										</ListItem>
-									</div>
-								);
-							})
+							<div key={ent.id + ent.amount + idx}>
+								<ListItem disableGutters divider>
+									<ListItemIcon style={{ minWidth: "40px" }}>
+										<Icon style={{ color: "black" }}>{whichCat.iconName}</Icon>
+									</ListItemIcon>
+									<ListItemText
+										primary={
+											<Typography variant="body2" style={{ lineHeight: "1" }}>
+												{whichCat.name}
+											</Typography>
+										}
+										secondary={
+											<Typography
+												variant="caption"
+												color="textSecondary"
+												style={{ fontSize: "10px" }}
+											>
+												{ent.date}
+											</Typography>
+										}
+									/>
+									<ListItemText
+										primary={`${isIncome ? "+" : "-"}${ent.amount}`}
+										style={{ textAlign: "right" }}
+										className={isIncome ? classes.green : classes.red}
+									/>
+								</ListItem>
+							</div>
 						);
 					})
 				) : (

@@ -6,7 +6,6 @@ const Categories = [
 		budget: "",
 		iconName: "euro",
 		isEnabled: false,
-		entries: [],
 	},
 	{
 		id: 2,
@@ -15,10 +14,6 @@ const Categories = [
 		budget: "",
 		iconName: "home",
 		isEnabled: false,
-		entries: [
-			{ date: "20.06.21", amount: 1000 },
-			{ date: "25.09.21", amount: 3000 },
-		],
 	},
 	{
 		id: 3,
@@ -27,7 +22,6 @@ const Categories = [
 		budget: "",
 		iconName: "fastfood",
 		isEnabled: false,
-		entries: [{ date: "13.05.21", amount: 1000 }],
 	},
 	{
 		id: 4,
@@ -36,7 +30,6 @@ const Categories = [
 		budget: "",
 		iconName: "fitness_center",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 	{
 		id: 5,
@@ -45,7 +38,6 @@ const Categories = [
 		budget: "",
 		iconName: "monetization_on",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 2500 }],
 	},
 	{
 		id: 6,
@@ -54,7 +46,6 @@ const Categories = [
 		budget: "",
 		iconName: "description",
 		isEnabled: false,
-		entries: [{ date: "13.05.21", amount: 1000 }],
 	},
 	{
 		id: 7,
@@ -63,7 +54,6 @@ const Categories = [
 		budget: "",
 		iconName: "beach_access",
 		isEnabled: false,
-		entries: [{ date: "13.05.21", amount: 1000 }],
 	},
 
 	{
@@ -73,7 +63,6 @@ const Categories = [
 		budget: "",
 		iconName: "build",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 	{
 		id: 9,
@@ -82,7 +71,6 @@ const Categories = [
 		budget: "",
 		iconName: "flight_takeoff",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 	{
 		id: 10,
@@ -91,7 +79,6 @@ const Categories = [
 		budget: "",
 		iconName: "local_cafe",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 	{
 		id: 11,
@@ -100,7 +87,6 @@ const Categories = [
 		budget: "",
 		iconName: "restaurant",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 	{
 		id: 12,
@@ -109,7 +95,6 @@ const Categories = [
 		budget: "",
 		iconName: "tv",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 	{
 		id: 13,
@@ -118,7 +103,6 @@ const Categories = [
 		budget: "",
 		iconName: "money_off",
 		isEnabled: false,
-		entries: [{ date: "20.06.21", amount: 1000 }],
 	},
 ];
 

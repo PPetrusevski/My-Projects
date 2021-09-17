@@ -33,6 +33,7 @@ export default function MainPages() {
 		setFabModalOpen,
 		entryModalOpen,
 		setEntryModalOpen,
+		addNewEntry,
 	} = useContext(Context);
 
 	useEffect(() => {
@@ -54,14 +55,7 @@ export default function MainPages() {
 
 	const handleNewEntrySubmit = e => {
 		e.preventDefault();
-		setCategories(() => {
-			categories.forEach(cat => {
-				if (cat.name === newEntry.name) {
-					cat.entries.push(newEntry);
-				}
-			});
-			return categories;
-		});
+		addNewEntry(newEntry);
 	};
 
 	return isSignedIn ? (

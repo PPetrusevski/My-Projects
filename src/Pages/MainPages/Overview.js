@@ -6,11 +6,11 @@ import ExpensesCard from "../../Components/ExpensesCard";
 import EntriesCard from "../../Components/EntriesCard";
 
 export default function Overview({ overlay }) {
-	const { categories } = useContext(Context);
+	const { categories, entries } = useContext(Context);
 
 	const hasIncomes = categories.some(cat => cat.type === "Income");
 	const hasExpenses = categories.some(cat => cat.type === "Expense");
-	const hasEntries = categories.some(cat => cat.entries.length > 0);
+	const hasEntries = entries.length > 0;
 
 	const entriesTotal = entry => {
 		let total = 0;
