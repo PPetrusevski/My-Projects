@@ -1,22 +1,13 @@
-import {
-	Grid,
-	InputAdornment,
-	InputBase,
-	makeStyles,
-	TextField,
-	Typography,
-} from "@material-ui/core";
-import { Link, navigate } from "@reach/router";
+import { Grid, InputAdornment, InputBase, makeStyles, Typography } from "@material-ui/core";
+import { navigate } from "@reach/router";
 import React, { useContext } from "react";
 import { Context } from "../../Context/Context";
 import Controls from "../../Components/Controls/Controls";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Checkbox from "@material-ui/core/Checkbox";
 import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles(theme => ({
@@ -37,10 +28,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function AmountPage() {
-	const { categories, setIsSignedIn } = useContext(Context);
+	const { activeCategories, setIsSignedIn } = useContext(Context);
 	const classes = useStyles();
 
-	const handleToggle = (e, cat) => {};
+	// const handleToggle = (e, cat) => {};
 
 	const handleComplete = () => {
 		setIsSignedIn(true);
@@ -61,7 +52,7 @@ export default function AmountPage() {
 				</Grid>
 				<Grid item xs={12}>
 					<List dense>
-						{categories.map(cat => {
+						{activeCategories.map(cat => {
 							return (
 								<ListItem key={cat.id} divider={true} disableGutters>
 									<ListItemIcon>

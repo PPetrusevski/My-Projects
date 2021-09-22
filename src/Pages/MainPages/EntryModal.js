@@ -1,43 +1,117 @@
 import React, { useState, useContext, useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
+import nextId from "react-id-generator";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import Controls from "../../Components/Controls/Controls";
-import { FormControl, Grid, MenuItem, Select } from "@material-ui/core";
+import { FormControl, makeStyles, MenuItem, Select } from "@material-ui/core";
+
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import { Context } from "../../Context/Context";
 
-export default function EntryModal({ handleClose, fabButtonClicked }) {
-	const [catType, setCatType] = useState(fabButtonClicked);
-	const [catName, setCatName] = useState("");
-	const [amount, setAmount] = useState("");
-	const [date, setDate] = useState(new Date());
-	const [desc, setDesc] = useState("");
+const parseDate = dateString => {
+	const dateArr = dateString.split("/");
+	return new Date(`${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`);
+};
 
-	const { categories, setNewEntry, newEntry } = useContext(Context);
+export default function EntryModal({
+	handleClose,
+	fabButtonClicked,
+	cats,
+	inUpdateMode,
+	entryClicked,
+}) {
+	//VALUES
+	const [catType, setCatType] = useState(inUpdateMode ? entryClicked.type : fabButtonClicked);
+	const [whatCat, setWhatCat] = useState(cats.filter(cat => cat.type === catType));
+	const [catName, setCatName] = useState(
+		inUpdateMode ? cats.find(cat => cat.id === entryClicked.categoryId).name : ""
+	);
+	const [amount, setAmount] = useState(inUpdateMode ? entryClicked.amount : "");
+	const [date, setDate] = useState(
+		inUpdateMode ? new Date(parseDate(entryClicked.date)) : new Date()
+	);
+	const [desc, setDesc] = useState(inUpdateMode ? entryClicked.description : "");
+	const [catInputValid, setCatInputValid] = useState(true);
+	const [amountInputValid, setAmountInputValid] = useState(true);
+	const [btnType, setBtnType] = useState("button");
 
-	const whatCat = categories.filter(cat => cat.type === catType);
+	//VALIDATION
 
-	const handleSetNewEntry = () => {
-		setNewEntry({
-			type: catType,
-			name: catName || whatCat[0].name,
-			amount,
-			date,
-			desc,
-		});
-		handleClose();
+	const validateInputs = () => {
+		if (!catName || !amount || amount < 1) {
+			if (!catName) {
+				setCatInputValid(false);
+			}
+			if (!amount || amount < 1) {
+				setAmountInputValid(false);
+			}
+			return false;
+		}
+		return true;
 	};
 
-	// console.log(newEntry);
+	const { setNewEntry, updatedEntry, setUpdatedEntry } = useContext(Context);
 
+	// const catId = _name => {
+	// 	return cats.find(cat => cat.name === _name).id;
+	// };
+	// const whatCat = cats.filter(cat => cat.type === catType);
+
+	useEffect(() => {
+		if (!inUpdateMode) {
+			setWhatCat(cats.filter(cat => cat.type === catType));
+			setCatName("");
+		}
+	}, [catType]);
+
+	const handleNewEntry = () => {
+		if (validateInputs()) {
+			setBtnType("submit");
+			if (!inUpdateMode) {
+				setNewEntry({
+					id: nextId(),
+					type: catType,
+					categoryId: cats.find(cat => cat.name === catName).id,
+					amount,
+					date: date.toLocaleDateString("mk-MK"),
+					description: desc,
+				});
+			} else {
+				setUpdatedEntry({
+					id: entryClicked.id,
+					type: catType,
+					categoryId: cats.find(cat => cat.name === catName).id,
+					amount,
+					date: date.toLocaleDateString("mk-MK"),
+					description: desc,
+				});
+			}
+			handleClose();
+		}
+	};
+	console.log(updatedEntry);
+
+	const useStyles = makeStyles(theme => ({
+		root: {
+			"& label.Mui-focused": {
+				color: theme.palette.primary.main,
+			},
+			"& .MuiOutlinedInput-root": {
+				"&.Mui-focused fieldset": {
+					borderColor: theme.palette.primary.main,
+				},
+			},
+		},
+	}));
+	// console.log(parseDate("13/05/2021"));
+	const classes = useStyles();
 	return (
 		<>
-			<DialogTitle>Add new entry</DialogTitle>
+			<DialogTitle>{inUpdateMode ? "Update entry" : "Add new entry"}</DialogTitle>
 			<DialogContent>
 				<FormControl fullWidth size="small" style={{ marginTop: "8px", marginBottom: "8px" }}>
 					<Select
@@ -51,18 +125,20 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 						<MenuItem value="Expense">Expense</MenuItem>
 					</Select>
 				</FormControl>
-				<FormControl fullWidth size="small" style={{ marginTop: "8px", marginBottom: "8px" }}>
-					<Select
-						labelId="demo-simple-select-label"
-						id="demo-simple-select"
-						value={catName || whatCat[0].name}
-						onChange={e => setCatName(e.target.value)}
-						variant="outlined"
-					>
-						{whatCat.map(cat => {
-							return <MenuItem value={cat.name}>{cat.name}</MenuItem>;
-						})}
-					</Select>
+				<FormControl fullWidth style={{ marginTop: "8px", marginBottom: "8px" }}>
+					<Autocomplete
+						className={classes.root}
+						disablePortal
+						id="combo-box-demo"
+						size="small"
+						options={whatCat}
+						getOptionLabel={option => option.name}
+						inputValue={catName}
+						onChange={(_, value) => setCatName(value.name)}
+						renderInput={params => (
+							<TextField {...params} label="Categories" error={!catInputValid} />
+						)}
+					/>
 				</FormControl>
 				<FormControl fullWidth>
 					<Controls.Input
@@ -74,6 +150,7 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 						variant="outlined"
 						type="number"
 						size="small"
+						error={!amountInputValid}
 					/>
 				</FormControl>
 				<FormControl fullWidth>
@@ -116,9 +193,9 @@ export default function EntryModal({ handleClose, fabButtonClicked }) {
 
 				<Controls.Button
 					size="small"
-					text="add"
-					type="submit"
-					onClick={handleSetNewEntry}
+					text={inUpdateMode ? "update" : "add"}
+					type={btnType}
+					onClick={handleNewEntry}
 					color="primary"
 				/>
 			</DialogActions>

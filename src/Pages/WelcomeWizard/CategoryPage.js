@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function CategoryPage({ handleStep }) {
 	const [chosenCategories, setchosenCategories] = useState([]);
-	const { categories, setCategories } = useContext(Context);
+	const { categories, activeCategories, setActiveCategories } = useContext(Context);
 
 	const classes = useStyles();
 
@@ -83,7 +83,7 @@ export default function CategoryPage({ handleStep }) {
 					text="Done"
 					disabled={chosenCategories.length ? false : true}
 					onClick={() => {
-						setCategories(chosenCategories);
+						setActiveCategories(chosenCategories);
 						handleStep(3);
 					}}
 				/>

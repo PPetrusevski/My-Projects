@@ -1,5 +1,4 @@
 import {
-	Dialog,
 	Grid,
 	Icon,
 	List,
@@ -10,7 +9,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Controls from "../../Components/Controls/Controls";
 import { Context } from "../../Context/Context";
 
@@ -36,7 +35,7 @@ const useStyles = makeStyles({
 export default function Categories({ overlay }) {
 	const classes = useStyles();
 
-	const { categories, catModalOpen, setCatModalOpen, fabModalOpen, setFabModalOpen } =
+	const { categories} =
 		useContext(Context);
 
 	return (

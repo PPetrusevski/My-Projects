@@ -1,14 +1,4 @@
-import {
-	Dialog,
-	DialogActions,
-	DialogContent,
-	FormControl,
-	Grid,
-	MenuItem,
-	Select,
-} from "@material-ui/core";
-import React, { useState } from "react";
-import Controls from "../../Components/Controls/Controls";
+import React from "react";
 
 export default function Statistics() {
 	return <p>Statistics</p>;

@@ -35,41 +35,50 @@ const useStyles = makeStyles({
 });
 
 export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
-	const { categories, entries } = useContext(Context);
+	const { activeCategories, entries } = useContext(Context);
 	const classes = useStyles();
-	const expenses = categories.filter(cat => cat.type === "Expense");
+	const expenses = activeCategories ? activeCategories.filter(cat => cat.type === "Expense") : null;
+
 	return (
 		<Controls.Card title="Expenses">
 			<List dense>
-				{expenses.map((exp, idx) => {
-					const matchingEntries = entries.filter(ent => ent.categoryId === exp.id);
+				{expenses.length ? (
+					expenses.map((exp, idx) => {
+						const matchingEntries = entries.filter(ent => ent.categoryId === exp.id);
 
-					const budgetExceeded = entriesTotal(matchingEntries) > exp.budget;
+						const budgetExceeded = entriesTotal(matchingEntries) > exp.budget;
 
-					return (
-						<div key={exp.id + idx + exp.name}>
-							<ListItem disableGutters>
-								<ListItemIcon style={{ minWidth: "40px" }}>
-									<Icon className={budgetExceeded ? classes.red : classes.green}>
-										{exp.iconName}
-									</Icon>
-								</ListItemIcon>
-								<ListItemText primary={exp.name} />
-								<ListItemText
-									primary={`${entriesTotal(matchingEntries)}${exp.budget ? `/${exp.budget}` : ""}`}
-									style={{ textAlign: "right" }}
-								/>
-							</ListItem>
-							<div className={classes.root}>
-								<LinearProgress
-									variant="determinate"
-									color={budgetExceeded ? "primary" : "secondary"}
-									value={calculatePercentage(entriesTotal(matchingEntries), exp.budget)}
-								/>
+						return (
+							<div key={exp.id + idx + exp.name}>
+								<ListItem disableGutters>
+									<ListItemIcon style={{ minWidth: "40px" }}>
+										<Icon className={budgetExceeded ? classes.red : classes.green}>
+											{exp.iconName}
+										</Icon>
+									</ListItemIcon>
+									<ListItemText primary={exp.name} />
+									<ListItemText
+										primary={`${entriesTotal(matchingEntries)}${
+											exp.budget ? `/${exp.budget}` : ""
+										}`}
+										style={{ textAlign: "right" }}
+									/>
+								</ListItem>
+								<div className={classes.root}>
+									<LinearProgress
+										variant="determinate"
+										color={budgetExceeded ? "primary" : "secondary"}
+										value={calculatePercentage(entriesTotal(matchingEntries), exp.budget)}
+									/>
+								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})
+				) : (
+					<ListItem disableGutters>
+						<ListItemText primary="NO EXPENSES!" />
+					</ListItem>
+				)}
 			</List>
 		</Controls.Card>
 	);

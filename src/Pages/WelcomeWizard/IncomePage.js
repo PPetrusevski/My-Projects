@@ -1,7 +1,6 @@
 import { Grid, makeStyles, Typography } from "@material-ui/core";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Controls from "../../Components/Controls/Controls";
-import { Context } from "../../Context/Context";
 
 const useStyles = makeStyles(theme => ({
 	heading: {

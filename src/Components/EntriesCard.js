@@ -20,50 +20,61 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-export default function EntriesCard() {
+export default function EntriesCard({ handleEntryModalOpen }) {
 	const { entries, categories } = useContext(Context);
 	const classes = useStyles();
 	return (
 		<Controls.Card title="Entries">
 			<List dense style={{ paddingBottom: 0 }}>
-				{entries ? (
+				{entries.length ? (
 					entries.map((ent, idx) => {
 						const isIncome = ent.type === "Income";
 						const whichCat = categories.find(cat => cat.id === ent.categoryId);
-						console.log(ent);
 						return (
-							<div key={ent.id + ent.amount + idx}>
-								<ListItem disableGutters divider>
-									<ListItemIcon style={{ minWidth: "40px" }}>
-										<Icon style={{ color: "black" }}>{whichCat.iconName}</Icon>
-									</ListItemIcon>
-									<ListItemText
-										primary={
-											<Typography variant="body2" style={{ lineHeight: "1" }}>
-												{whichCat.name}
-											</Typography>
-										}
-										secondary={
-											<Typography
-												variant="caption"
-												color="textSecondary"
-												style={{ fontSize: "10px" }}
-											>
-												{ent.date}
-											</Typography>
-										}
-									/>
-									<ListItemText
-										primary={`${isIncome ? "+" : "-"}${ent.amount}`}
-										style={{ textAlign: "right" }}
-										className={isIncome ? classes.green : classes.red}
-									/>
-								</ListItem>
-							</div>
+							<ListItem
+								key={ent.id + ent.amount + idx}
+								disableGutters
+								divider
+								button
+								onClick={event => {
+									handleEntryModalOpen(event, ent);
+								}}
+								onContextMenu={e => {
+									e.preventDefault();
+									console.log("right click");
+								}}
+							>
+								<ListItemIcon style={{ minWidth: "40px" }}>
+									<Icon style={{ color: "black" }}>{whichCat.iconName}</Icon>
+								</ListItemIcon>
+								<ListItemText
+									primary={
+										<Typography variant="body2" style={{ lineHeight: "1" }}>
+											{whichCat.name}
+										</Typography>
+									}
+									secondary={
+										<Typography
+											variant="caption"
+											color="textSecondary"
+											style={{ fontSize: "10px" }}
+										>
+											{ent.date}
+										</Typography>
+									}
+								/>
+								<ListItemText
+									primary={`${isIncome ? "+" : "-"}${ent.amount}`}
+									style={{ textAlign: "right" }}
+									className={isIncome ? classes.green : classes.red}
+								/>
+							</ListItem>
 						);
 					})
 				) : (
-					<p>Nothing to show here</p>
+					<ListItem disableGutters>
+						<ListItemText primary="NO ENTRIES!" />
+					</ListItem>
 				)}
 			</List>
 		</Controls.Card>

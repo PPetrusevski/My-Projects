@@ -23,10 +23,10 @@ const useStyles = makeStyles(theme => ({
 export default function MainPages() {
 	const [onPage, setOnPage] = useState(0);
 	const [fabButtonClicked, setFabButtonClicked] = useState("");
+	const [entryClicked, setEntryClicked] = useState("");
 
 	const {
 		categories,
-		setCategories,
 		newEntry,
 		isSignedIn,
 		fabModalOpen,
@@ -34,6 +34,8 @@ export default function MainPages() {
 		entryModalOpen,
 		setEntryModalOpen,
 		addNewEntry,
+		updateEntry,
+		updatedEntry,
 	} = useContext(Context);
 
 	useEffect(() => {
@@ -43,11 +45,16 @@ export default function MainPages() {
 
 	const classes = useStyles();
 
-	const handleEntryModalOpen = e => {
+	const handleEntryModalOpen = (event, ent) => {
 		fabModalOpen && setFabModalOpen(false);
 		setEntryModalOpen(true);
-		setFabButtonClicked(e.currentTarget.getAttribute("data-usage"));
-		console.log(e.currentTarget.getAttribute("data-usage"));
+		if (event.currentTarget.hasAttribute("data-usage")) {
+			setFabButtonClicked(event.currentTarget.getAttribute("data-usage"));
+			setEntryClicked("");
+		} else {
+			setEntryClicked(ent);
+			console.log(ent);
+		}
 	};
 	const handleEntryModalClose = () => {
 		setEntryModalOpen(false);
@@ -55,13 +62,22 @@ export default function MainPages() {
 
 	const handleNewEntrySubmit = e => {
 		e.preventDefault();
-		addNewEntry(newEntry);
+		if (!entryClicked) {
+			addNewEntry(newEntry);
+		} else {
+			updateEntry(updatedEntry);
+		}
 	};
 
 	return isSignedIn ? (
 		<Grid className={classes.root}>
 			<Header onPage={onPage} />
-			{onPage === 0 && <Overview overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
+			{onPage === 0 && (
+				<Overview
+					overlay={(fabModalOpen || entryModalOpen) && classes.overlay}
+					handleEntryModalOpen={handleEntryModalOpen}
+				/>
+			)}
 			{onPage === 1 && <Categories overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
 			{onPage === 2 && <Statistics overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
 			<Grid item xs={10}>
@@ -76,6 +92,9 @@ export default function MainPages() {
 							open={entryModalOpen}
 							handleClose={handleEntryModalClose}
 							fabButtonClicked={fabButtonClicked}
+							inUpdateMode={!!entryClicked}
+							entryClicked={entryClicked}
+							cats={categories}
 						/>
 					</form>
 				</Dialog>
