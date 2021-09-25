@@ -7,7 +7,7 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
 	const [activeCategories, setActiveCategories] = useState(Categories);
-	const [entries, setEntries] = useState(Entries);
+	const [entries, setEntries] = useState([]);
 	const [budgetTotal, setBudgetTotal] = useState(0);
 	const [isSignedIn, setIsSignedIn] = useState(true);
 	const [userAvatar, setUserAvatar] = useState("");
@@ -15,6 +15,8 @@ export const Provider = ({ children }) => {
 	const [entryModalOpen, setEntryModalOpen] = useState(false);
 	const [newEntry, setNewEntry] = useState({});
 	const [updatedEntry, setUpdatedEntry] = useState({});
+	const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+	const [newCategory, setNewCategory] = useState({});
 
 	const addNewEntry = newEntry => {
 		setEntries([newEntry, ...entries]);
@@ -29,6 +31,10 @@ export const Provider = ({ children }) => {
 			}
 		});
 		setEntries(updatedEntries);
+	};
+
+	const addNewCategory = newCategory => {
+		setActiveCategories([newCategory, ...activeCategories]);
 	};
 
 	const ContextObj = {
@@ -54,6 +60,11 @@ export const Provider = ({ children }) => {
 		setUpdatedEntry,
 		addNewEntry,
 		updateEntry,
+		categoryModalOpen,
+		setCategoryModalOpen,
+		newCategory,
+		setNewCategory,
+		addNewCategory,
 	};
 	// console.log("fromContext:", newEntry);
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;

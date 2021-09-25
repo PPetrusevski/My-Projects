@@ -51,11 +51,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function BottomNav({ onPage, setOnPage, handleEntryModalOpen }) {
 	// const []
-	const { fabModalOpen, setFabModalOpen, entryModalOpen, setEntryModalOpen } = useContext(Context);
+	const {
+		fabModalOpen,
+		setFabModalOpen,
+		entryModalOpen,
+		setEntryModalOpen,
+		categoryModalOpen,
+		setCategoryModalOpen,
+	} = useContext(Context);
 	const classes = useStyles();
 
 	const handleFabBtn = () => {
 		entryModalOpen && setEntryModalOpen(false);
+		categoryModalOpen && setCategoryModalOpen(false);
 		setFabModalOpen(!fabModalOpen);
 	};
 

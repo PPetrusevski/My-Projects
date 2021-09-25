@@ -8,6 +8,7 @@ import Overview from "./Overview";
 import Categories from "./Categories";
 import Statistics from "./Statistics";
 import EntryModal from "./EntryModal";
+import CategoryModal from "./CategoryModal";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -27,6 +28,7 @@ export default function MainPages() {
 
 	const {
 		categories,
+		activeCategories,
 		newEntry,
 		isSignedIn,
 		fabModalOpen,
@@ -36,11 +38,16 @@ export default function MainPages() {
 		addNewEntry,
 		updateEntry,
 		updatedEntry,
+		categoryModalOpen,
+		setCategoryModalOpen,
+		addNewCategory,
+		newCategory,
 	} = useContext(Context);
 
 	useEffect(() => {
 		entryModalOpen && handleEntryModalClose();
 		fabModalOpen && setFabModalOpen(false);
+		categoryModalOpen && setCategoryModalOpen(false);
 	}, [onPage]);
 
 	const classes = useStyles();
@@ -53,7 +60,6 @@ export default function MainPages() {
 			setEntryClicked("");
 		} else {
 			setEntryClicked(ent);
-			console.log(ent);
 		}
 	};
 	const handleEntryModalClose = () => {
@@ -68,6 +74,19 @@ export default function MainPages() {
 			updateEntry(updatedEntry);
 		}
 	};
+	const handleCategoryModalOpen = (event, ent) => {
+		fabModalOpen && setFabModalOpen(false);
+		entryModalOpen && setEntryModalOpen(false);
+		setCategoryModalOpen(true);
+	};
+	const handleCategoryModalClose = () => {
+		setCategoryModalOpen(false);
+	};
+
+	const handleCategorySubmit = e => {
+		e.preventDefault();
+		addNewCategory(newCategory);
+	};
 
 	return isSignedIn ? (
 		<Grid className={classes.root}>
@@ -78,7 +97,12 @@ export default function MainPages() {
 					handleEntryModalOpen={handleEntryModalOpen}
 				/>
 			)}
-			{onPage === 1 && <Categories overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
+			{onPage === 1 && (
+				<Categories
+					handleCategoryModalOpen={handleCategoryModalOpen}
+					overlay={(fabModalOpen || entryModalOpen || categoryModalOpen) && classes.overlay}
+				/>
+			)}
 			{onPage === 2 && <Statistics overlay={(fabModalOpen || entryModalOpen) && classes.overlay} />}
 			<Grid item xs={10}>
 				<Dialog
@@ -94,7 +118,25 @@ export default function MainPages() {
 							fabButtonClicked={fabButtonClicked}
 							inUpdateMode={!!entryClicked}
 							entryClicked={entryClicked}
-							cats={categories}
+							cats={activeCategories}
+						/>
+					</form>
+				</Dialog>
+			</Grid>
+			<Grid item xs={10}>
+				<Dialog
+					open={categoryModalOpen}
+					onClose={handleCategoryModalClose}
+					aria-labelledby="alert-dialog-title"
+					aria-describedby="alert-dialog-description"
+				>
+					<form onSubmit={handleCategorySubmit}>
+						<CategoryModal
+							open={categoryModalOpen}
+							handleClose={handleCategoryModalClose}
+							inUpdateMode={!!entryClicked}
+							entryClicked={entryClicked}
+							cats={activeCategories}
 						/>
 					</form>
 				</Dialog>

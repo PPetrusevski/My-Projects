@@ -31,9 +31,7 @@ export default function EntryModal({
 		inUpdateMode ? cats.find(cat => cat.id === entryClicked.categoryId).name : ""
 	);
 	const [amount, setAmount] = useState(inUpdateMode ? entryClicked.amount : "");
-	const [date, setDate] = useState(
-		inUpdateMode ? new Date(parseDate(entryClicked.date)) : new Date()
-	);
+	const [date, setDate] = useState(inUpdateMode ? new Date(entryClicked.date) : new Date());
 	const [desc, setDesc] = useState(inUpdateMode ? entryClicked.description : "");
 	const [catInputValid, setCatInputValid] = useState(true);
 	const [amountInputValid, setAmountInputValid] = useState(true);
@@ -77,7 +75,7 @@ export default function EntryModal({
 					type: catType,
 					categoryId: cats.find(cat => cat.name === catName).id,
 					amount,
-					date: date.toLocaleDateString("mk-MK"),
+					date: date.toLocaleDateString("en-EN"),
 					description: desc,
 				});
 			} else {
@@ -86,14 +84,14 @@ export default function EntryModal({
 					type: catType,
 					categoryId: cats.find(cat => cat.name === catName).id,
 					amount,
-					date: date.toLocaleDateString("mk-MK"),
+					date: date.toLocaleDateString("en-EN"),
 					description: desc,
 				});
 			}
 			handleClose();
 		}
 	};
-	console.log(updatedEntry);
+	// console.log(updatedEntry);
 
 	const useStyles = makeStyles(theme => ({
 		root: {

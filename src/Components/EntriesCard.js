@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function EntriesCard({ handleEntryModalOpen }) {
-	const { entries, categories } = useContext(Context);
+	const { entries, activeCategories } = useContext(Context);
 	const classes = useStyles();
 	return (
 		<Controls.Card title="Entries">
@@ -29,7 +29,7 @@ export default function EntriesCard({ handleEntryModalOpen }) {
 				{entries.length ? (
 					entries.map((ent, idx) => {
 						const isIncome = ent.type === "Income";
-						const whichCat = categories.find(cat => cat.id === ent.categoryId);
+						const whichCat = activeCategories.find(cat => cat.id === ent.categoryId);
 						return (
 							<ListItem
 								key={ent.id + ent.amount + idx}

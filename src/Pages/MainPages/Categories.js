@@ -32,11 +32,10 @@ const useStyles = makeStyles({
 		height: "50px",
 	},
 });
-export default function Categories({ overlay }) {
+export default function Categories({ overlay, handleCategoryModalOpen }) {
 	const classes = useStyles();
 
-	const { categories} =
-		useContext(Context);
+	const { activeCategories } = useContext(Context);
 
 	return (
 		<Grid container justifyContent="center" className={overlay || ""}>
@@ -49,7 +48,7 @@ export default function Categories({ overlay }) {
 							divider
 							className={classes.listItem}
 							onClick={() => {
-								return;
+								handleCategoryModalOpen();
 							}}
 						>
 							<ListItemIcon style={{ minWidth: "40px" }}>
@@ -57,7 +56,7 @@ export default function Categories({ overlay }) {
 							</ListItemIcon>
 							<ListItemText primary="Add New Category" />
 						</ListItem>
-						{categories.map((cat, idx) => {
+						{activeCategories.map((cat, idx) => {
 							const isExpense = cat.type === "Expense" ? true : false;
 							return (
 								<div key={cat.id + idx + cat.name}>
