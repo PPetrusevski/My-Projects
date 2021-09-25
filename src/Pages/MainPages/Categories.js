@@ -62,10 +62,14 @@ export default function Categories({ overlay, handleCategoryModalOpen }) {
 								<div key={cat.id + idx + cat.name}>
 									<ListItem
 										disableGutters
+										button
 										divider
 										className={`${isExpense ? classes.expense : classes.income} ${
 											classes.listItem
 										}`}
+										onClick={event => {
+											handleCategoryModalOpen(event, cat);
+										}}
 									>
 										<ListItemIcon style={{ minWidth: "40px" }}>
 											<Icon className={`${isExpense ? classes.expense : classes.income}`}>

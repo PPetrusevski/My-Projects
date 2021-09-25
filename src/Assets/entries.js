@@ -95,5 +95,29 @@ const Entries = [
 		date: "13/02/2021",
 		description: "",
 	},
+	{
+		id: 13,
+		type: "Expense",
+		categoryId: 12,
+		amount: 11850,
+		date: "13/02/2021",
+		description: "",
+	},
+	{
+		id: 14,
+		type: "Expense",
+		categoryId: 13,
+		amount: 6850,
+		date: "13/02/2021",
+		description: "",
+	},
+	{
+		id: 15,
+		type: "Income",
+		categoryId: 1,
+		amount: 26850,
+		date: "23/09/2021",
+		description: "",
+	},
 ];
 export default Entries;

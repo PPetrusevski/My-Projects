@@ -25,6 +25,7 @@ export default function MainPages() {
 	const [onPage, setOnPage] = useState(0);
 	const [fabButtonClicked, setFabButtonClicked] = useState("");
 	const [entryClicked, setEntryClicked] = useState("");
+	const [categoryClicked, setCategoryClicked] = useState("");
 
 	const {
 		categories,
@@ -42,6 +43,8 @@ export default function MainPages() {
 		setCategoryModalOpen,
 		addNewCategory,
 		newCategory,
+		updateCategory,
+		updatedCategory,
 	} = useContext(Context);
 
 	useEffect(() => {
@@ -74,18 +77,24 @@ export default function MainPages() {
 			updateEntry(updatedEntry);
 		}
 	};
-	const handleCategoryModalOpen = (event, ent) => {
+	const handleCategoryModalOpen = (event, cat) => {
 		fabModalOpen && setFabModalOpen(false);
 		entryModalOpen && setEntryModalOpen(false);
 		setCategoryModalOpen(true);
+		cat ? setCategoryClicked(cat) : setCategoryClicked("");
 	};
+
 	const handleCategoryModalClose = () => {
 		setCategoryModalOpen(false);
 	};
 
 	const handleCategorySubmit = e => {
 		e.preventDefault();
-		addNewCategory(newCategory);
+		if (!categoryClicked) {
+			addNewCategory(newCategory);
+		} else {
+			updateCategory(updatedCategory);
+		}
 	};
 
 	return isSignedIn ? (
@@ -134,8 +143,8 @@ export default function MainPages() {
 						<CategoryModal
 							open={categoryModalOpen}
 							handleClose={handleCategoryModalClose}
-							inUpdateMode={!!entryClicked}
-							entryClicked={entryClicked}
+							inUpdateMode={!!categoryClicked}
+							categoryClicked={categoryClicked}
 							cats={activeCategories}
 						/>
 					</form>

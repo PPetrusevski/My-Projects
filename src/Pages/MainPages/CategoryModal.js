@@ -18,24 +18,16 @@ import {
 } from "@material-ui/core";
 import { Context } from "../../Context/Context";
 
-export default function CategoryModal({ handleClose, cats, inUpdateMode }) {
+export default function CategoryModal({ handleClose, cats, inUpdateMode, categoryClicked }) {
 	//VALUES
-	const [catType, setCatType] = useState("Income");
-	const [whatCat, setWhatCat] = useState(cats.filter(cat => cat.type === catType));
-	const [catName, setCatName] = useState("");
-	const [icon, setIcon] = useState(Icons[0]);
-	const [budget, setBudget] = useState("");
-	const [enabled, setEnabled] = useState(true);
+	const [catType, setCatType] = useState(inUpdateMode ? categoryClicked.type : "Income");
+	const [catName, setCatName] = useState(inUpdateMode ? categoryClicked.name : "");
+	const [icon, setIcon] = useState(inUpdateMode ? categoryClicked.iconName : Icons[0]);
+	const [budget, setBudget] = useState(inUpdateMode ? categoryClicked.budget : "");
+	const [enabled, setEnabled] = useState(inUpdateMode ? categoryClicked.isEnabled : true);
 	// const [catInputValid, setCatInputValid] = useState(true);
 	// const [amountInputValid, setAmountInputValid] = useState(true);
 	const [btnType, setBtnType] = useState("button");
-
-	useEffect(() => {
-		if (!inUpdateMode) {
-			setWhatCat(cats.filter(cat => cat.type === catType));
-			setCatName("");
-		}
-	}, [catType]);
 
 	//VALIDATION
 
@@ -52,7 +44,7 @@ export default function CategoryModal({ handleClose, cats, inUpdateMode }) {
 	// 	return true;
 	// };
 
-	const { setNewCategory } = useContext(Context);
+	const { setNewCategory, setUpdatedCategory } = useContext(Context);
 
 	// const catId = _name => {
 	// 	return cats.find(cat => cat.name === _name).id;
@@ -61,14 +53,25 @@ export default function CategoryModal({ handleClose, cats, inUpdateMode }) {
 
 	const handleNewEntry = () => {
 		setBtnType("submit");
-		setNewCategory({
-			id: nextId(),
-			name: catName,
-			type: catType,
-			budget: budget,
-			iconName: icon,
-			isEnabled: enabled,
-		});
+		if (!inUpdateMode) {
+			setNewCategory({
+				id: nextId(),
+				name: catName,
+				type: catType,
+				budget: budget,
+				iconName: icon,
+				isEnabled: enabled,
+			});
+		} else {
+			setUpdatedCategory({
+				id: categoryClicked.id,
+				name: catName,
+				type: catType,
+				budget: budget,
+				iconName: icon,
+				isEnabled: enabled,
+			});
+		}
 		handleClose();
 		// if (validateInputs()) {
 		// 	setBtnType("submit");
@@ -112,7 +115,7 @@ export default function CategoryModal({ handleClose, cats, inUpdateMode }) {
 	const classes = useStyles();
 	return (
 		<>
-			<DialogTitle>{inUpdateMode ? "Update entry" : "Add new category"}</DialogTitle>
+			<DialogTitle>{inUpdateMode ? "Update category" : "Add new category"}</DialogTitle>
 			<DialogContent>
 				<FormControl fullWidth size="small" style={{ marginTop: "8px", marginBottom: "8px" }}>
 					<Select
