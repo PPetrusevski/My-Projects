@@ -16,14 +16,14 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-export default function Card(props) {
+export default function Card({ title, children }) {
 	const classes = useStyles();
 	return (
 		<MuiCard raised className={classes.root}>
 			<CardContent className={classes.heading} style={{}}>
-				<Typography color="textSecondary">{props.title}</Typography>
+				<Typography color="textSecondary">{title}</Typography>
 			</CardContent>
-			<CardContent className={classes.content}>{props.children}</CardContent>
+			<CardContent className={classes.content}>{children}</CardContent>
 		</MuiCard>
 	);
 }

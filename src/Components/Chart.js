@@ -1,6 +1,5 @@
-import { makeStyles } from "@material-ui/core";
 import React, { useContext } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { Context } from "../Context/Context";
 
 export default function Chart({ type }) {
@@ -24,20 +23,20 @@ export default function Chart({ type }) {
 	const chartCatsName = chartCats.map(cat => cat.name);
 	const chartCatsAmount = chartCats.map(cat => cat.amount);
 
-	const data = {
+	const data1 = {
 		labels: chartCatsName,
 		datasets: [
 			{
 				label: "Amount",
 				data: chartCatsAmount,
 				backgroundColor: type === "Income" ? "rgb(212, 255, 221)" : "rgba(255, 99, 132, 0.2)",
-				borderColor: type === "Income" ? "rgb(163, 255, 166)" : "rgb(255, 189, 189)",
+				borderColor: type === "Income" ? "rgb(102, 255, 134)" : "rgb(255, 143, 143)",
 				borderWidth: 1,
 			},
 		],
 	};
 
-	const options = {
+	const options1 = {
 		indexAxis: "y",
 
 		elements: {
@@ -70,13 +69,34 @@ export default function Chart({ type }) {
 			},
 		},
 	};
-	const useStyles = makeStyles(theme => ({
-		root: {
-			paddingBottom: 0,
-		},
-	}));
+	const data2 = {
+		labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+		datasets: [
+			{
+				label: "Expense",
+				data: entries && entries.filter(ent => ent.type === "Expense").map(ent => ent.amount),
+				lineTension: 0.5,
+				fill: false,
+				backgroundColor: "rgba(255, 99, 132, 0.2)",
+				borderColor: "rgb(255, 143, 143)",
+				borderWidth: 1,
+			},
+			{
+				label: "Income",
+				data: entries && entries.filter(ent => ent.type === "Income").map(ent => ent.amount),
+				lineTension: 0.5,
+				fill: false,
+				backgroundColor: "rgb(184, 255, 199)",
+				borderColor: "rgb(102, 255, 134)",
+				borderWidth: 1,
+			},
+		],
+	};
+	const options2 = {};
 
-	const classes = useStyles();
-
-	return <Bar className={classes.root} data={data} options={options} />;
+	return type === "Income" || type === "Expense" ? (
+		<Bar data={data1} options={options1} />
+	) : (
+		<Line data={data2} options={options2} />
+	);
 }

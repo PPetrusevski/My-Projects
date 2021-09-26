@@ -13,6 +13,7 @@ import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 import Controls from "./Controls/Controls";
 import nextId from "react-id-generator";
+import AlertPage from "./AlertPage";
 
 const useStyles = makeStyles(theme => ({
 	red: {
@@ -115,7 +116,7 @@ export default function EntriesCard({ handleEntryModalOpen }) {
 					})
 				) : (
 					<ListItem disableGutters>
-						<ListItemText primary="NO ENTRIES!" />
+						<AlertPage severity="info" text="No entries added yet" />
 					</ListItem>
 				)}
 			</List>

@@ -9,6 +9,9 @@ import Categories from "./Categories";
 import Statistics from "./Statistics";
 import EntryModal from "./EntryModal";
 import CategoryModal from "./CategoryModal";
+import AlertPage from "../../Components/AlertPage";
+import { Link } from "@reach/router";
+import Controls from "../../Components/Controls/Controls";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -160,6 +163,14 @@ export default function MainPages() {
 			/>
 		</Grid>
 	) : (
-		"You have to sign in first"
+		<Grid container style={{ height: "100vh" }} justifyContent="center" alignItems="center">
+			<Grid item xs={11}>
+				<AlertPage text="You need to sign in or sign up first!" severity={"warning"}>
+					<Link to="/">
+						<Controls.Button text="Go back">asd</Controls.Button>
+					</Link>
+				</AlertPage>
+			</Grid>
+		</Grid>
 	);
 }

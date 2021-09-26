@@ -16,6 +16,11 @@ export default function Statistics() {
 					<Chart type="Expense" />
 				</Controls.Card>
 			</Grid>
+			<Grid item xs={11}>
+				<Controls.Card title="Expense and Income">
+					<Chart type="Multi" />
+				</Controls.Card>
+			</Grid>
 		</Grid>
 	);
 }

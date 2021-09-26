@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import React, { useContext } from "react";
 import { Context } from "../Context/Context";
+import AlertPage from "./AlertPage";
 import Controls from "./Controls/Controls";
 
 const useStyles = makeStyles({
@@ -76,7 +77,7 @@ export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
 					})
 				) : (
 					<ListItem disableGutters>
-						<ListItemText primary="NO EXPENSES!" />
+						<AlertPage severity="info" text="No expense categories yet" />
 					</ListItem>
 				)}
 			</List>

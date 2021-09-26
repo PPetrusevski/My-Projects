@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import React, { useContext } from "react";
 import { Context } from "../Context/Context";
+import AlertPage from "./AlertPage";
 import Controls from "./Controls/Controls";
 
 export default function IncomesCard({ entriesTotal, calculatePercentage }) {
@@ -45,7 +46,7 @@ export default function IncomesCard({ entriesTotal, calculatePercentage }) {
 					})
 				) : (
 					<ListItem disableGutters>
-						<ListItemText primary="NO INCOMES!" />
+						<AlertPage severity="info" text="No income categories yet" />
 					</ListItem>
 				)}
 			</List>

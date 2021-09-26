@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Header({ onPage }) {
-	const { userAvatar } = useContext(Context);
+	const { userAvatar, setIsSignedIn } = useContext(Context);
 	const classes = useStyles();
 
 	const headingTitle = () => {
@@ -49,7 +49,14 @@ export default function Header({ onPage }) {
 			</Grid>
 			{/* <Grid item xs={3} /> */}
 			<Grid item xs={2} style={{ marginLeft: "auto" }}>
-				<Avatar alt="avatar" src={userAvatar} style={{ marginLeft: "auto" }} />
+				<Avatar
+					alt="avatar"
+					src={userAvatar}
+					style={{ marginLeft: "auto" }}
+					onContextMenu={() => {
+						setIsSignedIn(false);
+					}}
+				/>
 			</Grid>
 		</Grid>
 	);
