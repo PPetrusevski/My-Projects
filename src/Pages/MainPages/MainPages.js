@@ -48,6 +48,8 @@ export default function MainPages() {
 		newCategory,
 		updateCategory,
 		updatedCategory,
+		confOpen,
+		setConfOpen,
 	} = useContext(Context);
 
 	useEffect(() => {
@@ -109,7 +111,7 @@ export default function MainPages() {
 			<Header onPage={onPage} />
 			{onPage === 0 && (
 				<Overview
-					overlay={(fabModalOpen || entryModalOpen) && classes.overlay}
+					overlay={(fabModalOpen || entryModalOpen || confOpen) && classes.overlay}
 					handleEntryModalOpen={handleEntryModalOpen}
 				/>
 			)}
@@ -168,10 +170,10 @@ export default function MainPages() {
 		</Grid>
 	) : (
 		<Grid container style={{ height: "100vh" }} justifyContent="center" alignItems="center">
-			<Grid item xs={11}>
+			<Grid item xs={11} sm={6} lg={3}>
 				<AlertPage text="You need to sign in or sign up first!" severity={"warning"}>
-					<Link to="/">
-						<Controls.Button text="Go back">asd</Controls.Button>
+					<Link to="/" style={{ textDecoration: "none" }}>
+						<Controls.Button text="Go back" />
 					</Link>
 				</AlertPage>
 			</Grid>

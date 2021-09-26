@@ -32,7 +32,11 @@ export default function WelcomeWizard() {
 			className={`${step === 2 ? classes.noList : classes.root} ${
 				step === 3 && categories.length > 6 && classes.noList
 			}`}
-			style={{ maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}
+			style={{
+				maxWidth: "600px",
+				marginLeft: "auto",
+				marginRight: "auto",
+			}}
 		>
 			<Grid item>
 				<LogoHeader />

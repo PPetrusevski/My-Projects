@@ -5,9 +5,10 @@ import { Grid } from "@material-ui/core";
 export default function AlertPage({ text, severity, children }) {
 	return (
 		<Grid container justifyContent="center" alignItems="center">
-			<Grid item>
+			<Grid item style={{ width: "100%" }}>
 				<Alert severity={severity}>{text}</Alert>
 			</Grid>
+			<br />
 			<Grid item style={{ marginTop: "20px" }}>
 				{children}
 			</Grid>

@@ -115,7 +115,12 @@ export default function SignInUp(props) {
 			<Grid
 				container
 				alignItems="center"
-				style={{ height: "100vh", maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}
+				style={{
+					height: "100vh",
+					maxWidth: "600px",
+					marginLeft: "auto",
+					marginRight: "auto",
+				}}
 			>
 				<Grid container justifyContent="center">
 					<LogoHeader />

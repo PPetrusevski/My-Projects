@@ -9,7 +9,7 @@ export const Provider = ({ children }) => {
 	const [activeCategories, setActiveCategories] = useState(Categories);
 	const [entries, setEntries] = useState(Entries);
 	const [budgetTotal, setBudgetTotal] = useState(0);
-	const [isSignedIn, setIsSignedIn] = useState(false);
+	const [isSignedIn, setIsSignedIn] = useState(true);
 	const [userAvatar, setUserAvatar] = useState("");
 	const [fabModalOpen, setFabModalOpen] = useState(false);
 	const [entryModalOpen, setEntryModalOpen] = useState(false);
@@ -18,6 +18,7 @@ export const Provider = ({ children }) => {
 	const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 	const [newCategory, setNewCategory] = useState({});
 	const [updatedCategory, setUpdatedCategory] = useState({});
+	const [confOpen, setConfOpen] = useState(false);
 
 	const addNewEntry = newEntry => {
 		setEntries([newEntry, ...entries]);
@@ -32,6 +33,10 @@ export const Provider = ({ children }) => {
 			}
 		});
 		setEntries(updatedEntries);
+	};
+	const deleteEntry = entry => {
+		const filterEntries = entries.filter(ent => ent.id !== entry.id);
+		setEntries(filterEntries);
 	};
 
 	const addNewCategory = newCategory => {
@@ -72,6 +77,7 @@ export const Provider = ({ children }) => {
 		setUpdatedEntry,
 		addNewEntry,
 		updateEntry,
+		deleteEntry,
 		categoryModalOpen,
 		setCategoryModalOpen,
 		newCategory,
@@ -80,6 +86,8 @@ export const Provider = ({ children }) => {
 		updateCategory,
 		updatedCategory,
 		setUpdatedCategory,
+		confOpen,
+		setConfOpen,
 	};
 	// console.log("fromContext:", newEntry);
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
