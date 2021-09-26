@@ -112,7 +112,11 @@ export default function SignInUp(props) {
 
 	return (
 		<form onSubmit={handleSignInUpSubmit}>
-			<Grid container alignItems="center" style={{ height: "100vh" }}>
+			<Grid
+				container
+				alignItems="center"
+				style={{ height: "100vh", maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}
+			>
 				<Grid container justifyContent="center">
 					<LogoHeader />
 					<Grid item xs={3} />

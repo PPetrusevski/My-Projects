@@ -38,25 +38,31 @@ export default function Header({ onPage }) {
 	};
 
 	return (
-		<Grid container className={classes.root} alignItems="center">
-			<Grid item xs={2}>
-				<img src={logo} alt="" className={classes.logo} />
-			</Grid>
-			<Grid item xs={5}>
-				<Typography className={classes.heading} variant="h6">
-					{headingTitle()}
-				</Typography>
-			</Grid>
-			{/* <Grid item xs={3} /> */}
-			<Grid item xs={2} style={{ marginLeft: "auto" }}>
-				<Avatar
-					alt="avatar"
-					src={userAvatar}
-					style={{ marginLeft: "auto" }}
-					onContextMenu={() => {
-						setIsSignedIn(false);
-					}}
-				/>
+		<Grid container className={classes.root}>
+			<Grid
+				container
+				alignItems="center"
+				style={{ maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}
+			>
+				<Grid item xs={2}>
+					<img src={logo} alt="" className={classes.logo} />
+				</Grid>
+				<Grid item xs={5}>
+					<Typography className={classes.heading} variant="h6">
+						{headingTitle()}
+					</Typography>
+				</Grid>
+				{/* <Grid item xs={3} /> */}
+				<Grid item xs={2} style={{ marginLeft: "auto" }}>
+					<Avatar
+						alt="avatar"
+						src={userAvatar}
+						style={{ marginLeft: "auto" }}
+						onContextMenu={() => {
+							setIsSignedIn(false);
+						}}
+					/>
+				</Grid>
 			</Grid>
 		</Grid>
 	);

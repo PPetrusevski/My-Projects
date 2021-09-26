@@ -101,7 +101,11 @@ export default function MainPages() {
 	};
 
 	return isSignedIn ? (
-		<Grid className={classes.root}>
+		<Grid
+			container
+			style={{ maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}
+			className={classes.root}
+		>
 			<Header onPage={onPage} />
 			{onPage === 0 && (
 				<Overview

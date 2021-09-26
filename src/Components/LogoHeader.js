@@ -5,7 +5,7 @@ import logo from "../Assets/logo-text.png";
 export default function LogoHeader() {
 	return (
 		<Grid container justifyContent="center">
-			<Grid item xs={4} sm={3} md={1}>
+			<Grid item xs={4} sm={3} md={2}>
 				<img src={logo} style={{ width: "100%", marginBottom: "50px" }} alt="logo" />
 			</Grid>
 		</Grid>

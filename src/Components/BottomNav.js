@@ -69,56 +69,58 @@ export default function BottomNav({ onPage, setOnPage, handleEntryModalOpen }) {
 
 	return (
 		<Grid container className={classes.root}>
-			<Grid item xs={9}>
-				<BottomNavigation
-					value={onPage}
-					onChange={(_, newValue) => {
-						setOnPage(newValue);
-					}}
-					className={classes.nav}
-					showLabels
-				>
-					<BottomNavigationAction
-						className={`${classes.icons}`}
-						label="Overview"
-						icon={<HomeIcon />}
-					/>
+			<Grid container style={{ maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
+				<Grid item xs={9}>
+					<BottomNavigation
+						value={onPage}
+						onChange={(_, newValue) => {
+							setOnPage(newValue);
+						}}
+						className={classes.nav}
+						showLabels
+					>
+						<BottomNavigationAction
+							className={`${classes.icons}`}
+							label="Overview"
+							icon={<HomeIcon />}
+						/>
 
-					<BottomNavigationAction
-						className={`${classes.icons}`}
-						label="Categories"
-						icon={<CategoryIcon />}
-					/>
+						<BottomNavigationAction
+							className={`${classes.icons}`}
+							label="Categories"
+							icon={<CategoryIcon />}
+						/>
 
-					<BottomNavigationAction
-						className={`${classes.icons}`}
-						label="Statistics"
-						icon={<EqualizerIcon />}
-					/>
-				</BottomNavigation>
-			</Grid>
-			<Grid item xs={3} className={classes.fabCont}>
-				<Fab className={classes.fabBtn} color="secondary" aria-label="add" onClick={handleFabBtn}>
-					<AddIcon />
-				</Fab>
-				{fabModalOpen && (
-					<Controls.Button
-						text="Add Expense"
-						size="small"
-						className={classes.addExpBtn}
-						data-usage="Expense"
-						onClick={handleEntryModalOpen}
-					/>
-				)}
-				{fabModalOpen && (
-					<Controls.Button
-						text="Add Income"
-						size="small"
-						className={classes.addIncBtn}
-						data-usage="Income"
-						onClick={handleEntryModalOpen}
-					/>
-				)}
+						<BottomNavigationAction
+							className={`${classes.icons}`}
+							label="Statistics"
+							icon={<EqualizerIcon />}
+						/>
+					</BottomNavigation>
+				</Grid>
+				<Grid item xs={3} className={classes.fabCont}>
+					<Fab className={classes.fabBtn} color="secondary" aria-label="add" onClick={handleFabBtn}>
+						<AddIcon />
+					</Fab>
+					{fabModalOpen && (
+						<Controls.Button
+							text="Add Expense"
+							size="small"
+							className={classes.addExpBtn}
+							data-usage="Expense"
+							onClick={handleEntryModalOpen}
+						/>
+					)}
+					{fabModalOpen && (
+						<Controls.Button
+							text="Add Income"
+							size="small"
+							className={classes.addIncBtn}
+							data-usage="Income"
+							onClick={handleEntryModalOpen}
+						/>
+					)}
+				</Grid>
 			</Grid>
 		</Grid>
 	);

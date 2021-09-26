@@ -7,7 +7,7 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
 	const [activeCategories, setActiveCategories] = useState(Categories);
-	const [entries, setEntries] = useState([]);
+	const [entries, setEntries] = useState(Entries);
 	const [budgetTotal, setBudgetTotal] = useState(0);
 	const [isSignedIn, setIsSignedIn] = useState(false);
 	const [userAvatar, setUserAvatar] = useState("");
