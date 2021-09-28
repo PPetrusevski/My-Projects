@@ -1,118 +1,62 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import nextId from "react-id-generator";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Controls from "../../Components/Controls/Controls";
 import Icons from "../../Assets/icons";
-import {
-	Checkbox,
-	FormControl,
-	FormControlLabel,
-	Icon,
-	InputAdornment,
-	InputLabel,
-	makeStyles,
-	MenuItem,
-	Select,
-} from "@material-ui/core";
+import { Checkbox, FormControl, Icon, InputAdornment, MenuItem, Select } from "@material-ui/core";
 import { Context } from "../../Context/Context";
 
-export default function CategoryModal({ handleClose, cats, inUpdateMode, categoryClicked }) {
+export default function CategoryModal({ handleClose, inUpdateMode, categoryClicked }) {
 	//VALUES
 	const [catType, setCatType] = useState(inUpdateMode ? categoryClicked.type : "Income");
 	const [catName, setCatName] = useState(inUpdateMode ? categoryClicked.name : "");
 	const [icon, setIcon] = useState(inUpdateMode ? categoryClicked.iconName : Icons[0]);
 	const [budget, setBudget] = useState(inUpdateMode ? categoryClicked.budget : "");
 	const [enabled, setEnabled] = useState(inUpdateMode ? categoryClicked.isEnabled : true);
-	// const [catInputValid, setCatInputValid] = useState(true);
-	// const [amountInputValid, setAmountInputValid] = useState(true);
+	const [isNameValid, setIsNameValid] = useState(true);
 	const [btnType, setBtnType] = useState("button");
 
+	const { setNewCategory, setUpdatedCategory } = useContext(Context);
 	//VALIDATION
 
-	// const validateInputs = () => {
-	// 	if (!catName || !amount || amount < 1) {
-	// 		if (!catName) {
-	// 			setCatInputValid(false);
-	// 		}
-	// 		if (!amount || amount < 1) {
-	// 			setAmountInputValid(false);
-	// 		}
-	// 		return false;
-	// 	}
-	// 	return true;
-	// };
-
-	const { setNewCategory, setUpdatedCategory } = useContext(Context);
-
-	// const catId = _name => {
-	// 	return cats.find(cat => cat.name === _name).id;
-	// };
-	// const whatCat = cats.filter(cat => cat.type === catType);
-
-	const handleNewEntry = () => {
-		setBtnType("submit");
-		if (!inUpdateMode) {
-			setNewCategory({
-				id: nextId(),
-				name: catName,
-				type: catType,
-				budget: budget,
-				iconName: icon,
-				isEnabled: enabled,
-			});
+	const validateInput = () => {
+		if (!catName.length) {
+			setIsNameValid(false);
+			return false;
 		} else {
-			setUpdatedCategory({
-				id: categoryClicked.id,
-				name: catName,
-				type: catType,
-				budget: budget,
-				iconName: icon,
-				isEnabled: enabled,
-			});
+			setIsNameValid(true);
+			return true;
 		}
-		handleClose();
-		// if (validateInputs()) {
-		// 	setBtnType("submit");
-		// 	if (!inUpdateMode) {
-		// 		setNewEntry({
-		// 			id: nextId(),
-		// 			type: catType,
-		// 			categoryId: cats.find(cat => cat.name === catName).id,
-		// 			amount,
-		// 			date: date.toLocaleDateString("mk-MK"),
-		// 			description: desc,
-		// 		});
-		// 	} else {
-		// 		setUpdatedEntry({
-		// 			id: entryClicked.id,
-		// 			type: catType,
-		// 			categoryId: cats.find(cat => cat.name === catName).id,
-		// 			amount,
-		// 			date: date.toLocaleDateString("mk-MK"),
-		// 			description: desc,
-		// 		});
-		// 	}
-		// 	handleClose();
-		// }
 	};
 
-	const useStyles = makeStyles(theme => ({
-		root: {
-			"& label.Mui-focused": {
-				color: theme.palette.primary.main,
-			},
-			"& .MuiOutlinedInput-root": {
-				"&.Mui-focused fieldset": {
-					borderColor: theme.palette.primary.main,
-				},
-			},
-		},
-	}));
-	// console.log(catType);
-	// console.log(catName);
-	const classes = useStyles();
+	const handleNewEntry = () => {
+		if (validateInput()) {
+			setBtnType("submit");
+			if (!inUpdateMode) {
+				setNewCategory({
+					id: nextId(),
+					name: catName,
+					type: catType,
+					budget: budget,
+					iconName: icon,
+					isEnabled: enabled,
+				});
+			} else {
+				setUpdatedCategory({
+					id: categoryClicked.id,
+					name: catName,
+					type: catType,
+					budget: budget,
+					iconName: icon,
+					isEnabled: enabled,
+				});
+			}
+			handleClose();
+		}
+	};
+
 	return (
 		<>
 			<DialogTitle>{inUpdateMode ? "Update category" : "Add new category"}</DialogTitle>
@@ -129,16 +73,18 @@ export default function CategoryModal({ handleClose, cats, inUpdateMode, categor
 						<MenuItem value="Expense">Expense</MenuItem>
 					</Select>
 				</FormControl>
-				<FormControl fullWidth size="small" style={{ marginTop: "8px", marginBottom: "8px" }}>
+				<FormControl fullWidth style={{ marginTop: "8px", marginBottom: "8px" }}>
 					<Controls.Input
 						label="Name"
 						value={catName}
 						onChange={e => {
 							setCatName(e.target.value);
 						}}
+						onBlur={() => validateInput()}
 						variant="outlined"
 						size="small"
-						// error={!amountInputValid}
+						error={!isNameValid}
+						helperText={!isNameValid && "This is a required field"}
 					/>
 				</FormControl>
 				<FormControl fullWidth size="small" style={{ marginTop: "8px", marginBottom: "8px" }}>
@@ -168,10 +114,9 @@ export default function CategoryModal({ handleClose, cats, inUpdateMode, categor
 						variant="outlined"
 						type="number"
 						size="small"
-						// error={!amountInputValid}
 					/>
 				</FormControl>
-				<FormControl fullWidth variant="filled">
+				<FormControl fullWidth>
 					<Controls.Input
 						label="Enabled"
 						disabled

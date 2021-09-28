@@ -38,7 +38,9 @@ const useStyles = makeStyles({
 export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
 	const { activeCategories, entries } = useContext(Context);
 	const classes = useStyles();
-	const expenses = activeCategories ? activeCategories.filter(cat => cat.type === "Expense") : null;
+	const expenses = activeCategories
+		? activeCategories.filter(cat => cat.type === "Expense" && cat.isEnabled === true)
+		: null;
 
 	return (
 		<Controls.Card title="Expenses">
@@ -77,7 +79,7 @@ export default function ExpensesCard({ entriesTotal, calculatePercentage }) {
 					})
 				) : (
 					<ListItem disableGutters>
-						<AlertPage severity="info" text="No expense categories yet" />
+						<AlertPage severity="info" text="No active expense categories." />
 					</ListItem>
 				)}
 			</List>

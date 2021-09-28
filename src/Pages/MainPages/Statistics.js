@@ -3,9 +3,9 @@ import Chart from "../../Components/Chart";
 import React from "react";
 import Controls from "../../Components/Controls/Controls";
 
-export default function Statistics() {
+export default function Statistics({ overlay }) {
 	return (
-		<Grid container justifyContent="center">
+		<Grid container justifyContent="center" className={overlay || ""}>
 			<Grid item xs={11}>
 				<Controls.Card title="Income">
 					<Chart type="Income" />

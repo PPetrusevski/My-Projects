@@ -6,7 +6,7 @@ import CategoryPage from "./CategoryPage";
 import { Grid, makeStyles } from "@material-ui/core";
 import { Context } from "../../Context/Context";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		paddingTop: "20px",
 		paddingBottom: "20px",

@@ -45,11 +45,7 @@ export default function Chart({ type }) {
 			},
 		},
 		responsive: true,
-		plugins: {
-			legend: {
-				// position: "right",
-			},
-		},
+
 		scaleShowValues: true,
 		scales: {
 			y: {

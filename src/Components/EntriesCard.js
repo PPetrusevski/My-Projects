@@ -2,8 +2,6 @@ import {
 	Button,
 	Dialog,
 	DialogActions,
-	DialogContent,
-	DialogContentText,
 	DialogTitle,
 	Icon,
 	List,
@@ -20,8 +18,9 @@ import { Context } from "../Context/Context";
 import Controls from "./Controls/Controls";
 import nextId from "react-id-generator";
 import AlertPage from "./AlertPage";
+import { format } from "date-fns";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 	red: {
 		color: "#c24242",
 	},
@@ -32,9 +31,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function EntriesCard({ handleEntryModalOpen }) {
 	const [contextMenu, setContextMenu] = useState(null);
-	const [entToDelete, setEntToDelete] = useState({});
-	const [deleteConfirmed, setDeleteConfirmed] = useState(false);
-	const { entries, activeCategories, deleteEntry, confOpen, setConfOpen } = useContext(Context);
+	const [contextEnt, setContextEnt] = useState({});
+
+	const { entries, setEntries, activeCategories, deleteEntry, confOpen, setConfOpen } =
+		useContext(Context);
 
 	const handleContextMenu = (event, ent) => {
 		event.preventDefault();
@@ -46,12 +46,27 @@ export default function EntriesCard({ handleEntryModalOpen }) {
 				  }
 				: null
 		);
-		setEntToDelete(ent);
+		setContextEnt(ent);
 	};
 	const handleDelete = () => {
-		deleteEntry(entToDelete);
+		deleteEntry(contextEnt);
 		handleClose();
 		handleClose2();
+	};
+
+	const handleDuplicate = () => {
+		setEntries([
+			{
+				id: nextId(),
+				type: contextEnt.type,
+				categoryId: contextEnt.categoryId,
+				amount: contextEnt.amount,
+				date: contextEnt.date,
+				description: contextEnt.description,
+			},
+			...entries,
+		]);
+		handleClose();
 	};
 
 	const openConfirm = () => {
@@ -66,51 +81,57 @@ export default function EntriesCard({ handleEntryModalOpen }) {
 		setConfOpen(false);
 	};
 	const classes = useStyles();
+
 	return (
 		<Controls.Card title="Entries">
 			<List dense style={{ paddingBottom: 0 }}>
-				{entries.length ? (
+				{entries.length && activeCategories.some(cat => cat.isEnabled === true) ? (
 					entries.map(ent => {
-						const isIncome = ent.type === "Income";
-						const whichCat = activeCategories.find(cat => cat.id === ent.categoryId);
-						return (
-							<div key={nextId()}>
-								<ListItem
-									disableGutters
-									divider
-									button
-									onClick={event => {
-										handleEntryModalOpen(event, ent);
-									}}
-									onContextMenu={event => handleContextMenu(event, ent)}
-								>
-									<ListItemIcon style={{ minWidth: "40px" }}>
-										<Icon style={{ color: "black" }}>{whichCat.iconName}</Icon>
-									</ListItemIcon>
-									<ListItemText
-										primary={
-											<Typography variant="body2" style={{ lineHeight: "1" }}>
-												{whichCat.name}
-											</Typography>
-										}
-										secondary={
-											<Typography
-												variant="caption"
-												color="textSecondary"
-												style={{ fontSize: "10px" }}
-											>
-												{ent.date}
-											</Typography>
-										}
-									/>
-									<ListItemText
-										primary={`${isIncome ? "+" : "-"}${ent.amount}`}
-										style={{ textAlign: "right" }}
-										className={isIncome ? classes.green : classes.red}
-									/>
-								</ListItem>
-							</div>
-						);
+						if (activeCategories.find(cat => cat.id === ent.categoryId && cat.isEnabled === true)) {
+							const isIncome = ent.type === "Income";
+
+							const whichCat = activeCategories.find(cat => cat.id === ent.categoryId);
+							return (
+								<div key={nextId()}>
+									<ListItem
+										disableGutters
+										divider
+										button
+										onClick={event => {
+											handleEntryModalOpen(event, ent);
+										}}
+										onContextMenu={event => handleContextMenu(event, ent)}
+									>
+										<ListItemIcon style={{ minWidth: "40px" }}>
+											<Icon style={{ color: "black" }}>{whichCat.iconName}</Icon>
+										</ListItemIcon>
+										<ListItemText
+											primary={
+												<Typography variant="body2" style={{ lineHeight: "1" }}>
+													{whichCat.name}
+												</Typography>
+											}
+											secondary={
+												<Typography
+													variant="caption"
+													color="textSecondary"
+													style={{ fontSize: "10px" }}
+												>
+													{format(new Date(ent.date), "dd.MM.yyyy")}
+												</Typography>
+											}
+										/>
+										<ListItemText
+											primary={`${isIncome ? "+" : "-"}${ent.amount}`}
+											style={{ textAlign: "right" }}
+											className={isIncome ? classes.green : classes.red}
+										/>
+									</ListItem>
+								</div>
+							);
+						} else {
+							return null;
+						}
 					})
 				) : (
 					<ListItem disableGutters>
@@ -129,7 +150,7 @@ export default function EntriesCard({ handleEntryModalOpen }) {
 								: undefined
 						}
 					>
-						<MenuItem dense onClick={handleClose}>
+						<MenuItem dense onClick={handleDuplicate}>
 							Duplicate
 						</MenuItem>
 						<MenuItem dense onClick={handleClose}>

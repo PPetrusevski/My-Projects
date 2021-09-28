@@ -5,7 +5,7 @@ const Categories = [
 		type: "Income",
 		budget: "",
 		iconName: "euro",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 2,
@@ -13,7 +13,7 @@ const Categories = [
 		type: "Income",
 		budget: "",
 		iconName: "home",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 3,
@@ -21,7 +21,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "fastfood",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 4,
@@ -29,7 +29,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "fitness_center",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 5,
@@ -37,7 +37,7 @@ const Categories = [
 		type: "Income",
 		budget: "",
 		iconName: "monetization_on",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 6,
@@ -45,7 +45,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "description",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 7,
@@ -53,7 +53,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "beach_access",
-		isEnabled: false,
+		isEnabled: true,
 	},
 
 	{
@@ -62,7 +62,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "build",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 9,
@@ -70,7 +70,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "flight_takeoff",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 10,
@@ -78,7 +78,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "local_cafe",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 11,
@@ -86,7 +86,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "restaurant",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 12,
@@ -94,7 +94,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "tv",
-		isEnabled: false,
+		isEnabled: true,
 	},
 	{
 		id: 13,
@@ -102,7 +102,7 @@ const Categories = [
 		type: "Expense",
 		budget: "",
 		iconName: "money_off",
-		isEnabled: false,
+		isEnabled: true,
 	},
 ];
 

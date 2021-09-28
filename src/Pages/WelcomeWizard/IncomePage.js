@@ -43,7 +43,7 @@ export default function IncomePage({ handleStep, setBudgetTotal }) {
 						WELCOME
 					</Typography>
 					<Typography className={classes.question} component="p" align="center">
-						How much money you have at the moment?
+						How much money do you have at the moment?
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>

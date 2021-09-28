@@ -20,6 +20,9 @@ const useStyles = makeStyles({
 	income: {
 		color: "#3ea842",
 	},
+	disabled: {
+		color: "#adadad",
+	},
 	smallText: {
 		fontSize: "7px",
 		color: "grey",
@@ -64,15 +67,27 @@ export default function Categories({ overlay, handleCategoryModalOpen }) {
 										disableGutters
 										button
 										divider
-										className={`${isExpense ? classes.expense : classes.income} ${
-											classes.listItem
-										}`}
+										className={`${
+											cat.isEnabled
+												? isExpense
+													? classes.expense
+													: classes.income
+												: classes.disabled
+										} ${classes.listItem}`}
 										onClick={event => {
 											handleCategoryModalOpen(event, cat);
 										}}
 									>
 										<ListItemIcon style={{ minWidth: "40px" }}>
-											<Icon className={`${isExpense ? classes.expense : classes.income}`}>
+											<Icon
+												className={`${
+													cat.isEnabled
+														? isExpense
+															? classes.expense
+															: classes.income
+														: classes.disabled
+												}`}
+											>
 												{cat.iconName}
 											</Icon>
 										</ListItemIcon>

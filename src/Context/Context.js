@@ -89,6 +89,7 @@ export const Provider = ({ children }) => {
 		confOpen,
 		setConfOpen,
 	};
-	// console.log("fromContext:", newEntry);
+	// console.log("fromContext ACTIVE CATS:", activeCategories);
+	// console.log("fromContext:", entries);
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };

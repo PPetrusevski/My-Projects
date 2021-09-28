@@ -7,15 +7,11 @@ import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/picker
 import DateFnsUtils from "@date-io/date-fns";
 import Controls from "../../Components/Controls/Controls";
 import { FormControl, makeStyles, MenuItem, Select } from "@material-ui/core";
+import { format } from "date-fns";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Context } from "../../Context/Context";
-
-const parseDate = dateString => {
-	const dateArr = dateString.split("/");
-	return new Date(`${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`);
-};
 
 export default function EntryModal({
 	handleClose,
@@ -52,11 +48,11 @@ export default function EntryModal({
 		return true;
 	};
 
-	const { setNewEntry, updatedEntry, setUpdatedEntry } = useContext(Context);
+	const { setNewEntry, setUpdatedEntry } = useContext(Context);
 
-	// const catId = _name => {
-	// 	return cats.find(cat => cat.name === _name).id;
-	// };
+	const catId = _name => {
+		return cats.find(cat => cat.name === _name).id;
+	};
 	// const whatCat = cats.filter(cat => cat.type === catType);
 
 	useEffect(() => {
@@ -73,25 +69,24 @@ export default function EntryModal({
 				setNewEntry({
 					id: nextId(),
 					type: catType,
-					categoryId: cats.find(cat => cat.name === catName).id,
+					categoryId: catId(catName),
 					amount,
-					date: date.toLocaleDateString("en-EN"),
+					date: format(date, "MMM dd yyyy"),
 					description: desc,
 				});
 			} else {
 				setUpdatedEntry({
 					id: entryClicked.id,
 					type: catType,
-					categoryId: cats.find(cat => cat.name === catName).id,
+					categoryId: catId(catName),
 					amount,
-					date: date.toLocaleDateString("en-EN"),
+					date: format(date, "MMM dd yyyy"),
 					description: desc,
 				});
 			}
 			handleClose();
 		}
 	};
-	// console.log(updatedEntry);
 
 	const useStyles = makeStyles(theme => ({
 		root: {
@@ -105,7 +100,7 @@ export default function EntryModal({
 			},
 		},
 	}));
-	// console.log(parseDate("13/05/2021"));
+
 	const classes = useStyles();
 	return (
 		<>
@@ -163,9 +158,6 @@ export default function EntryModal({
 							label="Date picker inline"
 							value={date}
 							onChange={date => setDate(date)}
-							// KeyboardButtonProps={{
-							// 	"aria-label": "change date",
-							// }}
 						/>
 					</MuiPickersUtilsProvider>
 				</FormControl>

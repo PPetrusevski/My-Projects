@@ -13,7 +13,7 @@ import AlertPage from "../../Components/AlertPage";
 import { Link } from "@reach/router";
 import Controls from "../../Components/Controls/Controls";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		position: "relative",
 		paddingTop: "80px",
@@ -31,7 +31,6 @@ export default function MainPages() {
 	const [categoryClicked, setCategoryClicked] = useState("");
 
 	const {
-		categories,
 		activeCategories,
 		newEntry,
 		isSignedIn,
@@ -49,7 +48,6 @@ export default function MainPages() {
 		updateCategory,
 		updatedCategory,
 		confOpen,
-		setConfOpen,
 	} = useContext(Context);
 
 	useEffect(() => {

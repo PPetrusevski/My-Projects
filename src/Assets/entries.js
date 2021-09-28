@@ -4,7 +4,7 @@ const Entries = [
 		type: "Income",
 		categoryId: 2,
 		amount: 1000,
-		date: "20/06/2021",
+		date: "Jun 20 2021",
 		description: "",
 	},
 	{
@@ -12,7 +12,7 @@ const Entries = [
 		type: "Income",
 		categoryId: 2,
 		amount: 3000,
-		date: "25/09/2021",
+		date: "Sep 12 2021",
 		description: "",
 	},
 	{
@@ -20,7 +20,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 3,
 		amount: 1500,
-		date: "13/05/2021",
+		date: "Jan 05 2021",
 		description: "",
 	},
 	{
@@ -28,7 +28,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 4,
 		amount: 1500,
-		date: "20/06/2021",
+		date: "Feb 15 2021",
 		description: "",
 	},
 	{
@@ -36,7 +36,7 @@ const Entries = [
 		type: "Income",
 		categoryId: 5,
 		amount: 3500,
-		date: "23/06/2021",
+		date: "Apr 27 2021",
 		description: "",
 	},
 	{
@@ -44,7 +44,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 6,
 		amount: 3700,
-		date: "15/06/2021",
+		date: "Jun 03 2021",
 		description: "",
 	},
 	{
@@ -52,7 +52,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 7,
 		amount: 1300,
-		date: "15/04/2021",
+		date: "Dec 11 2020",
 		description: "",
 	},
 	{
@@ -60,7 +60,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 8,
 		amount: 1700,
-		date: "15/05/2021",
+		date: "Jul 16 2021",
 		description: "",
 	},
 	{
@@ -68,7 +68,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 8,
 		amount: 800,
-		date: "13/06/2021",
+		date: "May 09 2021",
 		description: "",
 	},
 	{
@@ -76,7 +76,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 9,
 		amount: 1800,
-		date: "05/08/2021",
+		date: "Jun 20 2021",
 		description: "",
 	},
 	{
@@ -84,7 +84,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 10,
 		amount: 350,
-		date: "27/08/2021",
+		date: "Aug 22 2021",
 		description: "",
 	},
 	{
@@ -92,7 +92,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 11,
 		amount: 850,
-		date: "13/02/2021",
+		date: "Aug 23 2021",
 		description: "",
 	},
 	{
@@ -100,7 +100,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 12,
 		amount: 11850,
-		date: "13/02/2021",
+		date: "Nov 07 2021",
 		description: "",
 	},
 	{
@@ -108,7 +108,7 @@ const Entries = [
 		type: "Expense",
 		categoryId: 13,
 		amount: 6850,
-		date: "13/02/2021",
+		date: "Nov 19 2020",
 		description: "",
 	},
 	{
@@ -116,7 +116,7 @@ const Entries = [
 		type: "Income",
 		categoryId: 1,
 		amount: 26850,
-		date: "23/09/2021",
+		date: "Jan 15 2021",
 		description: "",
 	},
 ];

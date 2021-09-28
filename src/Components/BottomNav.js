@@ -50,7 +50,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function BottomNav({ onPage, setOnPage, handleEntryModalOpen }) {
-	// const []
 	const {
 		fabModalOpen,
 		setFabModalOpen,

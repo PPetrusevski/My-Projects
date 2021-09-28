@@ -13,8 +13,10 @@ import Controls from "./Controls/Controls";
 
 export default function IncomesCard({ entriesTotal, calculatePercentage }) {
 	const { activeCategories, entries } = useContext(Context);
-	const income = activeCategories ? activeCategories.filter(cat => cat.type === "Income") : null;
-	// const incomeEntries = entries.filter(ent => ent.type === "Income");
+	const income = activeCategories
+		? activeCategories.filter(cat => cat.type === "Income" && cat.isEnabled === true)
+		: null;
+
 	return (
 		<Controls.Card title="Income">
 			<List dense>
@@ -46,7 +48,7 @@ export default function IncomesCard({ entriesTotal, calculatePercentage }) {
 					})
 				) : (
 					<ListItem disableGutters>
-						<AlertPage severity="info" text="No income categories yet" />
+						<AlertPage severity="info" text="No active income categories." />
 					</ListItem>
 				)}
 			</List>

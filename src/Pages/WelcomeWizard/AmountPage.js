@@ -31,12 +31,9 @@ export default function AmountPage() {
 	const { activeCategories, setIsSignedIn } = useContext(Context);
 	const classes = useStyles();
 
-	// const handleToggle = (e, cat) => {};
-
 	const handleComplete = () => {
 		setIsSignedIn(true);
 		navigate("/main");
-		// console.log(categories);
 	};
 
 	return (
@@ -47,7 +44,7 @@ export default function AmountPage() {
 						WELCOME
 					</Typography>
 					<Typography className={classes.question} component="p" align="center">
-						Set how much money you want to spend on each category monthly
+						Set how much money you spend or earn on each category monthly
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>
@@ -73,7 +70,6 @@ export default function AmountPage() {
 												}}
 												onChange={e => {
 													cat.budget = 0 || +e.target.value;
-													// console.log(categories);
 												}}
 											/>
 										}

@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function CategoryPage({ handleStep }) {
 	const [chosenCategories, setchosenCategories] = useState([]);
-	const { categories, activeCategories, setActiveCategories } = useContext(Context);
+	const { categories, setActiveCategories } = useContext(Context);
 
 	const classes = useStyles();
 
@@ -43,8 +43,6 @@ export default function CategoryPage({ handleStep }) {
 			setchosenCategories(deleteCat);
 		}
 	};
-
-	// console.log(chosenCategories);
 
 	return (
 		<>
