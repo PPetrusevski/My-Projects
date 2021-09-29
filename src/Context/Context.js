@@ -4,10 +4,12 @@ import Entries from "../Assets/entries";
 
 export const Context = createContext();
 
+const localEntries = JSON.parse(localStorage.getItem("entries"));
+
 export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
 	const [activeCategories, setActiveCategories] = useState(Categories);
-	const [entries, setEntries] = useState(Entries);
+	const [entries, setEntries] = useState(localEntries || []);
 	const [budgetTotal, setBudgetTotal] = useState(0);
 	const [isSignedIn, setIsSignedIn] = useState(true);
 	const [userAvatar, setUserAvatar] = useState("");
@@ -22,6 +24,8 @@ export const Provider = ({ children }) => {
 
 	const addNewEntry = newEntry => {
 		setEntries([newEntry, ...entries]);
+
+		localStorage.setItem("entries", JSON.stringify([newEntry, ...entries]));
 	};
 
 	const updateEntry = entry => {
@@ -33,10 +37,12 @@ export const Provider = ({ children }) => {
 			}
 		});
 		setEntries(updatedEntries);
+		localStorage.setItem("entries", JSON.stringify(updatedEntries));
 	};
 	const deleteEntry = entry => {
 		const filterEntries = entries.filter(ent => ent.id !== entry.id);
 		setEntries(filterEntries);
+		localStorage.setItem("entries", JSON.stringify(filterEntries));
 	};
 
 	const addNewCategory = newCategory => {
@@ -90,6 +96,8 @@ export const Provider = ({ children }) => {
 		setConfOpen,
 	};
 	// console.log("fromContext ACTIVE CATS:", activeCategories);
-	// console.log("fromContext:", entries);
+	// console.log("fromContext Entries:", entries);
+	// console.log("fromContext Local:", JSON.parse(localStorage.getItem("entries")));
+
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };
