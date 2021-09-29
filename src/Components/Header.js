@@ -59,6 +59,7 @@ export default function Header({ onPage }) {
 						style={{ marginLeft: "auto" }}
 						onContextMenu={() => {
 							setIsSignedIn(false);
+							localStorage.removeItem("signedIn");
 						}}
 					/>
 				</Grid>

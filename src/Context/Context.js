@@ -5,14 +5,19 @@ import Entries from "../Assets/entries";
 export const Context = createContext();
 
 const localEntries = JSON.parse(localStorage.getItem("entries"));
+const localCats = JSON.parse(localStorage.getItem("categories"));
+const localSigned = JSON.parse(localStorage.getItem("signedIn"));
+const localAvatar = localStorage.getItem("avatar");
+
+//TODO WELCOME WIZARD HANDLE SIGNED IN IN LOCAL STORAGE
 
 export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
-	const [activeCategories, setActiveCategories] = useState(Categories);
+	const [activeCategories, setActiveCategories] = useState(localCats || []);
 	const [entries, setEntries] = useState(localEntries || []);
 	const [budgetTotal, setBudgetTotal] = useState(0);
-	const [isSignedIn, setIsSignedIn] = useState(true);
-	const [userAvatar, setUserAvatar] = useState("");
+	const [isSignedIn, setIsSignedIn] = useState(!!localSigned);
+	const [userAvatar, setUserAvatar] = useState(localAvatar || "");
 	const [fabModalOpen, setFabModalOpen] = useState(false);
 	const [entryModalOpen, setEntryModalOpen] = useState(false);
 	const [newEntry, setNewEntry] = useState({});
@@ -47,6 +52,7 @@ export const Provider = ({ children }) => {
 
 	const addNewCategory = newCategory => {
 		setActiveCategories([newCategory, ...activeCategories]);
+		localStorage.setItem("categories", JSON.stringify([newCategory, ...activeCategories]));
 	};
 
 	const updateCategory = category => {
@@ -58,6 +64,7 @@ export const Provider = ({ children }) => {
 			}
 		});
 		setActiveCategories(updatedCats);
+		localStorage.setItem("categories", JSON.stringify(updatedCats));
 	};
 
 	const ContextObj = {

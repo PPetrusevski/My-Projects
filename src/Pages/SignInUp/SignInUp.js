@@ -90,12 +90,15 @@ export default function SignInUp(props) {
 		usernameValidationHelper();
 		passwordValidationHelper();
 		if (validateUsername(username) && validatePassword(password)) {
+			//TODO simplify below
 			if (onPage === "signIn") {
 				fetch("https://randomuser.me/api/")
 					.then(res => res.json())
 					.then(data => {
 						setUserAvatar(data.results[0].picture.thumbnail);
+						localStorage.setItem("avatar", data.results[0].picture.thumbnail);
 						setIsSignedIn(true);
+						localStorage.setItem("signedIn", "true");
 						navigate("/main");
 					});
 			} else if (onPage === "signUp") {
@@ -103,7 +106,9 @@ export default function SignInUp(props) {
 					.then(res => res.json())
 					.then(data => {
 						setUserAvatar(data.results[0].picture.thumbnail);
+						localStorage.setItem("avatar", data.results[0].picture.thumbnail);
 						setIsSignedIn(true);
+						localStorage.setItem("signedIn", "true");
 						navigate("/welcome");
 					});
 			}
