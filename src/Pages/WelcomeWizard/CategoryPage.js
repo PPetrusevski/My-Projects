@@ -82,6 +82,7 @@ export default function CategoryPage({ handleStep }) {
 					disabled={chosenCategories.length ? false : true}
 					onClick={() => {
 						setActiveCategories(chosenCategories);
+						localStorage.setItem("categories", JSON.stringify(chosenCategories));
 						handleStep(3);
 					}}
 				/>

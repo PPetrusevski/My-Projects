@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import {
 	Grid,
 	Icon,
@@ -8,8 +9,6 @@ import {
 	makeStyles,
 	Typography,
 } from "@material-ui/core";
-
-import React, { useContext } from "react";
 import Controls from "../../Components/Controls/Controls";
 import { Context } from "../../Context/Context";
 

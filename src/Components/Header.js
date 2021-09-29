@@ -1,5 +1,5 @@
-import { Avatar, Grid, Typography, makeStyles } from "@material-ui/core";
 import React, { useContext } from "react";
+import { Avatar, Grid, Typography, makeStyles } from "@material-ui/core";
 import { Context } from "../Context/Context";
 import logo from "../Assets/logo.png";
 
@@ -59,7 +59,7 @@ export default function Header({ onPage }) {
 						style={{ marginLeft: "auto" }}
 						onContextMenu={() => {
 							setIsSignedIn(false);
-							localStorage.removeItem("signedIn");
+							localStorage.clear();
 						}}
 					/>
 				</Grid>

@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LogoHeader from "../../Components/LogoHeader";
 import IncomePage from "./IncomePage";
 import AmountPage from "./AmountPage";
 import CategoryPage from "./CategoryPage";
 import { Grid, makeStyles } from "@material-ui/core";
 import { Context } from "../../Context/Context";
+import { navigate } from "@reach/router";
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -23,9 +24,15 @@ export default function WelcomeWizard() {
 	const [step, setStep] = useState(1);
 	const { setBudgetTotal, categories, isSignedIn } = useContext(Context);
 
+	useEffect(() => {
+		if (isSignedIn) {
+			navigate("/main");
+		}
+	}, []);
+
 	const classes = useStyles();
 
-	return isSignedIn ? (
+	return (
 		<Grid
 			container
 			justifyContent="center"
@@ -45,7 +52,5 @@ export default function WelcomeWizard() {
 			{step === 2 && <CategoryPage handleStep={setStep} />}
 			{step === 3 && <AmountPage />}
 		</Grid>
-	) : (
-		<p>You have to Sign in or sign up</p>
 	);
 }

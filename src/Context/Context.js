@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import Categories from "../Assets/categories";
-import Entries from "../Assets/entries";
 
 export const Context = createContext();
 
@@ -8,8 +7,6 @@ const localEntries = JSON.parse(localStorage.getItem("entries"));
 const localCats = JSON.parse(localStorage.getItem("categories"));
 const localSigned = JSON.parse(localStorage.getItem("signedIn"));
 const localAvatar = localStorage.getItem("avatar");
-
-//TODO WELCOME WIZARD HANDLE SIGNED IN IN LOCAL STORAGE
 
 export const Provider = ({ children }) => {
 	const [categories, setCategories] = useState(Categories);
@@ -102,9 +99,6 @@ export const Provider = ({ children }) => {
 		confOpen,
 		setConfOpen,
 	};
-	// console.log("fromContext ACTIVE CATS:", activeCategories);
-	// console.log("fromContext Entries:", entries);
-	// console.log("fromContext Local:", JSON.parse(localStorage.getItem("entries")));
 
 	return <Context.Provider value={ContextObj}>{children}</Context.Provider>;
 };

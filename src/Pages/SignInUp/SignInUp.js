@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
@@ -29,7 +29,13 @@ export default function SignInUp(props) {
 	const [usernameErrMsg, setUsernameErrMsg] = useState("");
 	const [visible, setVisible] = useState(false);
 
-	const { setIsSignedIn, setUserAvatar } = useContext(Context);
+	const { isSignedIn, setIsSignedIn, setUserAvatar } = useContext(Context);
+
+	useEffect(() => {
+		if (isSignedIn) {
+			navigate("/main");
+		}
+	}, []);
 
 	const onPage = props.whichPage;
 
@@ -70,16 +76,23 @@ export default function SignInUp(props) {
 		if (lengthReg.test(pass) && charReg.test(pass)) {
 			return true;
 		}
-
 		return false;
 	};
 
 	const usernameValidationHelper = () => {
+		if (username.length === 0) {
+			validateUsername(username);
+			setUsernameIsValid(false);
+		}
 		if (username.length > 0) {
 			validateUsername(username) ? setUsernameIsValid(true) : setUsernameIsValid(false);
 		}
 	};
 	const passwordValidationHelper = () => {
+		if (password.length === 0) {
+			validatePassword(password);
+			setPasswordIsValid(false);
+		}
 		if (password.length > 0) {
 			validatePassword(password) ? setPasswordIsValid(true) : setPasswordIsValid(false);
 		}
@@ -90,28 +103,19 @@ export default function SignInUp(props) {
 		usernameValidationHelper();
 		passwordValidationHelper();
 		if (validateUsername(username) && validatePassword(password)) {
-			//TODO simplify below
-			if (onPage === "signIn") {
-				fetch("https://randomuser.me/api/")
-					.then(res => res.json())
-					.then(data => {
-						setUserAvatar(data.results[0].picture.thumbnail);
-						localStorage.setItem("avatar", data.results[0].picture.thumbnail);
+			fetch("https://randomuser.me/api/")
+				.then(res => res.json())
+				.then(data => {
+					setUserAvatar(data.results[0].picture.thumbnail);
+					localStorage.setItem("avatar", data.results[0].picture.thumbnail);
+					if (onPage === "signIn") {
 						setIsSignedIn(true);
 						localStorage.setItem("signedIn", "true");
 						navigate("/main");
-					});
-			} else if (onPage === "signUp") {
-				fetch("https://randomuser.me/api/")
-					.then(res => res.json())
-					.then(data => {
-						setUserAvatar(data.results[0].picture.thumbnail);
-						localStorage.setItem("avatar", data.results[0].picture.thumbnail);
-						setIsSignedIn(true);
-						localStorage.setItem("signedIn", "true");
+					} else if (onPage === "signUp") {
 						navigate("/welcome");
-					});
-			}
+					}
+				});
 		}
 	};
 
@@ -150,7 +154,10 @@ export default function SignInUp(props) {
 							error={!usernameIsValid}
 							helperText={!usernameIsValid && usernameErrMsg}
 							onChange={e => setUsername(e.target.value)}
-							onBlur={usernameValidationHelper}
+							onBlur={() => {
+								username.length > 0 && usernameValidationHelper();
+								username.length === 0 && setUsernameIsValid(true);
+							}}
 						/>
 					</Grid>
 					<Grid item xs={10}>
@@ -159,10 +166,13 @@ export default function SignInUp(props) {
 							label="Password"
 							type={visible ? "text" : "password"}
 							value={password}
-							onChange={e => setPassword(e.target.value)}
-							onBlur={passwordValidationHelper}
 							error={!passwordIsValid}
 							helperText={!passwordIsValid && passwordErrMsg}
+							onChange={e => setPassword(e.target.value)}
+							onBlur={() => {
+								password.length > 0 && passwordValidationHelper();
+								password.length === 0 && setPasswordIsValid(true);
+							}}
 							InputProps={{
 								endAdornment: (
 									<InputAdornment position="end">

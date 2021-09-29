@@ -1,5 +1,5 @@
 import { Grid, makeStyles, Typography } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Controls from "../../Components/Controls/Controls";
 
 const useStyles = makeStyles(theme => ({
@@ -32,8 +32,6 @@ export default function IncomePage({ handleStep, setBudgetTotal }) {
 			setInputValid(false);
 		}
 	};
-
-	useEffect(() => {}, [budget]);
 
 	return (
 		<>

@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import {
 	Icon,
 	LinearProgress,
@@ -7,7 +8,6 @@ import {
 	ListItemText,
 	makeStyles,
 } from "@material-ui/core";
-import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 import AlertPage from "./AlertPage";
 import Controls from "./Controls/Controls";

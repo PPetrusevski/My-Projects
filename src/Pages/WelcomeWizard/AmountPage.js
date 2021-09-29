@@ -1,6 +1,6 @@
+import React, { useContext } from "react";
 import { Grid, InputAdornment, InputBase, makeStyles, Typography } from "@material-ui/core";
 import { navigate } from "@reach/router";
-import React, { useContext } from "react";
 import { Context } from "../../Context/Context";
 import Controls from "../../Components/Controls/Controls";
 
@@ -33,6 +33,7 @@ export default function AmountPage() {
 
 	const handleComplete = () => {
 		setIsSignedIn(true);
+		localStorage.setItem("signedIn", "true");
 		navigate("/main");
 	};
 

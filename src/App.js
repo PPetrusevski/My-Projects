@@ -6,9 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { Router } from "@reach/router";
 import SignInUp from "./Pages/SignInUp/SignInUp";
 import WelcomeWizard from "./Pages/WelcomeWizard/WelcomeWizard";
-import Categories from "./Pages/MainPages/Categories";
 import MainPages from "./Pages/MainPages/MainPages";
-import Statistics from "./Pages/MainPages/Statistics";
 
 const theme = createTheme({
 	palette: {
@@ -46,8 +44,6 @@ function App() {
 						<SignInUp whichPage="signUp" path="/signup" />
 						<WelcomeWizard path="/welcome" />
 						<MainPages path="/main" />
-						<Categories path="/categories" />
-						<Statistics path="/statistics" />
 					</Router>
 				</ThemeProvider>
 			</Provider>

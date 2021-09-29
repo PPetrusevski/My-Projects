@@ -58,6 +58,7 @@ export default function BottomNav({ onPage, setOnPage, handleEntryModalOpen }) {
 		categoryModalOpen,
 		setCategoryModalOpen,
 	} = useContext(Context);
+
 	const classes = useStyles();
 
 	const handleFabBtn = () => {

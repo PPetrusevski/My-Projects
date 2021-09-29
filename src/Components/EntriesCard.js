@@ -1,3 +1,4 @@
+import React, { useContext, useState } from "react";
 import {
 	Button,
 	Dialog,
@@ -13,7 +14,6 @@ import {
 	MenuItem,
 	Typography,
 } from "@material-ui/core";
-import React, { useContext, useState } from "react";
 import { Context } from "../Context/Context";
 import Controls from "./Controls/Controls";
 import nextId from "react-id-generator";

@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import {
 	Icon,
 	LinearProgress,
@@ -6,7 +7,6 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from "@material-ui/core";
-import React, { useContext } from "react";
 import { Context } from "../Context/Context";
 import AlertPage from "./AlertPage";
 import Controls from "./Controls/Controls";
@@ -23,7 +23,7 @@ export default function IncomesCard({ entriesTotal, calculatePercentage }) {
 				{income.length ? (
 					income.map((inc, idx) => {
 						const matchingEntries = entries.filter(ent => ent.categoryId === inc.id);
-						// console.log("inside map", matchingEntries);
+
 						return (
 							<div key={inc.id + idx + inc.name}>
 								<ListItem disableGutters>
